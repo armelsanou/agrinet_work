@@ -1,0 +1,40 @@
+/*-- social icons --*/
+.footercopy-social ul li,
+.contact-left-footer ul li {
+    display: inline-block;
+}
+footer{
+    background: #191818;
+}
+.footercopy-social ul li a {
+    color: #333;
+    text-align: center;
+}
+
+.footercopy-social ul li a span.fa {
+    width: 20px;
+    font-size: 20px;
+    color: #666;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+/*-- //social icons --*/
+
+/*-- address --*/
+.contact-left-footer ul li p span.fa {
+    color: #aaa;
+}
+
+.contact-left-footer ul li p a,
+.contact-left-footer ul li p {
+    color: #707579;
+    font-size: 16px;
+    font-weight: 600;
+}
+.contact-left-footer ul li p a, .contact-left-footer ul li p {
+		font-size: 15px;
+	}
