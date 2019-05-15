@@ -61,5 +61,37 @@ class SecurityController extends AbstractController
            
         }
 
+        /**
+         * @Route("/mieux_produire", name ="mieux_produire")
+         */
+        public function mieux_produire(){
+            return
+            $this->render('security/mieux_produire.html.twig');
+        }
+
+         /**
+         * @Route("/formation_expertise", name ="formation_expertise")
+         */
+        public function formation_expertise(){
+            return
+            $this->render('security/formation_expertise.html.twig');
+        }
+
+          /**
+         * @Route("/agri_impact", name ="agri_impact")
+         */
+        public function agri_impact(){
+            return
+            $this->render('security/agri_impact.html.twig');
+        }
+
+         /**
+         * @Route("/bibliotheque_agricole", name ="bibliotheque_agricole")
+         */
+        public function bibliotheque_agricole(){
+            return
+            $this->render('security/bibliotheque_agricole.html.twig');
+        }
+
     }
 

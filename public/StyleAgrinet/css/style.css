@@ -755,10 +755,12 @@ ul.callbacks_tabs {
 .bg-abt {
     background: #fff6f6;
     padding: 2em 1.5em;
+    height: 485.38px!important;
 }
 
 .light-bg {
     background: #efefef;
+    height: 485.38px!important;
 }
 
 .abt_bottom p {
@@ -1919,4 +1921,9 @@ ul.navbar-nav.mx-lg-auto.text-center.headerTaille li a {
 
 ul.footer_arr li {
     margin-left: 53px;
+}
+
+.row.no-gutters.taille_blog {
+    height: 492.38px!important;
+    overflow: hidden;
 }

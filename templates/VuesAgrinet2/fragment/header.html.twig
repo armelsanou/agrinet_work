@@ -1,0 +1,30 @@
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class=" navbar ">
+			<div id="logo">
+				<a href="index.html">  <img src="{{asset('StyleAgrinet/images/Agrinet.png')}}" class="img-responsive logoAgrinet" alt=""></a>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu mt-md-2 ml-auto">
+				<li class="mr-lg-4 mr-2"><a href="index.html">Formation & expertise</a></li>
+				<li class="mr-lg-4 mr-2 active"><a href="about.html">mieux produire</a></li>
+				<li class="mr-lg-4 mr-2"><a href="services.html">agri-impact</a></li>
+				<li class="mr-lg-4 mr-2"><a href="comingsoon.html">Bibliothèque Agricole</a></li>
+				<li class="mr-lg-4 mr-2"><a href="contact.html">phytopharmacie</a></li>
+				{% if not app.user %}
+				<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3" data-toggle="modal"
+					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor"> <span class="fa fa-user text-white"></span>
+				</button>
+				{% else %}
+				<a href="{{path('security_logout')}}">deco </a>
+				{% endif %}
+			</ul>
+		
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
