@@ -1,6 +1,6 @@
 <!-- header -->
 <header>
-	<div class="container">
+	<div class="container-fluid">
 		<!-- nav -->
 		<nav class=" navbar ">
 			<div id="logo">
@@ -9,14 +9,16 @@
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
 			<ul class="menu mt-md-2 ml-auto">
-				<li class="mr-lg-4 mr-2"><a href="index.html">Formation & expertise</a></li>
-				<li class="mr-lg-4 mr-2 active"><a href="about.html">mieux produire</a></li>
-				<li class="mr-lg-4 mr-2"><a href="services.html">agri-impact</a></li>
-				<li class="mr-lg-4 mr-2"><a href="comingsoon.html">Bibliothèque Agricole</a></li>
+					<li class="mr-lg-4 mr-2"><a href="{{path('a_propos_de_nous')}}">A propos</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('formation_expertise')}}">Formation & expertise</a></li>
+				<li class="mr-lg-4 mr-2 active"><a href="{{path('mieux_produire')}}">mieux produire</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('agri_impact')}}">agri-impact</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('bibliotheque_agricole')}}">Bibliothèque Agricole</a></li>
 				<li class="mr-lg-4 mr-2"><a href="contact.html">phytopharmacie</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('contactez_nous')}}">Contact</a></li>
 				{% if not app.user %}
-				<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3" data-toggle="modal"
-					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor"> <span class="fa fa-user text-white"></span>
+				<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor"> <span class="fa fa-user text-yellow"></span>
 				</button>
 				{% else %}
 				<a href="{{path('security_logout')}}">deco </a>

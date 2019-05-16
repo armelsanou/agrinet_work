@@ -1665,3 +1665,12 @@ img.img-responsive.img-for1 {
 .bloc1-bibl {
     margin-bottom: 42px;
 }
+
+button.btn.wthree-link-bnr.bg-theme.rounded-circle.text-center.mt-lg-0.mt-3.bouton-userPer {
+    position: relative;
+    top: -8px;
+}
+
+strong.textePer{
+	text-decoration: underline;
+}

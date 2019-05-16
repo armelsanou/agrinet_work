@@ -93,5 +93,21 @@ class SecurityController extends AbstractController
             $this->render('security/bibliotheque_agricole.html.twig');
         }
 
+        /**
+         * @Route("/contact", name ="contactez_nous")
+         */
+        public function contactez_nous(){
+            return
+            $this->render('security/contact.html.twig');
+        }
+
+        /**
+         * @Route("/a_propos", name ="a_propos_de_nous")
+         */
+        public function a_propos(){
+            return
+            $this->render('security/a_propos.html.twig');
+        }
+
     }
 
