@@ -109,5 +109,27 @@ class SecurityController extends AbstractController
             $this->render('security/a_propos.html.twig');
         }
 
+          /**
+         * @Route("/recap_culture", name ="recap_culture")
+         */
+        public function recap_culture(){
+            return
+            $this->render('security/recap_culture.html.twig');
+        }
+
+         /**
+         * @Route("/recap_elevage", name ="recap_elevage")
+         */
+        public function recap_elevage(){
+            return
+            $this->render('security/recap_elevage.html.twig');
+        }
+         /**
+         * @Route("/phytopharmacie", name ="phytopharmacie")
+         */
+        public function phytopharmacie(){
+            return
+            $this->render('security/phytopharmacie.html.twig');
+        }
     }
 

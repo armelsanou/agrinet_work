@@ -1616,6 +1616,65 @@ a.move-top {
 
 
 
+/*-- //tab --*/
+
+
+.pagination>li {
+	display: inline;
+	padding:0px !important;
+	margin:0px !important;
+	border:none !important;
+	}
+	.modal-backdrop {
+	  z-index: -1 !important;
+	}
+	/*
+	Fix to show in full screen demo
+	*/
+	iframe
+	{
+		height:700px !important;
+	}
+	
+	.btn {
+	display: inline-block;
+	padding: 6px 12px !important;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	}
+	
+	.btn-primary {
+	color: #fff !important;
+	background: #428bca !important;
+	border-color: #357ebd !important;
+	box-shadow:none !important;
+	}
+	.btn-danger {
+	color: #fff !important;
+	background: #d9534f !important;
+	border-color: #d9534f !important;
+	box-shadow:none !important;
+	}
+
+
+
+
+
 
 
 
@@ -1674,3 +1733,22 @@ button.btn.wthree-link-bnr.bg-theme.rounded-circle.text-center.mt-lg-0.mt-3.bout
 strong.textePer{
 	text-decoration: underline;
 }
+
+.phyto_design select{
+	margin-bottom: 16px;
+}
+
+	.btn_desin_perso{
+		width: auto;
+		position: relative;
+		background-color: #F88C00;
+		color: #FFF;
+		padding: 5px 12px;
+		font: 12px Tahoma;
+		display: inline-block;
+		line-height: 22px;
+		border: 0 none;
+		cursor: pointer;
+		text-decoration: none;
+		border-radius: 2px;
+	}

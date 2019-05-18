@@ -1,0 +1,346 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery.min.js')}}"></script>
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js')}}"></script>
+
+<script src="{{asset('StyleAgrinet2/js/popper.min.js')}}"></script>
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="{{asset('StyleAgrinet2/css/tab.css')}}">
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- feedback -->
+<section class="news py-5">
+	<div class="container-fluid ">
+	
+		<div class="row">
+
+
+      <div class="col-sm-4">
+          
+          <h4 class="titre_tab"> Input/Output en Cultures Arables (par parcelle) </h4>
+      </div>
+
+      <div class="col-sm-8">
+          <table class="table_first  " >
+            
+              <tbody class="tab_new_style"></tbody>
+                  <tr class="ju">
+                    
+                    <td >
+                      <div class="group">      
+                        <input type="text" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ferme: </label>
+                      </div>
+                    </td>
+                    <td>
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Nom de paracell: </label>
+                          </div>
+                    </td>
+                   
+                   
+                    
+                   
+                  </tr>
+
+                  <tr class="ju">
+                    
+                      <td >
+                          <div class="group">      
+                              <input type="text" required>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <label> Superficie: </label>
+                            </div>
+                        
+                      </td>
+                     
+                      <td>
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label> an/saison: </label>
+                          </div>
+                      </td>
+                      <td>
+                       
+                       
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label> Culture(s)/variétés:</label>
+                          </div>
+                      </td>
+                     
+                    </tr>
+                  
+    
+                  
+                
+              </tbody>
+              
+          </table>
+      </div>
+     
+      <div class="table-content">
+        <table class="table table-borded table-responsive table-striped " id="table-list">
+            <thead class="table-dark">
+                <tr>
+                    <td>Date</td>
+                    <td>Nom/utilisation de l'input/output</td>
+                    <td>Quantité</td>
+                    <td>Unité</td>
+                    <td>Prix / unité</td>
+                    <td>Semences</td>
+                    <td>Engrais/fumier</td>
+                    <td>Sub. chimique</td>
+                    <td>Carb./Ess/Elé</td>
+                    <td>Transport</td>
+                    <td>rav-salar/Serv</td>
+                    <td>autres</td>
+                    <td>Totale</td>
+                    <td>Trav. Fam. |	Unité</td>
+                </tr>
+            </thead>
+            <tbody class="tab_new_style">
+                <tr class="ju">
+                  <td>Date</td>
+                  <td>Nom/utilisation de l'input/output</td>
+                  <td>Quantité</td>
+                  <td>Unité</td>
+                  <td>Prix / unité</td>
+                  <td>Semences</td>
+                  <td>Engrais/fumier</td>
+                  <td>Sub. chimique</td>
+                  <td>Carb./Ess/Elé</td>
+                  <td>Transport</td>
+                  <td>rav-salar/Serv</td>
+                  <td>autres</td>
+                  <td>Totale</td>
+                  <td>Trav. Fam. |	Unité</td>
+                </tr>
+
+                
+              
+            </tbody>
+            
+            <tr class="total_recap_cul">
+                
+                    <td colspan="5" class="text-center">Total par parcelle:</td>
+                   
+                    <td>Semences</td>
+                    <td>Engrais/fumier</td>
+                    <td>Sub. chimique</td>
+                    <td>Carb./Ess/Elé</td>
+                    <td>Transport</td>
+                    <td>rav-salar/Serv</td>
+                    <td>autres</td>
+                    <td>Totale</td>
+                    <td>Trav. Fam. |	Unité</td>
+                  </tr>
+                  <tr class="total_recap_cul">
+                    
+                    <td colspan="5" class="text-center">Total par ha:</td>
+                    <td>Semences</td>
+                    <td>Engrais/fumier</td>
+                    <td>Sub. chimique</td>
+                    <td>Carb./Ess/Elé</td>
+                    <td>Transport</td>
+                    <td>rav-salar/Serv</td>
+                    <td>autres</td>
+                    <td>Totale</td>
+                    <td>Trav. Fam. |	Unité</td>
+                  </tr>
+    
+        </table>
+        <button class="btn btn-dark btn_ajouter_colonne_tab" id="add"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+      
+        
+       
+    </div>
+
+    <div class="clearfix"></div>
+  
+    <div class="col-sm-4">
+        <h5 class="titre_tab2"> Rendement (SVP listez chaque jour de recolte) </h5>
+
+        
+    <div class="table-content">
+        <table class="table table-borded table-responsive table-striped " id="table-list2">
+            <thead class="table-dark">
+                <tr class="bg-success">
+                    <td>Date</td>
+                    <td>Remarques</td>
+                    <td>Quantité</td>
+                    <td>Unité(t, kg,etc.)</td>
+                    
+                </tr>
+            </thead>
+            <tbody class="tab_new_style">
+                <tr class="ju">
+                    <td>Date</td>
+                    <td>Remarques</td>
+                    <td>Quantité</td>
+                    <td>Unité(t, kg,etc.)</td>
+                  
+                </tr>
+
+                
+              
+            </tbody>
+            <tr class="total_recap_cul">
+                
+                    <td colspan="2" class="text-center">Total </td>
+                   
+                  
+                    <td>Quantité</td>
+                    <td>Unité(t, kg,etc.)</td>
+                  </tr>
+                  <tr class="total_recap_cul">
+                    
+                    <td colspan="2" class="text-center">Total par ha:</td>
+                    
+                    <td>Quantité</td>
+                    <td>Unité(t, kg,etc.)</td>
+                  </tr>
+    
+        </table>
+        <button class="btn btn-success btn_ajouter_colonne_tab" id="add2"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+      
+       
+    </div>
+    </div>
+
+    <div class="col-sm-8">
+        <h5 class="titre_tab2"> Utilisation de produits (SVP listez si le rendement es vendu, donné, perdu,etc.)</h5>
+
+        
+        <div class="table-content">
+            <table class="table table-borded table-responsive table-striped " id="table-list3">
+                <thead class="table-dark">
+                    <tr class="bg-info">
+                        <td>Date</td>
+                        <td>Utilisation de rendement</td>
+                        <td>Quantité</td>
+                        <td>Unité</td>
+                        <td>Prix / Valeur</td>
+                        <td>Revenu</td>
+                    </tr>
+                </thead>
+                <tbody class="tab_new_style">
+                    <tr class="ju">
+                        <td>Date</td>
+                        <td>Utilisation de rendement</td>
+                        <td>Quantité</td>
+                        <td>Unité</td>
+                        <td>Prix / Valeur</td>
+                        <td>Revenu</td>
+                      
+                    </tr>
+    
+                    
+                  
+                </tbody>
+                <tr class="total_recap_cul">
+                    
+                        <td colspan="5" class="text-center">Total </td>
+                       
+                      
+                        <td>Quantité</td>
+                       
+                      </tr>
+                      <tr class="total_recap_cul">
+                        
+                        <td colspan="5" class="text-center">Total par ha:</td>
+                        
+                        <td>Quantité</td>
+                       
+                      </tr>
+        
+            </table>
+            <button class="btn btn-info btn_ajouter_colonne_tab" id="add3"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+          
+         
+           
+        </div>
+
+
+        <h5 class="titre_tab2">Marge brute</h5>
+
+        <table class="table table-borded table-responsive table-striped " id="table-list3">
+            <thead class="table-dark">
+                <tr class="bg-warning">
+                    <td>Revenu total</td>
+                    <td>Cout total</td>
+                    <td>Revenu total - Cout total</td>
+                    
+                </tr>
+            </thead>
+            <tbody class="tab_new_style">
+                <tr class="ju">
+                  
+                    <td>3 430 000</td>
+                    <td>2 462 400</td>
+                    <td> 967.600 </td>
+                         
+                       
+                 
+                </tr>
+                
+            </tbody>
+            
+        </table>
+         
+    </div>
+
+
+		</div>
+	</div>
+</section>
+<!-- //feedback -->
+
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+<script src="{{asset('StyleAgrinet2/js/tab.js')}}"></script>
+<script>
+$(document).ready(function(){
+$(".total_recap_cul").find("td:last").css("display","none");
+});
+</script>
+{% endblock %}
