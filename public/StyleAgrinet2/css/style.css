@@ -1656,9 +1656,8 @@ img.img-responsive.img-for1 {
 
 }
 
-.col-lg-8.bloc-prenium {
+.bloc-prenium {
     border: 1px dashed;
-    margin: 15px;
     height: 376px;
 }
 
@@ -1673,4 +1672,51 @@ button.btn.wthree-link-bnr.bg-theme.rounded-circle.text-center.mt-lg-0.mt-3.bout
 
 strong.textePer{
 	text-decoration: underline;
+}
+
+.modal-header {
+
+    color: #eee !important;
+    border: none;
+    text-transform: capitalize;
+    margin: 0 auto;
+    width: 100%;
+    background:  rgb(112, 173, 71);
+
+}
+
+.right-w3l input[type="submit"] {
+
+    background: #333;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Lato', sans-serif;
+	cursor: pointer;
+}
+
+.modal-footer1 a {
+    color: rgb(112, 173, 71);
+}
+
+.modal-content {
+
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    border: 10px solid #fff;
+    border-radius: 0.3rem;
+    outline: 0;
+    
+    font-family: 'Lato', sans-serif;
+
 }
