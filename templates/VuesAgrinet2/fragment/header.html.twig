@@ -1,3 +1,13 @@
+<style>
+.drp_acue{
+	width: 340px;
+}
+.drp_acue li{
+	width: 340px;
+}
+</style>
+
+
 <!-- header -->
 <header>
 	<div class="container-fluid">
@@ -10,7 +20,19 @@
 			<input type="checkbox" id="drop" />
 			<ul class="menu mt-md-2 ml-auto">
 					<li class="mr-lg-4 mr-2"><a href="{{path('a_propos_de_nous')}}">A propos</a></li>
-				<li class="mr-lg-4 mr-2"><a href="{{path('formation_expertise')}}">Formation & expertise</a></li>
+				
+				<li class="mr-lg-4 mr-2 dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Formation & expertise <b class="caret"></b></a>
+						<ul class="dropdown-menu drp_acue">
+						  <li><a href="{{path('formation_expertise')}}">Formation & expertise</a></li>
+						  <li><a href="{{path('formation_initiale')}}">formation initiale</a></li>
+						  <li><a href="{{path('formation_pratique')}}">formation pratique</a></li>
+						  <li><a href="{{path('montage_projets')}}">montage projets</a></li>
+						  <li><a href="{{path('gestion_du_sol')}}">gestion du sol</a></li>
+						  <li><a href="{{path('vulgarisation_agricole')}}">vulgarisation agricole</a></li>
+						  
+						</ul>
+					  </li>
 				<li class="mr-lg-4 mr-2 active"><a href="{{path('mieux_produire')}}">mieux produire</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('agri_impact')}}">agri-impact</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('bibliotheque_agricole')}}">Bibliothèque Agricole</a></li>
@@ -30,3 +52,10 @@
 	</div>
 </header>
 <!-- //header -->
+<script>
+$('ul.nav li.dropdown').hover(function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+});
+</script>
