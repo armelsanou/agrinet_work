@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
-
     /**
      * @Route("/inscription", name="security_registration")
      */
@@ -29,6 +28,7 @@ class SecurityController extends AbstractController
               $user->setPassword($hash);  
                 $manager->persist($user);
                 $manager->flush();
+                $this->addFlash('success', 'Votre compte à bien été enregistré.');
              /*    return $this->RedirectToRoute('security_welcome'); */
         }
       
@@ -39,10 +39,13 @@ class SecurityController extends AbstractController
         ]);
      }
         /**
-         * @Route("/inscription", name ="security_login" , methods={"GET", "POST"})
+         * @Route("/login", name ="security_login" , methods={"GET", "POST"})
          */
         public function login(AuthenticationUtils $authenticationUtils): Response
         {
+            $user = new User();
+  
+            $form = $this->createForm(RegistrationType::class, $user);
             // get the login error if there is one
             $error = $authenticationUtils->getLastAuthenticationError();
             // last username entered by the user
@@ -51,6 +54,7 @@ class SecurityController extends AbstractController
              $this->render('security/home.html.twig' , [
                 'last_username' => $lastUsername,
                 'error'         => $error,
+                'form' => $form->createView()
             ]);
         }
         
@@ -195,12 +199,97 @@ class SecurityController extends AbstractController
          * @Route("actualite", name="security_actualite")
          */
         public function actualite(){
+            $user = new User();
+  
+            $form = $this->createForm(RegistrationType::class, $user);
+           return
+            $this->render('security/actualite.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
 
+        /**
+         * @Route("/formation_initiale", name ="formation_initiale")
+         */
+        public function formation_initiale(){
             $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
             return
-            $this->render('security/actualite.html.twig'
+            $this->render('security/formation_initiale.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
+
+         /**
+         * @Route("/formation_pratique", name ="formation_pratique")
+         */
+        public function formation_pratique(){
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+            $this->render('security/formation_pratique.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
+
+                 /**
+         * @Route("/montage_projets", name ="montage_projets")
+         */
+        public function montage_projets(){
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+            $this->render('security/montage_projets.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
+
+                 /**
+         * @Route("/gestion_du_sol", name ="gestion_du_sol")
+         */
+        public function gestion_du_sol(){
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+            $this->render('security/gestion_du_sol.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
+
+                 /**
+         * @Route("/vulgarisation_agricole", name ="vulgarisation_agricole")
+         */
+        public function vulgarisation_agricole(){
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+            $this->render('security/vulgarisation_agricole.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
+           
+                    /**
+         * @Route("/devenir_expert", name ="devenir_expert")
+         */
+        public function devenir_expert(){
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+
+            $this->render('security/devenir_expert.html.twig'
+
             , [
                 'form' => $form->createView()
             ]);

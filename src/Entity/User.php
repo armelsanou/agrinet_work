@@ -67,17 +67,6 @@ class User implements UserInterface
     * @Assert\EqualTo(propertyPath="password", message ="Votre mot de passe doit etre le meme que celui dont vous confirmez")
     * @Assert\NotBlank
     */
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $salt;
-
     public $confirmPassword;
 
     public function getId(): ?int
@@ -85,7 +74,7 @@ class User implements UserInterface
         return $this->id;
     }
 
-     public function getNoms(): ?string
+    public function getNoms(): ?string
     {
         return $this->noms;
     }
@@ -95,7 +84,7 @@ class User implements UserInterface
         $this->noms = $noms;
 
         return $this;
-    } 
+    }
 
     public function getPrenoms(): ?string
     {
@@ -169,42 +158,23 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
-    {
-        return $this->role;
-    }
+    // public function getConfirmPassword(): ?string
+    // {
+    //     return $this->confirmPassword;
+    // }
 
-    public function setRoles(string $role): self
-    {
-        $this->role = $role;
+    // public function setConfirmPassword(string $confirmPassword): self
+    // {
+    //     $this->confirmPassword = $confirmPassword;
 
-        return $this;
-    }
-
-    public function getSalt(): ?string
-    {
-        return $this->salt;
-    }
-
-    public function setSalt(string $salt): self
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->noms;
-    }
-
-    public function setUsername(string $noms): self
-    {
-        $this->noms = $noms;
-
-        return $this;
-    }
-
+    //     return $this;
+    // }
     public function eraseCredentials(){}
 
+        public function getSalt(){}
+        
+        public function getRoles(){
+            return['ROLE_USER'];
+        }
+        public function getUsername(){}
 }

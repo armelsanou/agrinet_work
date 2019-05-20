@@ -1,0 +1,244 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  <style>
+.devenir_expert_paragraphe p{
+    font-family: 'Lato',Arial sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: oblique;
+    color: black;
+    padding: 8px;
+}
+.content{
+    background-color: #eae4df;
+    opacity: 0.96;
+    margin-top: 13px;
+}
+.row.sous_entete {
+    padding: 52px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+        
+	</div>
+</div>
+<!-- //banner -->
+
+<div class="container-fluid">
+        <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10 content">
+            <div class="title"><h1 style="padding:25px;"> Devenir Expert AGRINET</h1></div>
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/devenir-expert.png" class="image_entete" alt="">
+                </div>
+                <div class="col-md-10 devenir_expert_paragraphe">
+                    <p>Vous êtes spécialiste en production végétale, nutrition animale, marketing, structuration de filières agricoles... ?
+                            Venez partager votre passion et vos compétences au sein d'un réseau dynamique, au rayonnement international.</p> 
+                            
+                     <p>      Rejoignez notre réseau d'expert AGRINET !
+                            N’hésitez pas à remplir ce formulaire* pour suivre notre actualité et être recontacté(e) par nos équipes si une opportunité se présente.</p>
+                </div>
+            </div>
+            <div class="row sous_entete">
+                    <div class="col-md-4 devenir_expert_paragraphe text-center">
+                        <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/icone3.png" class="devenir_expert_img1" alt="">
+                        <p>Valorisez vos compétences dans le cadre de missions à l'échelle internationale.</p>
+                    </div>
+                    <div class="col-md-4 devenir_expert_paragraphe text-center">
+                        <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/icone2.png" class="devenir_expert_img2" alt=""> 
+                        <p>Enrichissez vos expertises et domaines d'intervention, à travers de nouvelles problématiques agricoles et alimentaires.</p>
+                    </div>
+                    <div class="col-md-4 devenir_expert_paragraphe text-center">
+                         <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/icone1.png" class="devenir_expert_img3" alt="">   
+                         <p>Bénéficiez d'un réseau d'experts international et accédez à de nouvelles opportunités de développement.</p>   
+                    </div>
+                </div>
+                <div>
+                    <p>Ma situation professionnelle actuelle:</p>
+                    <input type="radio"/>Je propose mes compétences pour une intervention ponctuelle sur une mission de conseil <br>
+                    <input type="radio"> Je cherche un emploi en CDD/CDI
+                </div>  
+                <div class="row" style="margin-top:30px;">
+                    <div class="col-md-4">
+                            <form>
+                                <div class="form-group">
+                                            <label for="prenom">Prenom</label>
+                                            <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" placeholder="prenom">
+                                </div>
+                                <div class="form-group">
+                                      <label for="nom">Nom</label>
+                                      <input type="text" class="form-control" id="nom" aria-describedby="emailHelp" placeholder="nom">
+                                </div>
+                                <div class="form-group">
+                                      <label for="email">email</label>
+                                      <input type="email" class="form-control" id="email" placeholder="email">
+                                </div>
+                                <div class="form-group">
+                                        <label for="email">telephone</label>
+                                        <input type="email" class="form-control" id="telephone" placeholder="telephone">
+                                </div>
+                                <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <label class="input-group-text" for="inputGroupSelect01">Statut professionnel</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                          <option selected>Choisir...</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Two</option>
+                                          <option value="3">Three</option>
+                                        </select>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Pays</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                      <option selected>Choisir...</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                    <label for="ville">Ville</label>
+                                    <input type="text" class="form-control" id="ville" aria-describedby="emailHelp" placeholder="ville">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Mobilité</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                      <option selected>Choisir...</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                    <label for="fonction">Fonction Actuelle</label>
+                                    <input type="text" class="form-control" id="fonction" aria-describedby="emailHelp" placeholder="fonction actuelle">
+                            </div>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                    <label for="langue">Langues</label>
+                                    <input type="text" class="form-control" id="langue1" aria-describedby="emailHelp" placeholder="langue 1"> <br>
+                                    <input type="text" class="form-control" id="langue2" aria-describedby="emailHelp" placeholder="langue 2">
+                            </div> 
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Niveau d'experience</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                      <option selected>Choisir...</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                            </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                    <label for="langue">Secteur(s) d'activités</label>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                              
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                 
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="autres" aria-describedby="emailHelp" placeholder="autres">
+                            </div>
+   
+                    </div>
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                    <label for="langue">Compétences</label>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                              
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                 
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choisir...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="autres" aria-describedby="emailHelp" placeholder="autres">
+                            </div>
+   
+                    </div>
+                </div> 
+                        <p>vous souhaitez nous en dire plus</p>
+                        <textarea class="textarea large" name="teatarea" id="textarea" cols="130" rows="10"></textarea>
+                        <p>téléchargez votre cv </p>
+                        <input type="file"/>
+                        <p>je souhaite recevoir l'actualité d'AGRINET par mail</p>
+                        <input type="radio"> oui <br>
+                        <input type="radio"> non <br> <br> <br>
+                        <button>Envoyer</button>
+                        <br> <br>
+                </div>
+        <div class="col-md-1">
+
+            </div>
+        </div>
+
+	</div>
+
+{% endblock %}
