@@ -26,11 +26,12 @@ security:
                 target: security_registration
                 
         #api:
-            #patter: ^/
-            #stateless: true
-            #guard:
-                #authenticators:
-                    #- token_authenticator
+         #   pattern: ^/
+           # stateless: true
+          #  guard:
+            #   authenticators:
+               # - App\Security\TokenAuthenticator
+             #     - token_authenticator
             # activate different ways to authenticate
 
             # http_basic: true
@@ -44,4 +45,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        # - { path: ^/profile, roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/, roles: IS_AUTHENTICATED_FULLY }

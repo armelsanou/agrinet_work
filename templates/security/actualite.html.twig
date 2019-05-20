@@ -1,0 +1,161 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- Team -->
+<section id="team">
+    <div class="container">
+        <div class="row">
+			
+            <div class="row col-md-8">
+
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                        <a href="">
+                                <div class="container">
+                                        <div class="row row-margin-bottom">
+                                            <div class="col-md-12 no-padding lib-item" data-category="view">
+                                                <div class="lib-panel">
+                                                    <div class="row box-shadow">
+                                                        <div class="col-md-4 positionActuImg1" >
+                                                            <img class="lib-img-show imageActu1" src="http://lorempixel.com/850/850/?random=123">
+                                                        </div>
+                                                        <div class="col-md-8 positionTexteActu1">
+                                                            <!-- <div class="lib-row lib-header">
+                                                                Example library
+                                                                <div class="lib-header-seperator"></div>
+                                                            </div> -->
+                                                            <div class="lib-row lib-desc">
+                                                                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </a>
+                </div>
+                <!-- ./Team member -->
+
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                        <a href="">
+                                <div class="container">
+                                        <div class="row row-margin-bottom">
+                                            <div class="col-md-12 no-padding lib-item" data-category="view">
+                                                <div class="lib-panel">
+                                                    <div class="row box-shadow">
+                                                        <div class="col-md-4 positionActuImg1" >
+                                                            <img class="lib-img-show imageActu1" src="http://lorempixel.com/850/850/?random=123">
+                                                        </div>
+                                                        <div class="col-md-8 positionTexteActu1">
+                                                            <!-- <div class="lib-row lib-header">
+                                                                Example library
+                                                                <div class="lib-header-seperator"></div>
+                                                            </div> -->
+                                                            <div class="lib-row lib-desc">
+                                                                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </a>
+                </div>
+                <!-- ./Team member -->
+
+            </div>
+	
+            <!-- Team member --> 
+            <div class="col-xs-12 col-sm-6 col-md-4">
+				<div class="card" style="width: 18rem;">
+					<div class="card-header bg-dark text-white">
+						Actualités
+					</div>
+					<ul class="list-group list-group-flush tailleImgTextActu1">
+						{% for i in 0..3 %}
+							<li class="list-group-item">
+                                <a href="">
+                                    <div class="container">
+                                            <div class="row row-margin-bottom">
+                                                <div class="col-md-12 no-padding lib-item" data-category="view">
+                                                    <div class="lib-panel">
+                                                        <div class="row box-shadow">
+                                                            <div class="col-md-4 positionActuImg1" >
+                                                                <img class="lib-img-show imageActu1" src="http://lorempixel.com/850/850/?random=123">
+                                                            </div>
+                                                            <div class="col-md-8 positionTexteActu1">
+                                                                <!-- <div class="lib-row lib-header">
+                                                                    Example library
+                                                                    <div class="lib-header-seperator"></div>
+                                                                </div> -->
+                                                                <div class="lib-row lib-desc">
+                                                                    Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </a>
+                            </li>
+                        {% endfor %}  
+					
+						
+					</ul>
+				</div>
+            </div>
+            <!-- ./Team member -->
+        </div>
+       
+    </div>
+</section>
+<!-- Team -->
+
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+{% endblock %}

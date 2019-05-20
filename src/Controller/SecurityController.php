@@ -190,5 +190,20 @@ class SecurityController extends AbstractController
                 'form' => $form->createView()
             ]);
         }
+
+        /**
+         * @Route("actualite", name="security_actualite")
+         */
+        public function actualite(){
+
+            $user = new User();
+  
+             $form = $this->createForm(RegistrationType::class, $user);
+            return
+            $this->render('security/actualite.html.twig'
+            , [
+                'form' => $form->createView()
+            ]);
+        }
     }
 
