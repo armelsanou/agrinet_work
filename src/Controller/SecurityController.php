@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Phytopharmarcie;
 use App\Form\RegistrationType;
+use App\Form\PhytopharmacieType;
 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -25,7 +27,8 @@ class SecurityController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
               $hash = $encoder->encodePassword($user, $user->getPassword());
-              $user->setPassword($hash);  
+              $user->setPassword($hash);
+             // $user->setRoles("ROLE_USER");  
                 $manager->persist($user);
                 $manager->flush();
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
@@ -51,7 +54,7 @@ class SecurityController extends AbstractController
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
             return
-             $this->render('security/home.html.twig' , [
+             $this->redirectToRoute('security/home.html.twig' , [
                 'last_username' => $lastUsername,
                 'error'         => $error,
                 'form' => $form->createView()
@@ -65,7 +68,8 @@ class SecurityController extends AbstractController
             $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
-             $this->render('security/welcom.html.twig', [
+             return
+             $this->render('security/home.html.twig', [
                 'form' => $form->createView()
             ]);
         }
@@ -181,20 +185,7 @@ class SecurityController extends AbstractController
                 'form' => $form->createView()
             ]);
         }
-         /**
-         * @Route("/phytopharmacie", name ="phytopharmacie")
-         */
-        public function phytopharmacie(){
-            $user = new User();
-  
-             $form = $this->createForm(RegistrationType::class, $user);
-            return
-            $this->render('security/phytopharmacie.html.twig'
-            , [
-                'form' => $form->createView()
-            ]);
-        }
-
+         
         /**
          * @Route("actualite", name="security_actualite")
          */

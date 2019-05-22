@@ -25,125 +25,113 @@
 <!-- about -->
 <section class="about py-5" id="about">
 	<div class="container py-lg-5 py-sm-3">
-		<h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
-		<div class="row phyto_design">
-           
-                         <select class="form-control culture" >
-                            <option>Cuture</option>
-                            <option>Cuture1</option>
-                          </select>
-                          
-                          <select class="form-control form-control-sm enemie">
-                            <option>Enemie</option>
-                            <option>Enemie2</option>
-                          </select>
+      <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
+      <div class="row phyto_design">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                           
+                            
+                                <form action="{{path('phytopharmacie')}}" method="get">
+                                        <select class="form-control culture" name="culture"  >
+                                            {% for culture in listePhyto %}
+                                              <option id="1" >
+                                                  {{culture.culture}}
+                                              </option>
+                                              {% endfor %}
+                                              
+                                          </select>
+                                          
+                                          <select class="form-control form-control-sm enemie" name="enemie"  >
+                                              {% for culture in listePhyto %}
+                                              <option name="enemie">
+                                                  {{culture.enemie}}
+                                              </option>
+                                              {% endfor %}
+                                              
+                                          </select>
+                            
+                                          <select class="form-control form-control-sm Nom_commercial" name="nom_commercial">
+                                            {% for culture in listePhyto %}
+                                              <option name="nomCommercial">
+                                                  {{culture.nomCommercial}}
+                                              </option>
+                                              {% endfor %}
+                                              
+                                          </select>
+                            
+                                          <select class="form-control form-control-sm Sociéte" name="societe">
+                                            {% for culture in listePhyto %}
+                                              <option name="societe">
+                                                  {{culture.societe}}
+                                              </option>
+                                              {% endfor %}
+                                          </select>
+                            
+                                          <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
+                                            {% for culture in listePhyto %}
+                                              <option name="matiereActive">
+                                                  {{culture.matiereActive}}
+                                              </option>
+                                              {% endfor %}
+                                          </select>
+                            
+                                          <select class="form-control form-control-sm Classe" name="classe">
+                                            {% for culture in listePhyto %}
+                                              <option name="classe">
+                                                  {{culture.classe}}
+                                              </option>
+                                              {% endfor %}
+                                          </select>
+                                          <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
+                                          <button class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
+              
+                                        </form>
+
+                          </div>
+                          <div class="col-md-4"></div>
+    
+      </div>       
+    </div>
+ 
+  <div class="container">
+      <div class="col md-12">
+          <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
+          
+          <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3">
+              <thead class="table-dark">
+                  <tr class="">
+                    
+                      <td>culture</td>
+                      <td>ennemi</td>
+                      <td>Nom commercial</td>
+                      <td>Société</td>
+                      <td>Matière active (teneur)</td>
+                      <td>Classe</td>
+                
+                  </tr>
+              </thead>
+              <tbody class="tab_new_style">
+
+                 {% for listeAll in result%}
+                  <tr class="">
+                      <td>{{listeAll.culture}}</td>
+                      <td>{{listeAll.enemie}}</td>
+                      <td>{{listeAll.nomCommercial}}</td>
+                      <td>{{listeAll.societe}}</td>
+                      <td>{{listeAll.matiereActive}}</td>
+                      <td>{{listeAll.classe}}</td>
+                     
+                  </tr>
+                  {% endfor %}
             
-                          <select class="form-control form-control-sm Nom_commercial">
-                            <option>Nom commercial</option>
-                            <option>Nom commercial2</option>
-                          </select>
-            
-                          <select class="form-control form-control-sm Sociéte">
-                            <option>Sociéte</option>
-                            <option>Sociéte2</option>
-                            <option>Sociéte3</option>
-                          </select>
-            
-                          <select class="form-control form-control-sm Matiere_Active">
-                            <option>Matiere Active(Teneur)</option>
-                            <option>Matiere Active2(Teneur)</option>
-                          </select>
-            
-                          <select class="form-control form-control-sm Classe">
-                            <option>Classe</option>
-                            <option>Classe2</option>
-                          </select>
+                 
+              </tbody>
             
               
-            </div>
-            
-            <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
-            <button class="btn btn-warning pull-right btn_desin_perso">Rafraichir</button>
-
-            
-        </div>
-       
-	</div>
+          </table>
+      </div>
+    </div>
 </section>
-
-<!-- feedback -->
-<section class="news py-5">
-	<div class="container ">
-	
-		<div class="row">
-            
-            
-            <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
-
-            <table class="table table-borded table-responsive table-striped table_phytopharmacie" id="table-list3">
-                <thead class="table-dark">
-                    <tr class="">
-                        <td>culture</td>
-                        <td>ennemi</td>
-                        <td>Nom commercial</td>
-                        <td>Matière active (teneur)</td>
-                        <td>formulation</td>
-                        <td>dose</td>
-                        <td>Point de vente</td>
-                    </tr>
-                </thead>
-                <tbody class="tab_new_style">
-                    <tr class="ju">
-                      
-                        <td>culture</td>
-                        <td>ennemi</td>
-                        <td>Nom commercial</td>
-                        <td>Matière active (teneur)</td>
-                        <td>formulation</td>
-                        <td>dose</td>
-                        <td>Point de vente</td>
-                             
-                           
-                     
-                    </tr>
-                    <tr class="ju">
-                      
-                            <td>culture</td>
-                            <td>ennemi</td>
-                            <td>Nom commercial</td>
-                            <td>Matière active (teneur)</td>
-                            <td>formulation</td>
-                            <td>dose</td>
-                            <td>Point de vente</td>
-                                 
-                               
-                         
-                        </tr>
-                        <tr class="ju">
-                      
-                                <td>culture</td>
-                                <td>ennemi</td>
-                                <td>Nom commercial</td>
-                                <td>Matière active (teneur)</td>
-                                <td>formulation</td>
-                                <td>dose</td>
-                                <td>Point de vente</td>
-                                     
-                                   
-                             
-                            </tr>
-                    
-                </tbody>
-               
-                
-            </table>
-		
-		</div>
-	</div>
-</section>
-<!-- //feedback -->
-
-
 
 	<!-- //footer -->
 
@@ -159,21 +147,16 @@
             var Sociéte=$(".Sociéte").val();
             var Matiere_Active=$(".Matiere_Active").val();
             var Classe=$(".Classe").val();
-        alert(culture);
-        alert(enemie);
-        alert(Nom_commercial);
-        alert(Sociéte);
-        alert(Matiere_Active);
-        alert(Classe);
-
-        
+           
+            $(".table_phytopharmacie > tbody > tr:last > td:first").val("culture");
         });
        
 
-$(".table_phytopharmacie > tbody > tr:last").css("background-color","red");
+
       
       
     });
+
 </script>
 
 {% endblock %}

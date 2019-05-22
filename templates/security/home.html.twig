@@ -28,57 +28,125 @@
 					innovants.<span class="fa fa-quote-right text-danger text-color mr-2"></span></p>
             </div>
             <div class="row col-md-9">
-                <!-- Team member -->
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div class="mainflip">
-                            <div class="frontside">
-                                <div class="card rouge" style="background: rgb(191, 144, 0); height: 108px;">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title white-text" style="color:white;">Améliorer sa
-                                                production agricole</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="backside">
-                                <div class="card" style="background: rgb(191, 144, 0); height: 108px;">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title titre">Améliorer sa
-                                                production agricole
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./Team member -->
-                <!-- Team member -->
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div class="mainflip">
-                            <div class="frontside">
-                                <div class="card" style="background: rgb(112, 173, 71); height: 108px;">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title">J’ai besoin des
-                                                conseils</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="backside">
-                                <div class="card  vert" style="background: rgb(112, 173, 71); height: 108px;">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title">J’ai besoin des
-                                                conseils
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./Team member -->
 
+                {% if not app.user %}
+                    <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card rouge" style="background: rgb(191, 144, 0); height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title white-text" style="color:white;">Améliorer sa
+                                                    production agricole</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card" style="background: rgb(191, 144, 0); height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title titre">Améliorer sa
+                                                    production agricole
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <a href="#">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card rouge" style="background: rgb(191, 144, 0); height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title white-text" style="color:white;">Améliorer sa
+                                                    production agricole</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card" style="background: rgb(191, 144, 0); height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title titre">Améliorer sa
+                                                    production agricole
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                <!-- ./Team member -->
+                {% endif %}
+                
+                {% if not app.user %}
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card" style="background: rgb(112, 173, 71); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside">
+                                        <div class="card  vert" style="background: rgb(112, 173, 71); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                            <a href="#">
+                                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                    <div class="mainflip">
+                                        <div class="frontside">
+                                            <div class="card" style="background: rgb(112, 173, 71); height: 108px;">
+                                                <div class="card-body text-center">
+                                                    <h4 class="card-title">J’ai besoin des
+                                                            conseils</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="backside">
+                                            <div class="card  vert" style="background: rgb(112, 173, 71); height: 108px;">
+                                                <div class="card-body text-center">
+                                                    <h4 class="card-title">J’ai besoin des
+                                                            conseils
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- ./Team member -->
+                {% endif %}
+                
                 <div class="row col-md-12 blocContent">
 
                     <div class="col-md-6 espaceGauche" style="border:1px solid #6c757dc7; background: #6c757dc7; ">
