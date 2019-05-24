@@ -1821,8 +1821,9 @@ strong.textePer{
 }
 
 
-.lib-panel .lib-row {
-  
+.lib-row.lib-desc.actu_gauche {
+    height: 101px!important;
+    overflow: hidden;
 }
 
 .lib-panel .lib-row.lib-header {
@@ -1840,9 +1841,17 @@ strong.textePer{
 
 .lib-panel .lib-row.lib-desc {
     position: relative;
-    height: 100%;
+	height: 178px;
+	overflow: hidden;
     display: block;
-    font-size: 13px;
+	font-size: 13px;
+	max-height: none;
+   
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    -webkit-line-clamp: 9;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 .lib-panel .lib-row.lib-desc a{
     position: absolute;
@@ -2252,3 +2261,18 @@ svg {
 			transform: rotateX(0);
   }
   
+
+  .bg_tab_style {
+    background: #44780f;
+    color: white;
+}
+
+.bg_tab_style2{
+	background: #a99a44cf;
+    color: white;
+}
+
+.bg_tab_style3 {
+    background: #bbbaba;
+    color: white;
+}

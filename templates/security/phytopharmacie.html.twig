@@ -112,7 +112,7 @@
               </thead>
               <tbody class="tab_new_style">
 
-                 {% for listeAll in result%}
+                 {% for listeAll in listePhyto %}
                   <tr class="">
                       <td>{{listeAll.culture}}</td>
                       <td>{{listeAll.enemie}}</td>
@@ -140,7 +140,7 @@
 	<!-- //move top icon -->
 <script>
     $(document).ready(function(){
-        $(".btn_desin_perso").click(function(){
+        /* $(".btn_desin_perso").click(function(){
             var culture=$(".culture").val();
             var enemie=$(".enemie").val();
             var Nom_commercial=$(".Nom_commercial").val();
@@ -149,10 +149,13 @@
             var Classe=$(".Classe").val();
            
             $(".table_phytopharmacie > tbody > tr:last > td:first").val("culture");
-        });
+        }); */
        
 
-
+$('select').on('change',function(){
+    var value=$(this).val();
+    alert(value);
+})
       
       
     });

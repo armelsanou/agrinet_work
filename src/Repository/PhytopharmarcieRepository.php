@@ -42,8 +42,48 @@ class PhytopharmarcieRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findByEnemie($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.enemie = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByNomCommercial($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.nomCommercial = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByMatiereActive($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.matiereActive = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByClasse($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.classe = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
    
-    
+  /*   
     public function findOneBySomeField($value): ?Phytopharmarcie
     {
         return $this->createQueryBuilder('p')
@@ -52,6 +92,6 @@ class PhytopharmarcieRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
+    } */
     
 }

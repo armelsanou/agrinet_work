@@ -25,7 +25,7 @@
 			
             <div class="row col-md-9">
 
-                {% for i in 0..3 %}
+                {% for actu in all_actualite %}
                 <!-- Team member -->
                 <div class="col-xs-12 col-sm-6 col-md-6" style="    padding-right: 25px;">
                         <a href="">
@@ -43,9 +43,7 @@
                                                                 <div class="lib-header-seperator"></div>
                                                             </div> -->
                                                             <div class="lib-row lib-desc">
-                                                                    Some quick example text to build on the card title and make up the bulk of the card's content
-                                                                    Some quick example text to build on the card title and make up the bulk of the card's content
-                                                                    Some quick example text to build on the card title and make up the bulk of the card's content
+                                                                   {{ actu.content |raw }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -58,7 +56,7 @@
                 <!-- ./Team member -->
 
                 <!-- Team member -->
-                <div class="col-xs-12 col-sm-6 col-md-6" style="    padding-right: 25px;">
+            <!--     <div class="col-xs-12 col-sm-6 col-md-6" style="    padding-right: 25px;">
                         <a href="">
                                 <div class="container">
                                         <div class="row row-margin-bottom">
@@ -69,11 +67,11 @@
                                                             <img class="lib-img-show imageActu1" src="http://lorempixel.com/850/850/?random=123">
                                                         </div>
                                                         <div class="col-md-8 positionTexteActu1">
-                                                            <!-- <div class="lib-row lib-header">
+                                                            <div class="lib-row lib-header">
                                                                 Example library
                                                                 <div class="lib-header-seperator"></div>
                                                             </div> -->
-                                                            <div class="lib-row lib-desc">
+                                                          <!--   <div class="lib-row lib-desc">
                                                                 Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
                                                             </div>
                                                         </div>
@@ -83,7 +81,7 @@
                                         </div>
                                     </div>
                             </a>
-                </div>
+                </div> --> 
                 <!-- ./Team member -->
                 {% endfor %}
             </div>
@@ -95,7 +93,7 @@
 						Actualités
 					</div>
 					<ul class="list-group list-group-flush tailleImgTextActu">
-						{% for i in 0..3 %}
+						{% for actu in all_actualite %}
 							<li class="list-group-item">
                                 <a href="">
                                     <div class="container">
@@ -111,8 +109,8 @@
                                                                     Example library
                                                                     <div class="lib-header-seperator"></div>
                                                                 </div> -->
-                                                                <div class="lib-row lib-desc">
-                                                                    Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                                                                <div class="lib-row lib-desc actu_gauche">
+                                                                  {{actu.content }}
                                                                 </div>
                                                             </div>
                                                         </div>

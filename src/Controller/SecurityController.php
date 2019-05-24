@@ -3,26 +3,29 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Phytopharmarcie;
+use App\Entity\Actualite;
+use App\Entity\RecapElevage;
 use App\Form\RegistrationType;
-use App\Form\PhytopharmacieType;
 
+use App\Entity\Phytopharmarcie;
+use App\Form\PhytopharmacieType;
+use App\Repository\ActualiteRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/inscription", name="security_registration")
      */
-     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
+     public function registration(Request $request, ActualiteRepository $listActualiteRepository, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
          $user = new User();
   
         $form = $this->createForm(RegistrationType::class, $user);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -38,7 +41,8 @@ class SecurityController extends AbstractController
 
         return $this->render('security/home.html.twig', [
             
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'listeActu'=>$listActualiteRepository->findAll()
         ]);
      }
         /**
@@ -47,7 +51,7 @@ class SecurityController extends AbstractController
         public function login(AuthenticationUtils $authenticationUtils): Response
         {
             $user = new User();
-  
+
             $form = $this->createForm(RegistrationType::class, $user);
             // get the login error if there is one
             $error = $authenticationUtils->getLastAuthenticationError();
@@ -59,6 +63,10 @@ class SecurityController extends AbstractController
                 'error'         => $error,
                 'form' => $form->createView()
             ]);
+            $userConnected = $this->getUser();
+            $id = $userConnected ->getId();
+            dump($userConnected);
+            dump($id);
         }
         
         /**
@@ -108,7 +116,7 @@ class SecurityController extends AbstractController
             ]);
         }
 
-          /**
+        /**
          * @Route("/agri_impact", name ="agri_impact")
          */
         public function agri_impact(){
@@ -160,7 +168,7 @@ class SecurityController extends AbstractController
             ]);
         }
 
-          /**
+        /**
          * @Route("/recap_culture", name ="recap_culture")
          */
         public function recap_culture(){
@@ -186,19 +194,7 @@ class SecurityController extends AbstractController
             ]);
         }
          
-        /**
-         * @Route("actualite", name="security_actualite")
-         */
-        public function actualite(){
-            $user = new User();
-  
-            $form = $this->createForm(RegistrationType::class, $user);
-           return
-            $this->render('security/actualite.html.twig'
-            , [
-                'form' => $form->createView()
-            ]);
-        }
+       
 
         /**
          * @Route("/formation_initiale", name ="formation_initiale")
@@ -228,7 +224,7 @@ class SecurityController extends AbstractController
             ]);
         }
 
-                 /**
+         /**
          * @Route("/montage_projets", name ="montage_projets")
          */
         public function montage_projets(){
@@ -242,7 +238,7 @@ class SecurityController extends AbstractController
             ]);
         }
 
-                 /**
+         /**
          * @Route("/gestion_du_sol", name ="gestion_du_sol")
          */
         public function gestion_du_sol(){
@@ -256,7 +252,7 @@ class SecurityController extends AbstractController
             ]);
         }
 
-                 /**
+         /**
          * @Route("/vulgarisation_agricole", name ="vulgarisation_agricole")
          */
         public function vulgarisation_agricole(){
@@ -270,7 +266,7 @@ class SecurityController extends AbstractController
             ]);
         }
            
-                    /**
+        /**
          * @Route("/devenir_expert", name ="devenir_expert")
          */
         public function devenir_expert(){
@@ -285,5 +281,46 @@ class SecurityController extends AbstractController
                 'form' => $form->createView()
             ]);
         }
+
+
+    /**
+     * @Route("/{id}", name="show_actualite", methods={"GET"})
+     */
+    public function showActualite(Actualite $actualite)
+    {
+        return $this->render('security/details_actualite.html.twig', [
+            'actualite' => $actualite,
+        ]);
+    }
+
+
+
+
+    //Gestion des tableaux de l'élévage
+    /**
+     * @Route("/creer_recap_elevage", name="createRecapElevage", methods={"POST"})
+     */
+    public function createRecapElevage(RecapElevage $recapElevage, Request $request,  ObjectManager $manager, User $user):Response
+    {
+        
+        $formRecap = $this->createForm(RecapElevageType::class, $recapElevage);
+        $userConnected = $this->getUser();
+        $id = $userConnected ->getId();
+        $formRecap->handleRequest($request);
+
+        if($formRecap->isSubmitted() && $formRecap->isValid()){
+            $user = getUser();
+            $recapElevage->setIdUser($user);
+                $manager->persist($recapElevage);
+                $manager->flush();
+                $this->addFlash('success', 'Nouveau élevage crée avec succès.');
+        }
+        dump($recapElevage);
+        dump($user);
+        return $this->render('security/details_actualite.html.twig', [
+            'formRecap' => $formRecap->createView()
+        ]);
+    }
+
     }
 

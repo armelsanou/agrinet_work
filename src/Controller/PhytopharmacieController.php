@@ -18,8 +18,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class PhytopharmacieController extends AbstractController
 {
 
-  
-    
     /**
          * @Route("/phytopharmacie", name ="phytopharmacie")
          */
@@ -30,24 +28,28 @@ class PhytopharmacieController extends AbstractController
              $form = $this->createForm(RegistrationType::class, $user);
 
              $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
-             
-             $culture=$request->query->get('culture');
-             $enemie=$request->query->get('enemie');
-             $nom_commercial=$request->query->get('nom_commercial');
-             $societe=$request->query->get('societe');
-          
-             
+
+             for ($var=0; $var <5 ; $var++) { 
+                $var =$var;
+             }
+            
              $phytopharmacie
-             ->setCulture($culture)
-             ->setEnemie($enemie)
-             ->setNomCommercial($nom_commercial)
-             ->setSociete($societe)
+             ->setCulture($request->query->get('culture'))
+             ->setEnemie($request->query->get('enemie'))
+             ->setNomCommercial($request->query->get('nom_commercial'))
+             ->setSociete($request->query->get('societe'))
+             ->setMatiereActive($request->query->get('matiere_active'))
+             ->setClasse($request->query->get('classe'))
              ;
-             dump($culture);
-             dump($societe);
-          
+            dump($phytopharmacie->getSociete());
              dump($phytopharmacie);
-             $result = $phytopharmarcieRepository->findBySociete($societe);
+             $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
+             $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
+             $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
+             $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
+             $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
+             $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
+            
             return
             $this->render('security/phytopharmacie.html.twig'
             , [
@@ -56,8 +58,14 @@ class PhytopharmacieController extends AbstractController
                 'formulaire' => $formulaire->createView(),
                 'curent'=>$phytopharmacie,
                 'listePhyto' =>  $phytopharmarcieRepository->findAll(),
-                'culture' =>$culture,
-                'result' =>$result
+                'resultCulture' => $resultCulture,
+                'resultEnemie' => $resultEnemie,
+                'resultNomCommercial' => $resultNomCommercial,
+                'resultSociete' => $resultSociete,
+                'resultMatiereActive' => $resultMatiereActive,
+                'resultClasse' => $resultClasse,
+                'var' => $var
+
             ]);
     }
 

@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\RecapElevage;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 //use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -69,9 +71,50 @@ class User implements UserInterface
     */
     public $confirmPassword;
 
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RecapElevage", mappedBy="idUser", orphanRemoval=true)
+     */
+    private $idUser;
+
+    public function __construct()
+    {
+        $this->idUser = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection|RecapElevage[]
+     */
+    public function getIdUser(): Collection
+    {
+        return $this->idUser;
+    }
+
+    public function addIdUser(RecapElevage $idUser): self
+    {
+        if (!$this->idUser->contains($idUser)) {
+            $this->idUser[] = $idUser;
+            $idUser->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdUser(RecapElevage $idUser): self
+    {
+        if ($this->idUser->contains($idUser)) {
+            $this->idUser->removeElement($idUser);
+            // set the owning side to null (unless already changed)
+            if ($idUser->getIdUser() === $this) {
+                $idUser->setIdUser(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getNoms(): ?string
