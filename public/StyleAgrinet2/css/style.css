@@ -1897,7 +1897,8 @@ ul.list-group.list-group-flush.tailleImgTextActu {
 }
 
 .blocContent{
-    height: 337px;
+	background-image: url(../images/imageAcceuil.jpg);
+    height: auto;
 }
 
 .espaceGauche{
@@ -2275,4 +2276,65 @@ svg {
 .bg_tab_style3 {
     background: #bbbaba;
     color: white;
+}
+
+
+h5.title_actu {
+    font-size: 11px;
+    width: 96%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #4da711;
+}
+
+h5.content_actu {
+	font-style: oblique;
+    font-size: 10px;
+    /* text-align: justify; */
+	padding: -8px;
+	
+		position: relative;
+		height: 61px;
+		overflow: hidden;
+		display: block;
+		font-size: 13px;
+		max-height: none;
+		text-overflow: ellipsis;
+		/* white-space: nowrap; */
+		-webkit-line-clamp: 4;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		padding: 4px;
+}
+span.tilte_date {
+	color: #1eb1ca;
+	padding: 4px;
+    font-size: 11px;
+}
+h5.content_actu2 {
+    font-style: oblique;
+    font-size: 10px;
+    /* text-align: justify; */
+    padding: -8px;
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+    display: block;
+    font-size: 13px;
+    max-height: none;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    -webkit-line-clamp: 9;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding: 4px;
+}
+h5.title_actu2 {
+    font-size: 15px;
+    width: 96%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #4da711;
 }

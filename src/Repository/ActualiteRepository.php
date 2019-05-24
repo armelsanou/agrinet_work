@@ -23,10 +23,10 @@ class ActualiteRepository extends ServiceEntityRepository
     //  * @return Actualite[] Returns an array of Actualite objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findByCreatedDateActualite($value)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+            ->andWhere('a.createdAt = :val')
             ->setParameter('val', $value)
             ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)

@@ -1,0 +1,27 @@
+<div class="modal fade" id="exampleModal22" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel22"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modalPerso">
+        <div class="modal-header">
+            <h5 class="modal-title text-white" id="exampleModalLabel1">creer actualite</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {{ form_start(formActu)}}
+
+                       <div class="form-group">
+                       {{form_row(formActu.title, { 'label': 'titre', 'attr': {'placeholder':'titre','class':'form-control'}}) }}
+                       {{form_row(formActu.content, { 'label': 'contenu', 'attr': {'placeholder':'contenu','class':'form-control'}}) }}
+                       {{form_row(formActu.image, { 'label': 'image actualite', 'attr': {'class':'form-control'}}) }}
+                      
+                       </div>
+
+                       <button type="submit" class="btn btn-success">Créer Actualité</button>
+
+                       {{form_end(formActu)}}
+        </div>
+    </div>
+</div>
+</div>

@@ -41,8 +41,7 @@ class PhytopharmacieController extends AbstractController
              ->setMatiereActive($request->query->get('matiere_active'))
              ->setClasse($request->query->get('classe'))
              ;
-            dump($phytopharmacie->getSociete());
-             dump($phytopharmacie);
+            
              $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
              $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
              $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
