@@ -32,7 +32,7 @@
                            
                             
                                 <form action="{{path('phytopharmacie')}}" method="get">
-                                        <select class="form-control culture" name="culture"  >
+                                        <select class="form-control culture" name="culture"  onchange="submit()">
                                             {% for culture in listePhyto %}
                                               <option id="1" >
                                                   {{culture.culture}}
@@ -96,6 +96,12 @@
   <div class="container">
       <div class="col md-12">
           <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
+          {% if is_granted('ROLE_ADMIN') %}
+          <span>
+                <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+                aria-pressed="false" data-target="#exampleModal23" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+                </button></span>
+         {% endif %}
           
           <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3">
               <thead class="table-dark">
@@ -132,6 +138,17 @@
       </div>
     </div>
 </section>
+
+
+
+
+{% include "VuesAgrinet2/fragment/modal_phyto.html.twig" %}
+
+
+
+
+
+
 
 	<!-- //footer -->
 

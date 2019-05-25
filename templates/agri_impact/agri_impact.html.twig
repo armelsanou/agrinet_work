@@ -91,24 +91,49 @@
 					<div class="  bloc-prenium"><h4 class="text-center">Cadre réservé pour le service premium</h4></div>	
 				</div>
 				<!-- Team member -->
+				
 				<div class="col-xs-12 col-sm-6 col-md-4">
-					<div class="card" style="width: 18rem;">
-						<div class="card-header bg-dark text-white">
-							<h4 class="text-white">ANNONCES</h4>
+						<div class="card" >
+							<div class="card-header bg-dark text-white">
+								Actualités
+							</div>
+							<ul class="list-group list-group-flush tailleImgTextActu">
+		
+								{% for actu in  listeActu | slice(2) %}
+									<li class="list-group-item">
+										<a href="">
+											<div class="container">
+													<div class="row row-margin-bottom">
+														<div class="col-md-12 no-padding lib-item" data-category="view">
+															<div class="lib-panel">
+																<div class="row box-shadow">
+																	<div class="col-md-4 positionActuImg" >
+																		<img class="lib-img-show imageActu" src="{{ asset('uploads/') }}{{ actu.image }}">
+																	</div>
+																	<div class="col-md-8 positionTexteActu">
+																		<!-- <div class="lib-row lib-header">
+																			Example library
+																			<div class="lib-header-seperator"></div>
+																		</div> -->
+																		<div class="lib-row lib-desc actu_gauche">
+																		   <h5 class="title_actu"> {{actu.title}}</h5>
+																		   <h5 class="content_actu"> {{actu.content}}</h5> 
+																		   <span class="tilte_date">{{actu.createdAt | date('d/m/y') }}</span>      
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										</a>
+									</li>
+								{% endfor %}  
+							
+								
+							</ul>
 						</div>
-						<ul class="list-group list-group-flush">
-							
-								<li class="list-group-item">Les plus récentes</li>
-							
-							
-								<li class="list-group-item">Les plus populaires</li>
-							
-							
-								<li class="list-group-item">Abonnez-vous à notre page</li>
-							
-						</ul>
 					</div>
-				</div>
 				<!-- ./Team member -->
 			</div>
 		</div>

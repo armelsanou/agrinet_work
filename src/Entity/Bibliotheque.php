@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Webmozart\Assert\Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BibliothequeRepository")
@@ -18,6 +20,7 @@ class Bibliotheque
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $name;
 
@@ -26,12 +29,12 @@ class Bibliotheque
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName($name)
     {
         $this->name = $name;
 

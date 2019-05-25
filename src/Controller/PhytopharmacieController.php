@@ -26,31 +26,27 @@ class PhytopharmacieController extends AbstractController
             $phytopharmacie = new Phytopharmarcie();
             
              $form = $this->createForm(RegistrationType::class, $user);
-
-             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
-
-             for ($var=0; $var <5 ; $var++) { 
-                $var =$var;
-             }
-            
-             $phytopharmacie
-             ->setCulture($request->query->get('culture'))
-             ->setEnemie($request->query->get('enemie'))
-             ->setNomCommercial($request->query->get('nom_commercial'))
-             ->setSociete($request->query->get('societe'))
-             ->setMatiereActive($request->query->get('matiere_active'))
-             ->setClasse($request->query->get('classe'))
-             ;
-            
              $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
              $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
              $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
              $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
              $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
              $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
-            
+
+             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
+
+             $formulaire->handleRequest($request);
+             if($formulaire->isSubmitted() && $formulaire->isValid()){
+           
+               // $user->setRoles("ROLE_USER");  
+                  $manager->persist($phytopharmacie);
+                  $manager->flush();
+                  $this->addFlash('success', 'Votre compte à bien été enregistré.');
+                return $this->RedirectToRoute('phytopharmacie'); 
+          }
+        
             return
-            $this->render('security/phytopharmacie.html.twig'
+            $this->render('phytopharmacie/phytopharmacie.html.twig'
             , [
                 'controller_name' => 'PhytopharmacieController',
                 'form' => $form->createView(),
@@ -63,7 +59,7 @@ class PhytopharmacieController extends AbstractController
                 'resultSociete' => $resultSociete,
                 'resultMatiereActive' => $resultMatiereActive,
                 'resultClasse' => $resultClasse,
-                'var' => $var
+                
 
             ]);
     }

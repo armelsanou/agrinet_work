@@ -201,6 +201,13 @@ class User implements UserInterface
         return $this;
     }
 
+    public function setRoles(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
     // public function getConfirmPassword(): ?string
     // {
     //     return $this->confirmPassword;

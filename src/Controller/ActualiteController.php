@@ -43,7 +43,7 @@ class ActualiteController extends AbstractController
                /*    return $this->RedirectToRoute('security_welcome'); */
 
           }
-        return $this->render('security/actualite.html.twig', [
+        return $this->render('actualite/actualite.html.twig', [
             'controller_name' => 'ActualiteController',
             'all_actualite'=>$actualiteRepository->findAll(),
             'form' => $form->createView(),
