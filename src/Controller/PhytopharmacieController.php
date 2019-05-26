@@ -38,10 +38,9 @@ class PhytopharmacieController extends AbstractController
              $formulaire->handleRequest($request);
              if($formulaire->isSubmitted() && $formulaire->isValid()){
            
-               // $user->setRoles("ROLE_USER");  
                   $manager->persist($phytopharmacie);
                   $manager->flush();
-                  $this->addFlash('success', 'Votre compte à bien été enregistré.');
+                  $this->addFlash('success', 'bien enregistré.');
                 return $this->RedirectToRoute('phytopharmacie'); 
           }
         
@@ -59,7 +58,6 @@ class PhytopharmacieController extends AbstractController
                 'resultSociete' => $resultSociete,
                 'resultMatiereActive' => $resultMatiereActive,
                 'resultClasse' => $resultClasse,
-                
 
             ]);
     }

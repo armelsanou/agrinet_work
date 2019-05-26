@@ -39,7 +39,10 @@
                         à vos préoccupations  grâce à nos conseils et appui techniques.</p>
 
                         <div class="row">
+                           
                                 <div class="col-lg-6 item">
+                                {% if is_granted('ROLE_USER') %}
+                                <a href="{{path('recap_culture')}}">
                                     <div class="feedback-info pt-5 pb-4 px-4 bloc2-elevage">
                                         <h3 class="mb-3">améliorer sa production agricole
                                         </h3>
@@ -49,8 +52,24 @@
                                             <div class="clearfix"> </div>
                                         </div>
                                     </div>
+                                </a>
+                                {% else%}
+                                <a href="#" data-toggle="modal"
+                                aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                        <div class="feedback-info pt-5 pb-4 px-4 bloc2-elevage">
+                                            <h3 class="mb-3">améliorer sa production agricole
+                                            </h3>
+                                            
+                                            <div class="feedback-grids mt-3">
+                                                
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endif %}
                                 </div>
-                               
+                            
                             
                             </div>
                     

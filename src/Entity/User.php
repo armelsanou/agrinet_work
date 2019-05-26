@@ -76,6 +76,11 @@ class User implements UserInterface
      */
     private $idUser;
 
+    /**
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles = array();
+
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
@@ -208,23 +213,55 @@ class User implements UserInterface
         return $this;
     }
 
-    // public function getConfirmPassword(): ?string
-    // {
-    //     return $this->confirmPassword;
-    // }
+    function addRole($role) {
+        $this->roles[] = $role;
+    }
 
-    // public function setConfirmPassword(string $confirmPassword): self
-    // {
-    //     $this->confirmPassword = $confirmPassword;
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized) {
+        list (
+                $this->id,
+                $this->noms,
+                $this->prenoms,
+                $this->location,
+                $this->email,
+                $this->numero,
+                $this->numeroWhatsapp,
+                $this->numero,
+                $this->idUser
+                ) = unserialize($serialized);
+    }
 
-    //     return $this;
-    // }
+    /** @see \Serializable::serialize() */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+                $this->noms,
+                $this->prenoms,
+                $this->location,
+                $this->email,
+                $this->numero,
+                $this->numeroWhatsapp,
+                $this->numero,
+                $this->idUser
+        ));
+    }
+
+
     public function eraseCredentials(){}
 
-        public function getSalt(){}
-        
-        public function getRoles(){
-            return['ROLE_USER'];
+        public function getSalt() {
+          
+            return null;
         }
-        public function getUsername(){}
+        
+            public function getRoles() {
+                if (empty($this->roles)) {
+                    return ['ROLE_USER'];
+                }
+                return $this->roles;
+            }
+        public function getUsername(){
+            return $this->noms;
+        }
 }

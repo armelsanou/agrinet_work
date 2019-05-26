@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/inscription", name="security_registration")
+     * @Route("/inscription", name="security_registration", methods={"GET", "POST"})
      */
      public function registration(Request $request, ActualiteRepository $listActualiteRepository, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
          $user = new User();
@@ -70,20 +70,12 @@ class SecurityController extends AbstractController
             $error = $authenticationUtils->getLastAuthenticationError();
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
-            $userId = $this->getUser()->getId();
-            dump($this->getUser()->getNoms());
-            dump($userId);
-            console.log($userId);
             return
-             $this->redirectToRoute('welcome' , [
+             $this->redirectToRoute('/' , [
                 'last_username' => $lastUsername,
                 'error'         => $error,
                 'form' => $form->createView()
             ]);
-            $userConnected = $this->getUser();
-            $id = $userConnected ->getId();
-            dump($userConnected);
-            dump($id);
         }
         
         

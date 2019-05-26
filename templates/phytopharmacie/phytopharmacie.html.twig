@@ -32,7 +32,7 @@
                            
                             
                                 <form action="{{path('phytopharmacie')}}" method="get">
-                                        <select class="form-control culture" name="culture"  onchange="submit()">
+                                         <select class="form-control culture" name="culture"  onchange="submit()">
                                             {% for culture in listePhyto %}
                                               <option id="1" >
                                                   {{culture.culture}}
@@ -83,7 +83,7 @@
                                               {% endfor %}
                                           </select>
                                           <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
-                                          <button class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
+                                          <button  class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
               
                                         </form>
 
@@ -103,7 +103,7 @@
                 </button></span>
          {% endif %}
           
-          <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3">
+          <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3" style="overflow-x: auto !important;">
               <thead class="table-dark">
                   <tr class="">
                     
