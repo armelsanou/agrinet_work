@@ -4,6 +4,7 @@
     <meta charset="utf-8">
 
     <title>
+           
         {% block title %}
            Agrinet | {% block Home_title %}{% endblock %}
         {% endblock %}
@@ -12,9 +13,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
    
 
-    {#<link rel="shortcut icon" href="favicon.ico">#}
+    <link rel="shortcut icon" href="favicon.ico">
 
-    
+    <link href="{{asset('StyleAgrinet/images/Agrinet.png')}}" rel="icon">
     
     {% block stylesheets %}{% endblock %}
 
@@ -46,6 +47,7 @@
 {% include "VuesAgrinet2/fragment/header.html.twig" %}
 
 {% block body %}{% endblock %}
+
     
 {% include "VuesAgrinet2/fragment/footer.html.twig" %}
 

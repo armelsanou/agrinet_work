@@ -32,7 +32,7 @@
                            
                             
                                 <form action="{{path('phytopharmacie')}}" method="get">
-                                        <select class="form-control culture" name="culture"  >
+                                         <select class="form-control culture" name="culture"  onchange="submit()">
                                             {% for culture in listePhyto %}
                                               <option id="1" >
                                                   {{culture.culture}}
@@ -83,7 +83,7 @@
                                               {% endfor %}
                                           </select>
                                           <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
-                                          <button class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
+                                          <button  class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
               
                                         </form>
 
@@ -96,8 +96,14 @@
   <div class="container">
       <div class="col md-12">
           <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
+          {% if is_granted('ROLE_ADMIN') %}
+          <span>
+                <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+                aria-pressed="false" data-target="#exampleModal23" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+                </button></span>
+         {% endif %}
           
-          <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3">
+          <table class="col-md-12 table table-borded table-striped table_phytopharmacie" id="table-list3" style="overflow-x: auto !important;">
               <thead class="table-dark">
                   <tr class="">
                     
@@ -133,6 +139,12 @@
     </div>
 </section>
 
+
+
+
+{% include "VuesAgrinet2/fragment/modal_phyto.html.twig" %}
+
+
 	<!-- //footer -->
 
 	<!-- move top icon -->
@@ -156,8 +168,25 @@ $('select').on('change',function(){
     var value=$(this).val();
     alert(value);
 })
+<<<<<<< HEAD:templates/phytopharmacie/phytopharmacie.html.twig
       
       
+=======
+
+$('select').click(function () {
+                    $.ajax({
+                        url: 'PhytopharmacieController',
+                        data: {
+                            isbnVal: row.data('isbn'),
+                            action: "retireLivre"
+                        },
+                        success: function (responseText) {
+                        }
+                    });
+                    $("#confirmerSuppression").modal('toggle');
+                    row.detach();
+                });
+>>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8:templates/phytopharmacie/phytopharmacie.html.twig
     });
 
 </script>

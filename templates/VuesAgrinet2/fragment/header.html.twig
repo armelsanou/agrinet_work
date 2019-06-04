@@ -14,11 +14,12 @@
 		<!-- nav -->
 		<nav class=" navbar ">
 			<div id="logo">
-				<a href="index.html">  <img src="{{asset('StyleAgrinet/images/Agrinet.png')}}" class="img-responsive logoAgrinet" alt=""></a>
+				<a href="{{path('security_welcome')}}">  <img src="{{asset('StyleAgrinet/images/Agrinet.png')}}" class="img-responsive logoAgrinet" alt=""></a>
 			</div>
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
 			<ul class="menu mt-md-2 ml-auto">
+					<li class="mr-lg-4 mr-2"><a href="{{path('security_welcome')}}"><span class="fa fa-home"></span></a></li>
 					<li class="mr-lg-4 mr-2"><a href="{{path('a_propos_de_nous')}}">A propos</a></li>
 				
 				<li class="mr-lg-4 mr-2 dropdown">
@@ -34,7 +35,7 @@
 						</ul>
 					  </li>
 				<li class="mr-lg-4 mr-2 active"><a href="{{path('mieux_produire')}}">mieux produire</a></li>
-				<li class="mr-lg-4 mr-2"><a href="{{path('agri_impact')}}">agri-impact</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('devenir_expert')}}">devenir expert</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('bibliotheque_agricole')}}">Bibliothèque Agricole</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('phytopharmacie')}}">phytopharmacie</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('contactez_nous')}}">Contact</a></li>
@@ -43,7 +44,7 @@
 					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor"> <span class="fa fa-user text-yellow"></span>
 				</button>
 				{% else %}
-				<a href="{{path('security_logout')}}">deco </a>
+				<li class="btn btn-danger"><a href="{{path('security_logout')}}"><span class="fa fa-logout">Déconnexion</span></a></li>
 				{% endif %}
 			</ul>
 		

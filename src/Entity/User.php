@@ -59,7 +59,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min ="8", minMessage ="votre mot de passe doit etre au moins huit caractères")
      * @Assert\EqualTo(propertyPath="confirmPassword", message = "Votre mot de passe doit etre le meme que celui dont vous confirmez")
      * @Assert\NotBlank
      */
@@ -76,6 +75,14 @@ class User implements UserInterface
      */
     private $idUser;
 
+<<<<<<< HEAD
+=======
+    /**
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles = array();
+
+>>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
@@ -201,23 +208,62 @@ class User implements UserInterface
         return $this;
     }
 
-    // public function getConfirmPassword(): ?string
-    // {
-    //     return $this->confirmPassword;
-    // }
+    public function setRoles(string $role): self
+    {
+        $this->role = $role;
 
-    // public function setConfirmPassword(string $confirmPassword): self
-    // {
-    //     $this->confirmPassword = $confirmPassword;
+        return $this;
+    }
 
-    //     return $this;
-    // }
+    function addRole($role) {
+        $this->roles[] = $role;
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized) {
+        list (
+                $this->id,
+                $this->noms,
+                $this->prenoms,
+                $this->location,
+                $this->email,
+                $this->numero,
+                $this->numeroWhatsapp,
+                $this->numero,
+                $this->idUser
+                ) = unserialize($serialized);
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+                $this->noms,
+                $this->prenoms,
+                $this->location,
+                $this->email,
+                $this->numero,
+                $this->numeroWhatsapp,
+                $this->numero,
+                $this->idUser
+        ));
+    }
+
+
     public function eraseCredentials(){}
 
-        public function getSalt(){}
-        
-        public function getRoles(){
-            return['ROLE_USER'];
+        public function getSalt() {
+          
+            return null;
         }
-        public function getUsername(){}
+        
+            public function getRoles() {
+                if (empty($this->roles)) {
+                    return ['ROLE_USER'];
+                }
+                return $this->roles;
+            }
+        public function getUsername(){
+            return $this->noms;
+        }
 }

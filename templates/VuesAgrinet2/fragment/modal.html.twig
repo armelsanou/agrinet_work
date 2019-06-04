@@ -58,7 +58,7 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
-            {{ form_start(form)}}
+                    {{ form_start(form)}}
 
                        <div class="form-group">
                        {{form_row(form.noms, { 'label': 'Noms', 'attr': {'placeholder':'Entrez votre nom','class':'form-control'}}) }}
@@ -70,10 +70,8 @@ aria-hidden="true">
                        {{form_row(form.password, { 'label': 'Mot de passe', 'attr': {'placeholder':'Entrez votre mot de passe','class':'form-control'}}) }} 
                        {{form_row(form.confirmPassword, { 'label': 'Confirmation du mot de passe ', 'attr': {'placeholder':'Re-entrez votre mot de passe','class':'form-control'}}) }}  
                        </div>
-
                        <button type="submit" class="btn btn-success">Créer le Compte</button>
-
-                       {{form_end(form)}}
+                    {{form_end(form)}}
         </div>
     </div>
 </div>

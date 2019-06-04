@@ -2,6 +2,9 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
+    role_hierarchy:       
+        ROLE_ADMIN: ROLE_USER
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
@@ -23,7 +26,7 @@ security:
 
             logout:
                 path: security_logout
-                target: security_registration
+                target: /
                 
         #api:
          #   pattern: ^/
@@ -43,6 +46,23 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-        # - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+         - { path: ^/recap_elevage, roles: ROLE_USER }
+         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/phytopharmacie, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/contact, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/a_propos, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/vulgarisation_agricole, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/formation_expertise, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/devenir_expert, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/formation_initiale, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/bibliotheque_agricole, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/mieux_produire, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/formation_pratique, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/gestion_du_sol, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/home, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/recap_culture, roles: ROLE_USER }
+         - { path: ^/montage_projets, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/agri_impact, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/welcome, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/actualite,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+         #- { path: ^/, roles: IS_AUTHENTICATED_FULLY }
