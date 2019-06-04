@@ -24,6 +24,7 @@ class PhytopharmacieController extends AbstractController
         public function phytopharmacie(ObjectManager $manager, PhytopharmarcieRepository $phytopharmarcieRepository, Request $request): Response{
             $user = new User();
             $phytopharmacie = new Phytopharmarcie();
+            $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
             
              $form = $this->createForm(RegistrationType::class, $user);
              $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
@@ -32,8 +33,6 @@ class PhytopharmacieController extends AbstractController
              $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
              $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
              $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
-
-             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
 
              $formulaire->handleRequest($request);
              if($formulaire->isSubmitted() && $formulaire->isValid()){

@@ -145,11 +145,6 @@
 {% include "VuesAgrinet2/fragment/modal_phyto.html.twig" %}
 
 
-
-
-
-
-
 	<!-- //footer -->
 
 	<!-- move top icon -->
@@ -173,8 +168,20 @@ $('select').on('change',function(){
     var value=$(this).val();
     alert(value);
 })
-      
-      
+
+$('select').click(function () {
+                    $.ajax({
+                        url: 'PhytopharmacieController',
+                        data: {
+                            isbnVal: row.data('isbn'),
+                            action: "retireLivre"
+                        },
+                        success: function (responseText) {
+                        }
+                    });
+                    $("#confirmerSuppression").modal('toggle');
+                    row.detach();
+                });
     });
 
 </script>

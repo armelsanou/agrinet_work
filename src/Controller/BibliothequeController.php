@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\BrowserKit\Response;
 
 class BibliothequeController extends AbstractController
 {
@@ -36,7 +40,7 @@ class BibliothequeController extends AbstractController
  
                    $manager->persist($bibliotheque);
                    $manager->flush();
-                   $this->addFlash('success', 'Votre compte à bien été enregistré.');
+                   $this->addFlash('success', 'Upload reussi.');
  
            return $this->RedirectToRoute('bibliotheque_agricole'); 
  
@@ -50,6 +54,22 @@ class BibliothequeController extends AbstractController
             ]);
         
       
+    }
+
+        /**
+         * @Route("/download", name ="download_document")
+         */
+    public function downloadAction()
+    {
+        $response = new Response();
+        $d = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $zipName
+           );
+        
+        $response->headers->set('Content-Disposition', $d);
+        
+        return $response;
     }
 }
 

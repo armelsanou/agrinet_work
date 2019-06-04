@@ -3,7 +3,12 @@
 {% block Home_title %}::acueil {% endblock %}
 
 {% block stylesheets %}
-  
+<style>
+        img.img-responsive.img-for1 {
+            height: 246px!important;
+            width: 100%;
+        }
+        </style>
 {% endblock %}
 
 {% block body %}
@@ -20,8 +25,13 @@
 <section class="about py-5" id="about">
         <div class="container py-lg-5 py-sm-3">
             <h3 class="heading mb-sm-5 mb-4 text-center">GESTION DU SOL ET DE L’EAU</h3>
-            <div class ="col-lg-12" ><img src="{{ asset('StyleAgrinet2/images/for6.jpg')}}" class="img-responsive img-for1"></div>
-            <div class ="col-lg-12" ><img src="{{ asset('StyleAgrinet2/images/for7.jpg')}}" class="img-responsive img-for1"></div>
+            <div class="row">
+                    <div class ="col-lg-3" ><img src="{{ asset('StyleAgrinet2/images/979d97f171757ebd987045491ca5d150.jpg')}}" class="img-responsive img-for1"></div>
+                    <div class ="col-lg-3" ><img src="{{ asset('StyleAgrinet2/images/analyse-de-sol-1.jpg')}}" class="img-responsive img-for1"></div>
+                    <div class ="col-lg-3" ><img src="{{ asset('StyleAgrinet2/images/IMGP8606.jpg')}}" class="img-responsive img-for1"></div>
+                    <div class ="col-lg-3" ><img src="{{ asset('StyleAgrinet2/images/Service-analyse-sol-Pepiniere-Villeneuve.jpg')}}" class="img-responsive img-for1"></div>
+            </div>
+           
             <div class="row">
                 <div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
                         <p> Nous analysons le sol de votre exploitation afin de déterminer sa capacité a mieux produire et les quantités d’intrant ou techniques agricoles à adopter pour un rendement optimal au niveau de votre parcelle

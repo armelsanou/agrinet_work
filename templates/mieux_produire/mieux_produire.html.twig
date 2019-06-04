@@ -3,7 +3,7 @@
 {% block Home_title %}::acueil {% endblock %}
 
 {% block stylesheets %}
-  
+ 
 {% endblock %}
 
 {% block body %}
@@ -26,7 +26,15 @@
 				<p> Agrinet vous accompagne lors de vos choix agronomique en vous apportant un conseil personnalisé !</p>
 				<p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span>Faite suivre votre exploitation par nos ingénieurs, recevez les conseils de nos experts afin d’améliorer votre production.</p>
 			</div>
+
+
+			<div class ="col-lg-4" ></div>
+			<div class ="col-lg-4" ><img src="{{ asset('StyleAgrinet2/images/agridata record 2.png')}}" class="img-responsive img-for1"></div>
+			<div class ="col-lg-4" ></div>
+			
 		</div>
+
+		
 	</div>
 </section>
 
@@ -37,9 +45,18 @@
 		<div class="row">
 			<div class="col-lg-6 item">
 				<div class="feedback-info pt-5 pb-4 px-4 bloc1-elevage">
-					<h3 class="mb-3">Je souhaite améliorer mon élevage
-					</h3>
+						{% if not app.user %}
+						<h3 class="mb-3"><a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor" style="color: black">Je souhaite améliorer mon élevage</a>	
+						</h3>
+						{% else %}
+
+						<h3 class="mb-3"><a href="{{path('recap_elevage')}}" style="color: black">Je souhaite améliorer mon élevage</a>	
+						</h3>
+
+						{% endif %}
 					
+						
 					<div class="feedback-grids mt-3">
 						
 						<div class="clearfix"> </div>
@@ -48,8 +65,15 @@
 			</div>
 			<div class="col-lg-6 item-2 mt-lg-0 mt-4">
 				<div class="feedback-info pt-5 pb-4 px-4 bloc1-agricu">
-					<h3 class="mb-3">Je souhaite améliorer mes cultures
+
+						{% if not app.user %}
+					<h3 class="mb-3"><a href="#" data-toggle="modal"
+						aria-pressed="false" data-target="#exampleModal" data-blast="bgColor" style="color: black">Je souhaite améliorer mes cultures</a>	
 					</h3>
+					{% else %}
+					<h3 class="mb-3"><a href="{{path('recap_culture')}}" style="color: black">Je souhaite améliorer mes cultures</a>	
+					</h3>
+					{% endif %}
 					
 					<div class="feedback-grids mt-3">
 						

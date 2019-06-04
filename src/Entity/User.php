@@ -59,7 +59,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min ="8", minMessage ="votre mot de passe doit etre au moins huit caractères")
      * @Assert\EqualTo(propertyPath="confirmPassword", message = "Votre mot de passe doit etre le meme que celui dont vous confirmez")
      * @Assert\NotBlank
      */
