@@ -1,0 +1,353 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery.min.js')}}"></script>
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js')}}"></script>
+
+<script src="{{asset('StyleAgrinet2/js/popper.min.js')}}"></script>
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="{{asset('StyleAgrinet2/css/tab.css')}}">
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- feedback -->
+<section class="news py-5">
+	<div class="container-fluid ">
+	
+		<div class="row">
+
+
+      <div class="col-sm-4">
+          
+          <h4 class="titre_tab"> Input/Output en Cultures Arables (par parcelle) </h4>
+      </div>
+
+      <div class="col-sm-8">
+          <table class="table_first  table-responsive" >
+            
+              <tbody class="tab_new_style"></tbody>
+                  <tr class="ju">
+                    
+                    <td >
+                      <div class="group">      
+                        <input type="text" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ferme: </label>
+                      </div>
+                    </td>
+                    <td>
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Nom de paracell: </label>
+                          </div>
+                    </td>
+                   
+                   
+                    
+                   
+                  </tr>
+
+                  <tr class="ju">
+                    
+                      <td >
+                          <div class="group">      
+                              <input type="text" required>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <label> Superficie: </label>
+                            </div>
+                        
+                      </td>
+                     
+                      <td>
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label> an/saison: </label>
+                          </div>
+                      </td>
+                      <td>
+                       
+                        <div class="group">      
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label> Culture(s)/variétés:</label>
+                          </div>
+                      </td>
+                     
+                    </tr>
+              </tbody>
+              
+          </table>
+      </div>
+    </div>
+      <div class="table-content">
+            <table class="table table-borded table-responsive table-striped " id="table-list">
+                    <thead class="">
+                        <tr >
+                            
+                            <td class="text-center" rowspan="2">Date</td>
+                            <td class="text-center" rowspan="2">Activités</td>
+                            <td class="text-center" rowspan="2">Durée</td>
+                            <td colspan="23" class="text-center bg_tab_style" >Produits  utilisé</td>
+                            <td colspan="3" class="text-center bg_tab_style3" >Matériel utilisé</td>
+                            <td  colspan="6" class="text-center bg_tab_style2" >Main d'oeuvre</td>
+                            <td class="text-center">Transport</td>
+                            <td class="text-center">Autres</td>
+                        
+                        </tr>
+                        <tr>
+                                
+                                <td class="bg_tab_style"  colspan="3">semence</td>
+                                <td class="bg_tab_style"  colspan="3">Engrais </td>
+                                <td class="bg_tab_style"  colspan="3">Engrais foliaire</td>
+                                <td class="bg_tab_style"  colspan="2">Fiente /compost</td>
+                                <td class="bg_tab_style"  colspan="3">insecticide</td>
+                                <td class="bg_tab_style"  colspan="3">herbicide</td>
+                                <td class="bg_tab_style"  colspan="3">fongicide</td>
+                                <td class="bg_tab_style"  colspan="3">nématicide</td>
+                                <td colspan="3" class="bg_tab_style3"></td>
+                                <td class="text-center bg_tab_style2" colspan="2">familiale</td>
+                                <td class="text-center bg_tab_style2" colspan="2">employé</td>
+                                <td class="text-center bg_tab_style2" colspan="2">tacheron</td>
+                                <td></td>
+                                <td></td>
+                               
+                            </tr>
+                            <tr >
+                                <td ></td>
+                                <td></td>
+        
+                                <td ></td>
+                                <td class="bg_tab_style" >variété</td>
+                                <td class="bg_tab_style" >quantité </td>
+                                <td class="bg_tab_style" >cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style">nom</td>
+                                <td class="bg_tab_style">quantité</td>
+                                <td class="bg_tab_style">cout</td>
+                                <td class="bg_tab_style3">nom</td>
+                                <td class="bg_tab_style3">quantité</td>
+                                <td class="bg_tab_style3">duree</td>
+                                <td class="bg_tab_style2">nombre</td>
+                                <td class="bg_tab_style2">Prix/valeur</td>
+                                <td class="bg_tab_style2">nombre</td>
+                                <td class="bg_tab_style2">cout</td>
+                                <td class="bg_tab_style2">nombre</td>
+                                <td class="bg_tab_style2">cout</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        
+                    </thead>
+                    <tbody class="tab_new_style">
+                      
+                            <tr >
+                                    <td ></td>
+                                    <td></td>
+            
+                                    <td ></td>
+                                    <td class="bg_tab_style" ></td>
+                                    <td class="bg_tab_style" > </td>
+                                    <td class="bg_tab_style" ></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style"></td>
+                                    <td class="bg_tab_style3"></td>
+                                    <td class="bg_tab_style3"></td>
+                                    <td class="bg_tab_style3"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td class="bg_tab_style2"></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            
+                    </tbody>
+                    
+                </table>
+        <button class="btn btn-dark btn_ajouter_colonne_tab" id="add"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+      
+        
+       
+    </div>
+
+    <div class="row container-fluid">
+    
+        <div class="col-md-4">
+            <h5 class="titre_tab2"> Rendement (SVP listez chaque jour de recolte) </h5>
+
+            
+        <div class="table-content">
+            <table class="table table-borded table-responsive table-striped " id="table-list2">
+                <thead class="table-dark">
+                    <tr class="bg-success">
+                        <td>Date</td>
+                        <td>Remarques</td>
+                        <td>Quantité</td>
+                        <td>Unité(t, kg,etc.)</td>
+                        
+                    </tr>
+                </thead>
+                <tbody class="tab_new_style">
+                    <tr class="ju">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    
+                    </tr>
+                    <tr class="ju">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        
+                        </tr>
+
+                    
+                
+                </tbody>
+            
+        
+            </table>
+            <button class="btn btn-success btn_ajouter_colonne_tab" id="add2"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+        
+        
+        </div>
+        </div>
+
+        <div class="col-md-8">
+            <h5 class="titre_tab2"> Utilisation de produits (SVP listez si le rendement es vendu, donné, perdu,etc.)</h5>
+
+            
+            <div class="table-content">
+                <table class="table table-borded table-responsive table-striped " id="table-list3">
+                    <thead class="table-dark">
+                        <tr class="bg-info">
+                            <td>Date</td>
+                            <td>Utilisation de rendement</td>
+                            <td>Quantité</td>
+                            <td>Unité</td>
+                            <td>Prix / Valeur</td>
+                            <td>Revenu</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tab_new_style">
+                        <tr class="ju">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        
+                        </tr>
+                        <tr class="ju">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            
+                            </tr>
+        
+                        
+                    
+                    </tbody>
+                
+                </table>
+                <button class="btn btn-info btn_ajouter_colonne_tab" id="add3"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+            
+            
+            
+            </div>
+
+
+            
+        </div>
+    </div>
+
+		
+	</div>
+</section>
+<!-- //feedback -->
+
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+<script src="{{asset('StyleAgrinet2/js/tab.js')}}"></script>
+<script>
+$(document).ready(function(){
+$(".total_recap_cul").find("td:last").css("display","none");
+});
+</script>
+{% endblock %}

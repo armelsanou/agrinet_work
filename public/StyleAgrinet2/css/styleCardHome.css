@@ -121,6 +121,8 @@ section .section-title {
 .frontside .card .card-title,
 .backside .card .card-title {
     color: white !important;
+    padding: 20px;
+    font-size: 22px;
 }
 
 .frontside .card .card-body img {

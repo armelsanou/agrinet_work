@@ -1,0 +1,332 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery.min.js')}}"></script>
+
+
+
+<script src="{{asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js')}}"></script>
+
+<script src="{{asset('StyleAgrinet2/js/popper.min.js')}}"></script>
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="{{asset('StyleAgrinet2/css/tab.css')}}">
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- feedback -->
+<section class="news py-5">
+	<div class="container-fluid">
+	
+        <div class="row">
+            <div class="col-sm-4">
+                <h4 class="titre_tab">Input/Output: Bétail  </h4>
+            </div>
+
+            <div class="col-sm-8">
+                <table class="table_first table-responsive" >
+                    
+                    <tbody class="tab_new_style"></tbody>
+                        <tr class="ju">
+                            
+                            <td >
+                            <div class="group">      
+                                <input type="text" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Ferme: </label>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="group">      
+                                    <input type="text" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Type/race: </label>
+                                </div>
+                            </td>
+                        
+                            <td >
+                                    <div class="group">      
+                                        <input type="text" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>période reference: </label>
+                                    </div>
+                                
+                                </td>
+                            
+                        
+                        </tr>
+
+                        
+                        
+            
+                        
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+            <div class="col-sm-8">
+
+            </div>
+        </div> 
+    </div>
+
+    <div class="container-fluid">
+        <div class="table-content">
+            <table class="table table-borded table-responsive table-striped " id="table-list">
+                <thead class="">
+                    <tr >
+                        <td class="text-center" rowspan="2">Date</td>
+                        <td class="text-center" rowspan="2">Activités</td>
+                        <td class="text-center" rowspan="2">Durée</td>
+                        <td colspan="4" class="text-center bg_tab_style" >Traitement</td>
+                        <td colspan="6" class="text-center bg_tab_style">Alimentation</td>
+                        <td  colspan="6" class="text-center bg_tab_style2">Main d'oeuvre</td>
+                        <td class="text-center">Transport</td>
+                        <td class="text-center">Autres</td>
+                        <td colspan="2" class="text-center">Evolution nombre d'animal</td>
+                    </tr>
+                    <tr>
+                            
+                            <td colspan="4" class="text-center bg_tab_style">Produit utilisé</td>
+                            <td colspan="3" class="text-center bg_tab_style">Alimentation</td>
+                            <td colspan="3" class="text-center bg_tab_style">Complément alimentaire</td>
+                            <td colspan="2" class="text-center bg_tab_style2">familiale</td>
+                            <td colspan="2" class="text-center bg_tab_style2">employé</td>
+                            <td colspan="2" class="text-center bg_tab_style2">tacheron</td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-center">femelle</td>
+                            <td class="text-center">male</td>
+                        
+                        </tr>
+                        <tr >
+                            <td ></td>
+                            <td></td>
+
+                            <td ></td>
+                            <td class="bg_tab_style">nom</td>
+                            <td class="bg_tab_style">Quantité utilisée</td>
+                            <td class="bg_tab_style">unité</td>
+                            <td class="bg_tab_style">Prix d’achat</td>
+                            <td class="bg_tab_style">nom</td>
+                            <td class="bg_tab_style">Quantité</td>
+                            <td class="bg_tab_style">Prix</td>
+                            <td class="bg_tab_style">nom</td>
+                            <td class="bg_tab_style">Quantité</td>
+                            <td class="bg_tab_style">Prix</td>
+                            <td class="bg_tab_style2">nombre</td>
+                            <td class="bg_tab_style2">Prix/Valeur</td>
+                            <td class="bg_tab_style2">Nombre</td>
+                            <td class="bg_tab_style2">Cout</td>
+                            <td class="bg_tab_style2">Nombre</td>
+                            <td class="bg_tab_style2">Cout</td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2"></td>
+                            
+                        </tr>
+                    
+                </thead>
+                <tbody class="tab_new_style">
+                
+                    <tr > 
+
+                        <form action="{{path('recap_elevage')}}" method="POST">
+                            <td></td>
+                            <td ></td>
+                            <td ></td>
+                            <td class="text-center bg_tab_style">nom</td>
+                            <td class="text-center bg_tab_style">Quantité utilisée</td>
+                            <td class="text-center bg_tab_style">unité</td>
+                            <td class="text-center bg_tab_style">Prix d’achat</td>
+                            <td class="text-center bg_tab_style">nom</td>
+                            <td class="text-center bg_tab_style">Quantité</td>
+                            <td class="text-center bg_tab_style">Prix</td>
+                            <td class="text-center bg_tab_style">nom</td>
+                            <td class="text-center bg_tab_style">Quantité</td>
+                            <td class="text-center bg_tab_style">Prix</td>
+                            <td class="text-center bg_tab_style2">nombre</td>
+                            <td class="text-center bg_tab_style2">Prix/Valeur</td>
+                            <td class="text-center bg_tab_style2">Nombre</td>
+                            <td class="text-center bg_tab_style2">Cout</td>
+                            <td class="text-center bg_tab_style2">Nombre</td>
+                            <td class="text-center bg_tab_style2">Cout</td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2"></td>   
+                       
+                        </form> 
+                    </tr>
+
+                    <tr >  
+                            <td></td>
+                            <td ></td>
+                            <td ></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td class="text-center bg_tab_style2"></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2"></td>   
+                        </tr>
+                        <tr >  
+                                <td></td>
+                                <td ></td>
+                                <td ></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td class="text-center bg_tab_style2"></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="2"></td>   
+                            </tr>
+                </tbody>
+                
+            </table>
+            <button class="btn btn-dark btn_ajouter_colonne_tab" id="add"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+            
+            
+        
+        </div>
+
+       
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-sm-8">
+                <h5 class="titre_tab2">Utilisation des poduits (SVP notez des animaux ou produits vendus, donnés, etc.) </h5>
+
+                
+            <div class="table-content">
+                <table class="table table-borded table-responsive table-striped " id="table-list2">
+                    <thead class="table-dark">
+                        <tr class="bg_tab_style">
+                            <td>Date</td>
+                            <td>Utilisation du rendement</td>
+                            <td>Quantité</td>
+                            <td>Unité</td>
+                            <td>Prix / Valeur</td>
+                            <td>Revenu</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tab_new_style">
+                        <tr class="ju">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr class="ju">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr class="ju">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr class="ju">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+
+                        
+                    
+                    </tbody>
+                    
+                </table>
+                <button class="btn btn_tab_style btn_ajouter_colonne_tab" id="add2"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
+            
+            
+            </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+
+   
+
+
+		
+	
+</section>
+<!-- //feedback -->
+
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+<script src="{{asset('StyleAgrinet2/js/tab.js')}}"></script>
+<script>
+$(document).ready(function(){
+$(".total_recap_cul").find("td:last").css("display","none");
+});
+</script>
+{% endblock %}
