@@ -1,12 +1,13 @@
 {% extends 'VuesAgrinet2/layout.html.twig' %}
 
-{% block Home_title %}::Accueil {% endblock %}
+{% block Home_title %}::acueil {% endblock %}
 
 {% block stylesheets %}
   
 {% endblock %}
 
 {% block body %}
+
 
 <!-- banner -->
 <div class="inner-banner" id="home">
@@ -16,44 +17,7 @@
 <!-- //banner -->
 
 <style>
-.design_bloc_left{
-        height: -webkit-fill-available;
-        height: -moz-fill-available;
-        height: fill-available;
-        
-        
-}
-.card-header.bg-dark.text-white.focus_design {
-       height: 43px;
-    background: #f787007a!important;
-    
-}
 
-.focus_design_p{
-  color:white!important;
-    
-}
-.carousel-caption.d-none.d-md-block.slider_text_perso{
-    background: #3e3b3b7a;
-    width: 100%;
-    left: 0;
-    /* height: 23px; */
-}
-img.d-block.w-100.slider_img_perso {
-    height: 145px;
-}
-.carousel-caption.d-none.d-md-block.slider_text_perso P {
-    color: #eeeeee!important;
-    line-height: 1em;
-    /* text-overflow: ellipsis; */
-    letter-spacing: 2px;
-    font-size: 9px!important;
-    /* white-space: nowrap; */
-}
-
-h5.design_fin_perso {
-    font-size: 14px;
-}
  .title {
 	 display: block;
 	 position: relative;
@@ -75,11 +39,6 @@ span.title.titre2:nth-child(1) {
 span.title.titre3:nth-child(1) {
     color: #2b9f5e;
 }
-#team .card {
-    border: none;
-    background: #eeeeee;
-    padding-top: 6px;
-}
 
 </style>
 
@@ -93,16 +52,47 @@ span.title.titre3:nth-child(1) {
                 {{ message }}
             </div>
         {% endfor %}
-     
         <div class="row">
 			<div class="col-lg-12 pl-xl-5 mt-lg-0 pb-5 mt-4 about-right">
 				<p style="color: #098a05;"> <span class="fa fa-quote-left text-danger text-color mr-2"></span>Produire, Recenser, analyser, vulgariser auprès des producteurs les technologies, les ressources génétiques,
-					 les méthodes et procédés les plus innovants.<span class="fa fa-quote-right text-danger text-color mr-2"></span></p>
+					 les méthodes et procédés les plus
+					innovants.<span class="fa fa-quote-right text-danger text-color mr-2"></span></p>
             </div>
             <div class="row col-md-9" style="    margin-left: 0;" >
 
+                {% if not app.user %}
+                    <!-- Team member -->
+                <div class=" col-sm-6 col-md-6" style="padding: 0; padding-right: 6px;">
+                    <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card rouge" style="background:#948c5c; height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title white-text" style="color:white;">Améliorer sa
+                                                    production agricole</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card" style="background: #948c5c ;height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title titre">Améliorer sa
+                                                    production agricole
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
                 <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-right: 6px;">
-                    <a href="{{path('mieux_produire')}}">
+                    <a href="{{path('recap_elevage')}}">
                         <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                             <div class="mainflip">
                                 <div class="frontside">
@@ -127,11 +117,41 @@ span.title.titre3:nth-child(1) {
                     </a>    
                 </div>
                 <!-- ./Team member -->
-               
+                {% endif %}
                 
-                
+                {% if not app.user %}
+                    <!-- Team member -->
                     <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-left: 6px;">
-                            <a href="{{path('contactez_nous')}}">
+                        <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card" style="background: rgba(112, 173, 71, 0.88); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside" style="width: 100%;">
+                                        <div class="card  vert" style="background: rgba(112, 173, 71, 0.88); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-left: 6px;">
+                            <a href="{{path('recap_culture')}}">
                                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                                     <div class="mainflip">
                                         <div class="frontside">
@@ -156,7 +176,7 @@ span.title.titre3:nth-child(1) {
                             </a>
                         </div>
                         <!-- ./Team member -->
-             
+                {% endif %}
                 
                 <div class=" col-md-12 blocContent">
                     <div class="row">
@@ -174,16 +194,12 @@ span.title.titre3:nth-child(1) {
     
                         <div class="col-md-6 espaceDroit" style="border:2px solid #6c757dc7;    background: #ffffffad;">
                               
-                            <div class="text-center bloc_design_perso_creew_espace" >
+                            <div class="text-center" style="padding-top: 78px;">
                                 <hr class="trait">
                                 <h5><span class="title titre1">CREEZ</span></h5>
                                 <h3><span class="title titre2">VOTRE ESPACE</span></h3>
                                 <h4><span class="title titre3">PROFESSIONNEL</span></h4>
                                 <hr class="trait">
-
-
-                               <h5 class="design_fin_perso">Vulgarisez vos produits, intrants, équipements</h5>
-                               <button class="btn btn-success"><a href="{{path('vulgarisation_agricole')}}" style="color:white!important"> ICI</a>  </button>
                             </div>
                             
                         </div>
@@ -191,71 +207,17 @@ span.title.titre3:nth-child(1) {
                     
                 
                 </div>
-             {% include "VuesAgrinet2/fragment/newsletter.html.twig" %}
             </div>
 	
             <!-- Team member --> 
-            <div class="col-md-3 design_bloc_left">
-
-   
-
-
-
-                <div class="card">
-
-                    <div class="card-header bg-dark text-white focus_design">
-                       Focus
-                    </div>
-                    <div id="carouselExampleIndicators" class="carousel slide focus_design" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/979d97f171757ebd987045491ca5d150.jpg')}}" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block slider_text_perso" >
-                                    
-                                    <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CAMEROUN</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item ">
-                                <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/for3.jpg')}}" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block slider_text_perso">
-                                    <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CA%EROUN</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/pic4.jpg')}}" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block slider_text_perso">
-                                    <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CA%EROUN</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-                        <a class="carousel-control-next" href="{{asset('StyleAgrinet2/images/agridata record 2.png')}}" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-                    </div>
-
-
-                </div>
-
-
+            <div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="card" >
-
-
 					<div class="card-header bg-dark text-white">
-                         DERNIÈRES ACTUALITÉS
+						Actualités
 					</div>
 					<ul class="list-group list-group-flush tailleImgTextActu">
 
-						{% for actu in  listeActu  %}
+						{% for actu in  listeActu | slice(2) %}
 							<li class="list-group-item">
                                 <a href="{{path('actualite')}}">
                                     <div class="container">
@@ -288,10 +250,7 @@ span.title.titre3:nth-child(1) {
 					
 						
 					</ul>
-                </div>
-                
-                </div>
-                <br>
+				</div>
             </div>
             <!-- ./Team member -->
         </div>
@@ -312,15 +271,24 @@ span.title.titre3:nth-child(1) {
 
 
 
-
-
-<script >
-   
-   $('.carousel').carousel()
- 
+<script src="">
+    $(document).ready(function() {
+  $(".title").lettering();
+  $(".button").lettering();
+});
 
 </script>
 
 
+
+
+
+
+
+
+
+
+
+ 
 
 {% endblock %}

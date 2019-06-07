@@ -17,10 +17,10 @@ class PhytopharmacieType extends AbstractType
         $builder
             ->add('culture')
             ->add('enemie')
-            ->add('nomCommercial')
-            ->add('societe')
+            //->add('nomCommercial')
+            //->add('societe')
             ->add('matiereActive')
-            ->add('classe')
+            //->add('classe')
         ;
     }
 

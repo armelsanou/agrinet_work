@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
                 $manager->flush();
                 
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
-             /*    return $this->RedirectToRoute('security_welcome'); */
+                return $this->RedirectToRoute('security_welcome'); 
         }
         
 
@@ -59,7 +59,7 @@ class SecurityController extends AbstractController
 
             if($this->getUser() !== null){
                 $this->get('session')->getFlashBag()->add('success', $this->getUser()->getUsername().',Bienvenue sur agrinet!');
-                $response = new RedirectResponse($this->generateUrl('welcome'));
+                $response = new RedirectResponse($this->generateUrl('security_welcome'));
                 return $response;
             }
 
@@ -70,8 +70,11 @@ class SecurityController extends AbstractController
             $error = $authenticationUtils->getLastAuthenticationError();
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
+            $userConnected = $this->getUser();
+            dump($lastUsername);
+            var_dump($userConnected);
             return
-             $this->redirectToRoute('/' , [
+             $this->redirectToRoute('security_welcome' , [
                 'last_username' => $lastUsername,
                 'error'         => $error,
                 'form' => $form->createView()

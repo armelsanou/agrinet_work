@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 use App\Entity\User;
+use App\Entity\Command;
+use App\Form\CommandType;
 use App\Form\RegistrationType;
+
 use App\Entity\Phytopharmarcie;
 use App\Form\PhytopharmacieType;
-
 use App\Repository\PhytopharmarcieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -22,6 +24,9 @@ class PhytopharmacieController extends AbstractController
          * @Route("/phytopharmacie", name ="phytopharmacie")
          */
         public function phytopharmacie(ObjectManager $manager, PhytopharmarcieRepository $phytopharmarcieRepository, Request $request): Response{
+           
+            $command = new Command();
+            $formCommand = $this->createForm(CommandType::class, $command);
             $user = new User();
             $phytopharmacie = new Phytopharmarcie();
             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
@@ -57,12 +62,9 @@ class PhytopharmacieController extends AbstractController
                 'resultSociete' => $resultSociete,
                 'resultMatiereActive' => $resultMatiereActive,
                 'resultClasse' => $resultClasse,
+                 'formCommand' => $formCommand->createView()
 
             ]);
     }
-
-
-
-    
 
 }
