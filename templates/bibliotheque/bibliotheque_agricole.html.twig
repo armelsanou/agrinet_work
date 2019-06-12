@@ -32,82 +32,37 @@
 </section>
 
 <!-- feedback -->
+{% if is_granted('ROLE_ADMIN') %}
+<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+aria-pressed="false" data-target="#exampleModal24" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+</button></span>
+{% endif %}
+
 <section class="news py-5">
 	<div class="container ">
 	
 		<div class="row">
+        {% for document in  bibliothequeDoc %}
+        
 			<div class="col-lg-4 item">
+                <a href="{{path('download_document')}}">
 				<div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-					<h3 class="mb-3">Document 1
+					<h3 class="mb-3">
+                        {{document.name}}
 					</h3>
+					<div class="feedback-grids">
 					
-					<div class="feedback-grids mt-3">
+								<p><span class="fa fa-download" src="{{asset('uploads/')}}{{document.name}}"> télécharger</span></p>
+							
+					</div>
+					<!-- <div class="feedback-grids mt-3">
 						
 						<div class="clearfix"> </div>
-					</div>
-				</div>
-            </div>
-            
-            <div class="col-lg-4 item">
-                    <div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-                        <h3 class="mb-3">Document 2
-                        </h3>
-                        
-                        <div class="feedback-grids mt-3">
-                            
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
+					</div> -->
                 </div>
-
-                <div class="col-lg-4 item">
-                        <div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-                            <h3 class="mb-3">Document 3
-                            </h3>
-                            
-                            <div class="feedback-grids mt-3">
-                                
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 item">
-                            <div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-                                <h3 class="mb-3">Document 4
-                                </h3>
-                                
-                                <div class="feedback-grids mt-3">
-                                    
-                                    <div class="clearfix"> </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="col-lg-4 item">
-                                <div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-                                    <h3 class="mb-3">Document 5
-                                    </h3>
-                                    
-                                    <div class="feedback-grids mt-3">
-                                        
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </div>
-                            </div>
-   
-                            <div class="col-lg-4 item">
-                                    <div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
-                                        <h3 class="mb-3">Document 6
-                                        </h3>
-                                        
-                                        <div class="feedback-grids mt-3">
-                                            
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    
+            </a>
+            </div>
+        {% endfor %}
 		
 		</div>
 	</div>
@@ -115,6 +70,9 @@
 <!-- //feedback -->
 
 
+                       
+
+{% include "VuesAgrinet2/fragment/modal_biblioteque.html.twig" %}
 
 	<!-- //footer -->
 

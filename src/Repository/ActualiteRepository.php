@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\Query;
 use App\Entity\Actualite;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Actualite|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,29 +20,16 @@ class ActualiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Actualite::class);
     }
 
-    // /**
-    //  * @return Actualite[] Returns an array of Actualite objects
-    //  */
-    /*
-<<<<<<< HEAD
-    public function findByExampleField($value)
+     /**
+      * @return Query
+      */
+    public function findAllVisibleQuery(): Query
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-=======
-    public function findByCreatedDateActualite($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.createdAt = :val')
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this->findVisibleQuery()
+                    ->getQuery()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Actualite

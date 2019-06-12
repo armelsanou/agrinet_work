@@ -41,6 +41,11 @@ class Actualite
         return $this->id;
     }
 
+    public function getSlug() : string // pour générer les slugs
+    { 
+        return (new Slugify())->slugify($this->title);
+    }
+    
     public function getTitle(): ?string
     {
         return $this->title;
@@ -77,20 +82,12 @@ class Actualite
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getImage(): ?string
-=======
     public function getImage()
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
     {
         return $this->image;
     }
 
-<<<<<<< HEAD
-    public function setImage(string $image): self
-=======
     public function setImage($image): self
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
     {
         $this->image = $image;
 

@@ -8,17 +8,12 @@ use App\Form\RecapElevageType;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-<<<<<<< HEAD
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-=======
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @IsGranted("ROLE_USER")
  */
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
 class RecapElevageController extends AbstractController
 {
     /**

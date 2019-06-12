@@ -4,14 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Actualite;
-<<<<<<< HEAD
-use App\Entity\RecapElevage;
-use App\Form\RegistrationType;
-
-use App\Entity\Phytopharmarcie;
-use App\Form\PhytopharmacieType;
-use App\Repository\ActualiteRepository;
-=======
 use App\Entity\Bibliotheque;
 use App\Entity\RecapElevage;
 
@@ -21,7 +13,6 @@ use App\Entity\Phytopharmarcie;
 use App\Form\PhytopharmacieType;
 use App\Repository\ActualiteRepository;
 use App\Repository\BibliothequeRepository;
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,11 +40,8 @@ class SecurityController extends AbstractController
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
              /*    return $this->RedirectToRoute('security_welcome'); */
         }
-<<<<<<< HEAD
-=======
         
 
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
         return $this->render('home/home.html.twig', [
             
             'form' => $form->createView(),
@@ -88,10 +76,6 @@ class SecurityController extends AbstractController
                 'error'         => $error,
                 'form' => $form->createView()
             ]);
-            $userConnected = $this->getUser();
-            $id = $userConnected ->getId();
-            dump($userConnected);
-            dump($id);
         }
         
         
@@ -103,11 +87,5 @@ class SecurityController extends AbstractController
         }
 
 
-<<<<<<< HEAD
-    //Gestion des tableaux de l'élévage
-   
-
-=======
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
     }
 

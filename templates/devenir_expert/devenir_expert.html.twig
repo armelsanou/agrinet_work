@@ -69,57 +69,38 @@
                     </div>
                 </div>
                 <div>
+         {{ form_start(FormDevenirExpert)}}
                     <p>Ma situation professionnelle actuelle:</p>
                     <input type="radio"/>Je propose mes compétences pour une intervention ponctuelle sur une mission de conseil <br>
                     <input type="radio"> Je cherche un emploi en CDD/CDI
                 </div>  
                 <div class="row" style="margin-top:30px;">
                     <div class="col-md-4">
-                            <form>
+                           
                                 <div class="form-group">
-                                            <label for="prenom">Prenom</label>
-                                            <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" placeholder="prenom">
+                                                {{form_row(FormDevenirExpert.prenom, {'attr': {'placeholder':'contenu','class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                      <label for="nom">Nom</label>
-                                      <input type="text" class="form-control" id="nom" aria-describedby="emailHelp" placeholder="nom">
+                                                 {{form_row(FormDevenirExpert.nom, { 'attr': {'placeholder':'titre','class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                      <label for="email">email</label>
-                                      <input type="email" class="form-control" id="email" placeholder="email">
+                                                {{form_row(FormDevenirExpert.email, { 'attr': {'class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                        <label for="email">telephone</label>
-                                        <input type="email" class="form-control" id="telephone" placeholder="telephone">
+                                                {{form_row(FormDevenirExpert.telephone, {'attr': {'class':'form-control'}}) }}
                                 </div>
                                 <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                          <label class="input-group-text" for="inputGroupSelect01">Statut professionnel</label>
-                                        </div>
-                                        <select class="custom-select" id="inputGroupSelect01">
-                                          <option selected>Choisir...</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
-                                        </select>
+                                                {{form_row(FormDevenirExpert.statutProfessionel, { 'attr': {'class':'form-control'}}) }}
                                 </div>
-                            </form>
+                           
                     </div>
                     <div class="col-md-4">
                             <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">Pays</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                      <option selected>Choisir...</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                    </select>
+                                        {{form_row(FormDevenirExpert.pays, { 'attr': {'class':'form-control'}}) }}
+                                       
                             </div>
                             <div class="form-group">
-                                    <label for="ville">Ville</label>
-                                    <input type="text" class="form-control" id="ville" aria-describedby="emailHelp" placeholder="ville">
+                                        {{form_row(FormDevenirExpert.ville, {'attr': {'class':'form-control'}}) }}
                             </div>
                             <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -133,15 +114,15 @@
                                     </select>
                             </div>
                             <div class="form-group">
-                                    <label for="fonction">Fonction Actuelle</label>
-                                    <input type="text" class="form-control" id="fonction" aria-describedby="emailHelp" placeholder="fonction actuelle">
+                                        {{form_row(FormDevenirExpert.fonctionActuelle, {  'attr': {'class':'form-control'}}) }}
+                                       
                             </div>
                     </div>
                     <div class="col-md-4">
                             <div class="form-group">
-                                    <label for="langue">Langues</label>
-                                    <input type="text" class="form-control" id="langue1" aria-describedby="emailHelp" placeholder="langue 1"> <br>
-                                    <input type="text" class="form-control" id="langue2" aria-describedby="emailHelp" placeholder="langue 2">
+                                        {{form_row(FormDevenirExpert.langue1, {  'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.langue2, { 'attr': {'class':'form-control'}}) }}
+                                      
                             </div> 
                             <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -159,65 +140,23 @@
                 <div class="row">
                     <div class="col-md-6">
                             <div class="form-group">
-                                    <label for="langue">Secteur(s) d'activités</label>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
+                                        {{form_row(FormDevenirExpert.secteurActivite1, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.secteurActivite2, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.secteurActivite3, {'attr': {'class':'form-control'}}) }}
+                                       
                             </div>
-                            <div class="form-group">
-                              
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
-                            </div>
-                            <div class="form-group">
-                                 
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
-                            </div>
-                            <div class="form-group">
-                                    <input type="text" class="form-control" id="autres" aria-describedby="emailHelp" placeholder="autres">
-                            </div>
+                            
+                           
    
                     </div>
                     <div class="col-md-6">
                             <div class="form-group">
-                                    <label for="langue">Compétences</label>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
+                                        {{form_row(FormDevenirExpert.competence1, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.competence2, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.competence3, {'attr': {'class':'form-control'}}) }}
+                                      
                             </div>
-                            <div class="form-group">
-                              
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
-                            </div>
-                            <div class="form-group">
-                                 
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>Choisir...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                    </select>
-                            </div>
+                           
                             <div class="form-group">
                                     <input type="text" class="form-control" id="autres" aria-describedby="emailHelp" placeholder="autres">
                             </div>
@@ -225,15 +164,24 @@
                     </div>
                 </div> 
                         <p>vous souhaitez nous en dire plus</p>
-                        <textarea class="textarea large" name="teatarea" id="textarea" cols="130" rows="10"></textarea>
+                        {{form_row(FormDevenirExpert.autre, {'attr': {'class':'form-control'}}) }}
+                       
                         <p>téléchargez votre cv </p>
-                        <input type="file"/>
-                        <p>je souhaite recevoir l'actualité d'AGRINET par mail</p>
-                        <input type="radio"> oui <br>
-                        <input type="radio"> non <br> <br> <br>
-                        <button>Envoyer</button>
+                        {{form_row(FormDevenirExpert.cv, {'attr': {'class':'form-control'}}) }}
+                    
+                        <p></p>
+                        <div class="col-sm-4">
+                                {{form_row(FormDevenirExpert.souhaitMail, {'attr': {'class':'form-control'}}) }}
+                        </div>
+                      
                         <br> <br>
+                        <button type="submit" class="btn btn-success">Envoyer</button>
+                        
                 </div>
+
+               
+
+        {{form_end(FormDevenirExpert)}}
         <div class="col-md-1">
 
             </div>
@@ -241,4 +189,20 @@
 
 	</div>
 
+
+
+
+
+
+
+
+
+        
+
+        
+
+        
+
+
+       
 {% endblock %}

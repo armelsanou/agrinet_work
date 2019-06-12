@@ -34,31 +34,6 @@ class PhytopharmacieController extends AbstractController
              $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
              $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
 
-<<<<<<< HEAD
-             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
-
-             for ($var=0; $var <5 ; $var++) { 
-                $var =$var;
-             }
-            
-             $phytopharmacie
-             ->setCulture($request->query->get('culture'))
-             ->setEnemie($request->query->get('enemie'))
-             ->setNomCommercial($request->query->get('nom_commercial'))
-             ->setSociete($request->query->get('societe'))
-             ->setMatiereActive($request->query->get('matiere_active'))
-             ->setClasse($request->query->get('classe'))
-             ;
-            dump($phytopharmacie->getSociete());
-             dump($phytopharmacie);
-             $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
-             $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
-             $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
-             $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
-             $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
-             $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
-            
-=======
              $formulaire->handleRequest($request);
              if($formulaire->isSubmitted() && $formulaire->isValid()){
            
@@ -68,7 +43,6 @@ class PhytopharmacieController extends AbstractController
                 return $this->RedirectToRoute('phytopharmacie'); 
           }
         
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
             return
             $this->render('phytopharmacie/phytopharmacie.html.twig'
             , [
@@ -83,10 +57,6 @@ class PhytopharmacieController extends AbstractController
                 'resultSociete' => $resultSociete,
                 'resultMatiereActive' => $resultMatiereActive,
                 'resultClasse' => $resultClasse,
-<<<<<<< HEAD
-                'var' => $var
-=======
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
 
             ]);
     }

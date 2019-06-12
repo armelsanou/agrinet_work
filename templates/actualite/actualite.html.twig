@@ -28,7 +28,7 @@
                 {% for actu in all_actualite %}
                 <!-- Team member -->
                 <div class="col-xs-12 col-sm-6 col-md-6" style="    padding-right: 25px;">
-                        <a href="">
+                        <a href="{{path('details_actualite',{'id':actu.id})}}">
                                 <div class="container">
                                         <div class="row row-margin-bottom">
                                             <div class="col-md-12 no-padding lib-item" data-category="view">
@@ -43,13 +43,9 @@
                                                                 <div class="lib-header-seperator"></div>
                                                             </div> -->
                                                             <div class="lib-row lib-desc">
-<<<<<<< HEAD:templates/actualite/actualite.html.twig
-                                                                   {{ actu.content |raw }}
-=======
                                                                     <h5 class="title_actu2"> {{actu.title}}</h5>
                                                                     <h5 class="content_actu2"> {{actu.content}}</h5> 
                                                                     <span class="tilte_date">{{actu.createdAt | date('d/m/y') }}</span>      
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8:templates/actualite/actualite.html.twig
                                                             </div>
                                                         </div>
                                                     </div>
@@ -106,12 +102,8 @@
                         {% endif %}
 					</div>
 					<ul class="list-group list-group-flush tailleImgTextActu">
-<<<<<<< HEAD:templates/actualite/actualite.html.twig
-						{% for actu in all_actualite %}
-=======
 						{% for actu in all_actualite | slice(2) %}
 							
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8:templates/actualite/actualite.html.twig
 							<li class="list-group-item">
                                 <a href="">
                                     <div class="container">
@@ -128,13 +120,9 @@
                                                                     <div class="lib-header-seperator"></div>
                                                                 </div> -->
                                                                 <div class="lib-row lib-desc actu_gauche">
-<<<<<<< HEAD:templates/actualite/actualite.html.twig
-                                                                  {{actu.content }}
-=======
                                                                    <h5 class="title_actu"> {{actu.title}}</h5>
                                                                    <h5 class="content_actu"> {{actu.content}}</h5> 
                                                                    <span class="tilte_date">{{actu.createdAt | date('d/m/y') }}</span>      
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8:templates/actualite/actualite.html.twig
                                                                 </div>
                                                             </div>
                                                         </div>

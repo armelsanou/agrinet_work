@@ -2052,13 +2052,7 @@ svg {
 	will-change: transform;
   }
   
-  .slide {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-  }
+  
   .slide.active .slide__overlay,
   .slide.active .slide__text {
 	opacity: 1;
@@ -2089,9 +2083,7 @@ svg {
 	  background-color: rgba(233, 156, 126, 0.8);
 	}
   }
-  .slide:nth-child(2) {
-	left: 100%;
-  }
+ 
   .slide:nth-child(2) .slide__bg {
 	left: -50%;
 	background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-2.jpg");
@@ -2276,9 +2268,6 @@ svg {
 .bg_tab_style3 {
     background: #bbbaba;
     color: white;
-<<<<<<< HEAD
-}
-=======
 }
 
 
@@ -2347,4 +2336,4 @@ ul.menu.mt-md-2.ml-auto li a:hover {
 }
 
 
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
+

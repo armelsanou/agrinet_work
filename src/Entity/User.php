@@ -48,12 +48,14 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @Assert\Regex("/^[0-9]{9}$/")
+     * @ORM\Column(type="string", length=255)
      */
     private $numero;
 
     /**
-     * @ORM\Column(type="integer")
+     * @Assert\Regex("/^[0-9]{9}$/")
+     * @ORM\Column(type="string", length=255)
      */
     private $numeroWhatsapp;
 
@@ -75,14 +77,11 @@ class User implements UserInterface
      */
     private $idUser;
 
-<<<<<<< HEAD
-=======
     /**
      * @ORM\Column(name="roles", type="array")
      */
     private $roles = array();
 
->>>>>>> 1e7275f4d3a6172dd4276b06b5f6929de365aab8
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
