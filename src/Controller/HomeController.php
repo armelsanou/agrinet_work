@@ -14,12 +14,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
 class HomeController extends AbstractController
 {
     /**
          * @Route("/", name ="security_welcome")
          */
-        public function index(ActualiteRepository $actualiteRepository,Request $request, ActualiteRepository $listActualiteRepository, ObjectManager $manager,UserPasswordEncoderInterface $encoder){
+
+        public function index( ActualiteRepository $actualiteRepository,Request $request, ActualiteRepository $listActualiteRepository, ObjectManager $manager,UserPasswordEncoderInterface $encoder){
+
             $user = new User();
               $actualite = new Actualite(); 
            $form = $this->createForm(RegistrationType::class, $user);
@@ -41,7 +44,7 @@ class HomeController extends AbstractController
                'form' => $form->createView(),
                'listeActu'=>$listActualiteRepository->findAll(),
                'all_actualite'=>$actualiteRepository->findAll(),
-               
+
            ]);
         }
 }
