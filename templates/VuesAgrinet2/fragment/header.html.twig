@@ -20,7 +20,16 @@
 			<input type="checkbox" id="drop" />
 			<ul class="menu mt-md-2 ml-auto">
 					<li class="mr-lg-4 mr-2"><a href="{{path('security_welcome')}}"><span class="fa fa-home"></span></a></li>
-					<li class="mr-lg-4 mr-2"><a href="{{path('a_propos_de_nous')}}">A propos</a></li>
+					<li class="mr-lg-4 mr-2"><a href="{{path('a_propos_de_nous')}}" class="dropdown-toggle" data-toggle="dropdown">A propos</a>
+							<ul class="dropdown-menu drp_acue">
+								<li><a href="{{path('a_propos_de_nous')}}">A propos</a></li>
+								<li><a href="{{path('nosvaleur')}}">Nos Valeurs</a></li>
+								<li><a href="{{path('organisation')}}">Organisation</a></li>
+								<li><a href="{{path('strategie_action')}}">Stratégie d’actions</a></li>
+								
+							
+							</ul>
+					</li>
 				
 				<li class="mr-lg-4 mr-2 dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Formation & expertise <b class="caret"></b></a>

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class DevenirExpertType extends AbstractType
@@ -26,14 +27,10 @@ class DevenirExpertType extends AbstractType
                     'Pirate' => 'arr',
                 ],
             ])
-            ->add('pays',ChoiceType::class,[
-                'choices' => [
-                    'English' => 'en',
-                    'Spanish' => 'es',
-                    'Bork'   => 'muppets',
-                    'Pirate' => 'arr',
-                ],
-            ])
+            ->add('pays',CountryType::class,array( 'label' => 'Pays',
+            'preferred_choices' => array('FR'),
+            'choice_translation_locale' => null
+            ))
             ->add('ville',ChoiceType::class,[
                 'choices' => [
                     'English' => 'en',

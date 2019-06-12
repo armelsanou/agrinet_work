@@ -216,6 +216,11 @@ li > a:only-child:after { content: ''; }
 
 @media all and (max-width : 991px) {
 
+	.bloc_design_perso_creew_espace{
+		    position: relative;
+    top: -41px;
+	}
+
 	#logo {
 		display: block;
 		padding: 0;
@@ -245,14 +250,17 @@ li > a:only-child:after { content: ''; }
 
 	/* Stylinf the toggle lable */
 	.toggle {
-		display: block;
-		padding: 5px 15px;
-		font-size: 20px;
-		text-decoration: none;
-		border: none;
-		float: right;
-		background-color: #009f4d;
-		color: #fff;
+		    display: block;
+    padding: 5px 15px;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+    left: 267px;
+    /* float: left!important; */
+    background-color: #009f4d;
+    color: #fff;
+	position: relative;
+	    top: -58px;
 	}
 	.menu .toggle {
 		float: none;
@@ -269,6 +277,13 @@ li > a:only-child:after { content: ''; }
 		color:#333;
 		background-color: #fff;
 	}
+	.blocContent {
+    background-position: bottom;
+    height:auto!important;
+}
+.liste_design{
+	overflow-x: scroll!important;
+}
 
 	/* Display Dropdown when clicked on Parent Lable */
 	[id^=drop]:checked + ul {
@@ -1805,9 +1820,7 @@ strong.textePer{
 	border: 10px solid #eee !important;
 }
 
-.lib-panel {
-    margin-bottom: 20Px;
-}
+
 .lib-panel img {
     width: 100%;
     background-color: transparent;
@@ -1860,9 +1873,7 @@ strong.textePer{
     left: 20px;
 }
 
-.row-margin-bottom {
-    margin-bottom: 20px;
-}
+
 
 .box-shadow {
     -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.10);
@@ -1888,7 +1899,7 @@ img.lib-img-show.imageActu {
 
 ul.list-group.list-group-flush.tailleImgTextActu li {
     padding-top: 3px;
-	height: 107px;
+	/*height: 107px;*/
 	background: #eaeaea;
 }
 
@@ -2287,7 +2298,7 @@ h5.content_actu {
 	padding: -8px;
 	
 		position: relative;
-		height: 61px;
+		height: 66px;
 		overflow: hidden;
 		display: block;
 		font-size: 13px;
@@ -2337,3 +2348,15 @@ ul.menu.mt-md-2.ml-auto li a:hover {
 
 
 
+<<<<<<< HEAD
+=======
+
+	.bloc_design_perso_creew_espace{
+	padding-top: 78px;
+	}
+
+.blocContent {
+    background-position: bottom;
+    height: 322px;
+}
+>>>>>>> 52a665126145b252e358d66b316cd57a26d2d3c1

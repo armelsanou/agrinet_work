@@ -15,87 +15,120 @@
 
 <script src="{{asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js')}}"></script>
 
+<style>
+    .form-group.perso_design_commande div >label {
+    display: none;
+}
+</style>
+
 <!-- banner -->
 <div class="inner-banner" id="home">
 	<div class="container">
 	</div>
 </div>
-<!-- //banner -->
 
-<!-- about -->
-<section class="about py-5" id="about">
-	<div class="container py-lg-5 py-sm-3">
-      <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
-      <div class="row phyto_design">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                           
-                            
-                                <form action="{{path('phytopharmacie')}}" method="get">
-                                         <select class="form-control culture" name="culture"  onchange="submit()">
-                                            {% for culture in listePhyto %}
-                                              <option id="1" >
-                                                  {{culture.culture}}
-                                              </option>
-                                              {% endfor %}
-                                              
-                                          </select>
-                                          
-                                          <select class="form-control form-control-sm enemie" name="enemie"  >
-                                              {% for culture in listePhyto %}
-                                              <option name="enemie">
-                                                  {{culture.enemie}}
-                                              </option>
-                                              {% endfor %}
-                                              
-                                          </select>
-                            
-                                          <select class="form-control form-control-sm Nom_commercial" name="nom_commercial">
-                                            {% for culture in listePhyto %}
-                                              <option name="nomCommercial">
-                                                  {{culture.nomCommercial}}
-                                              </option>
-                                              {% endfor %}
-                                              
-                                          </select>
-                            
-                                          <select class="form-control form-control-sm Sociéte" name="societe">
-                                            {% for culture in listePhyto %}
-                                              <option name="societe">
-                                                  {{culture.societe}}
-                                              </option>
-                                              {% endfor %}
-                                          </select>
-                            
-                                          <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
-                                            {% for culture in listePhyto %}
-                                              <option name="matiereActive">
-                                                  {{culture.matiereActive}}
-                                              </option>
-                                              {% endfor %}
-                                          </select>
-                            
-                                          <select class="form-control form-control-sm Classe" name="classe">
-                                            {% for culture in listePhyto %}
-                                              <option name="classe">
-                                                  {{culture.classe}}
-                                              </option>
-                                              {% endfor %}
-                                          </select>
-                                          <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
-                                          <button  class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
-              
+      <h3 class="heading mb-sm-5 mt-4 text-center"> PHYTOPHARMACIE</h3>
+    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                    <div class="col-md-3">
+                        <img src="{{asset('StyleAgrinet2/images/etoile.jpg')}}">
+                    </div>
+                        <div class="col-md-4  phyto_design">
+                        
+                                        <form action="{{path('phytopharmacie')}}" method="get">
+                                            <label for="culture">culture</label>
+                                            <select class="form-control culture" name="culture" onchange="submit()">
+                                                {% for culture in listePhyto %}
+                                                <option id="1">
+                                                    {{culture.culture}}
+                                                </option>
+                                                {% endfor %}
+                                
+                                            </select>
+                                            <label for="culture">Ennemi</label>
+                                            <select class="form-control form-control-sm enemie" name="enemie">
+                                                {% for culture in listePhyto %}
+                                                <option name="enemie">
+                                                    {{culture.enemie}}
+                                                </option>
+                                                {% endfor %}
+                                
+                                            </select>
+                                            <label for="culture">Matière Active</label>
+                                            <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
+                                                {% for culture in listePhyto %}
+                                                <option name="matiereActive">
+                                                    {{culture.matiereActive}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                
+                                            <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
+                                            <button class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
+                                
                                         </form>
+                                
+                                    
+                        </div>
+                        <div class="col-md-3 mt-4">
+                            
+                            <div class="card" style="    padding: 15px;">
+                              
+                                    <form action="{{path('commander')}}" method="POST">   
+                                <div class="form-group perso_design_commande">
+                            
+                                    {{form_row(formCommand.nomCommercial, {'attr': {'placeholder':'nom Commercial','class':'form-control'}})}}
+                                </div>
+                                <div class="form-group perso_design_commande">
+                            
+                                    {{form_row(formCommand.quantite, {'attr': {'placeholder':'quantite','class':'form-control'}})}}
 
-                          </div>
-                          <div class="col-md-4"></div>
-    
-      </div>       
-    </div>
- 
-  <div class="container">
+                                </div>
+                                <div class="form-group perso_design_commande">
+                                                
+                                {{form_row(formCommand.pointDeLivraison, {'attr': {'placeholder':'point de Livraison','class':'form-control'}})}}
+                                                
+                                </div>
+                                <div class="form-group perso_design_commande">
+                                            
+                                {{form_row(formCommand.telephone, {'attr': {'placeholder':'695390226','class':'form-control'}})}}
+                                            
+                                </div>
+                            <center><button type="submit" class="btn btn-sm btn-secondary">Passer Votre Commande</button></center>
+
+                        
+                               
+                            </div>
+                        </form>
+                                <div class="col-md-1">
+                                                
+                                </div>
+   
+                        </div>
+        </div>
+<h3 class="heading mb-sm-5 mt-6 text-center" style="position: relative;
+    margin-top: 33px;"> PHYTOPHARMACIE</h3>
+  <div class="container liste_design">
       <div class="col md-12">
-          <h3 class="heading mb-sm-5 mb-4 text-center"> PHYTOPHARMACIE</h3>
+          
           {% if is_granted('ROLE_ADMIN') %}
           <span>
                 <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
@@ -112,7 +145,8 @@
                       <td>Nom commercial</td>
                       <td>Société</td>
                       <td>Matière active (teneur)</td>
-                      <td>Classe</td>
+                        <td>Dosage</td>
+                      <td>Localité</td>
                 
                   </tr>
               </thead>

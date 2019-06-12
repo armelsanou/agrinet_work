@@ -24,8 +24,10 @@
 		<div class="row">
 						<div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
 				<p> </p>
-                <p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span>Nous réalisons des œuvres de vulgarisation originales (livres, articles, fiches techniques...), vulgarise des travaux existants. 
-                    Ses projets sont souvent réalisés en partenariat avec des organismes publics ou privés.</p>
+				<p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span>
+					Les fiches techniques répondent en langage simple aux questions : que planter, où planter, comment planter, comment
+					entretenir sa plantation, comment protéger sa culture, comment récolter et conserver sa production.
+				</p>
 			</div>
 		</div>
 	</div>
@@ -45,7 +47,8 @@ aria-pressed="false" data-target="#exampleModal24" data-blast="bgColor"> <span c
         {% for document in  bibliothequeDoc %}
         
 			<div class="col-lg-4 item">
-                <a href="{{path('download_document')}}">
+                <a href="#" data-toggle="modal" aria-pressed="false" data-target="#exampleModal55"
+							data-blast="bgColor">
 				<div class="feedback-info pt-5 pb-4 px-4 bloc1-bibl">
 					<h3 class="mb-3">
                         {{document.name}}
@@ -73,7 +76,7 @@ aria-pressed="false" data-target="#exampleModal24" data-blast="bgColor"> <span c
                        
 
 {% include "VuesAgrinet2/fragment/modal_biblioteque.html.twig" %}
-
+{% include "VuesAgrinet2/fragment/modal_recevoir_doc.html.twig" %}
 	<!-- //footer -->
 
 	<!-- move top icon -->

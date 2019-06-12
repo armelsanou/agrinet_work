@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\RecapElevage;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 //use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -48,14 +49,24 @@ class User implements UserInterface
     private $email;
 
     /**
+<<<<<<< HEAD
      * @Assert\Regex("/^[0-9]{9}$/")
      * @ORM\Column(type="string", length=255)
+=======
+     * @ORM\Column(type="string")
+     * @Assert\Regex("/^[0-9]{9}$/")
+>>>>>>> 52a665126145b252e358d66b316cd57a26d2d3c1
      */
     private $numero;
 
     /**
+<<<<<<< HEAD
      * @Assert\Regex("/^[0-9]{9}$/")
      * @ORM\Column(type="string", length=255)
+=======
+     * @ORM\Column(type="string")
+     * @Assert\Regex("/^[0-9]{9}$/")
+>>>>>>> 52a665126145b252e358d66b316cd57a26d2d3c1
      */
     private $numeroWhatsapp;
 
@@ -82,9 +93,22 @@ class User implements UserInterface
      */
     private $roles = array();
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Command", mappedBy="relation")
+     */
+    private $commands;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Command", mappedBy="user")
+     */
+    private $relation;
+
+
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
+        $this->commands = new ArrayCollection();
+        $this->relation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -265,4 +289,68 @@ class User implements UserInterface
         public function getUsername(){
             return $this->noms;
         }
+
+        /**
+         * @return Collection|Command[]
+         */
+        public function getCommands(): Collection
+        {
+            return $this->commands;
+        }
+
+        public function addCommand(Command $command): self
+        {
+            if (!$this->commands->contains($command)) {
+                $this->commands[] = $command;
+                $command->setRelation($this);
+            }
+
+            return $this;
+        }
+
+        public function removeCommand(Command $command): self
+        {
+            if ($this->commands->contains($command)) {
+                $this->commands->removeElement($command);
+                // set the owning side to null (unless already changed)
+                if ($command->getRelation() === $this) {
+                    $command->setRelation(null);
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Command[]
+         */
+        public function getRelation(): Collection
+        {
+            return $this->relation;
+        }
+
+        public function addRelation(Command $relation): self
+        {
+            if (!$this->relation->contains($relation)) {
+                $this->relation[] = $relation;
+                $relation->setUser($this);
+            }
+
+            return $this;
+        }
+
+        public function removeRelation(Command $relation): self
+        {
+            if ($this->relation->contains($relation)) {
+                $this->relation->removeElement($relation);
+                // set the owning side to null (unless already changed)
+                if ($relation->getUser() === $this) {
+                    $relation->setUser(null);
+                }
+            }
+
+            return $this;
+        }
+
+
 }

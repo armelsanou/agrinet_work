@@ -8,7 +8,11 @@
 
 {% block body %}
 
-
+<style>
+span.desin_ju {
+    color: #ff0000c4;
+}
+</style>
 
 <script src="{{asset('StyleAgrinet2/js/jquery.min.js')}}"></script>
 
@@ -128,13 +132,13 @@
                             <td ></td>
                             <td class="bg_tab_style">nom</td>
                             <td class="bg_tab_style">Quantité utilisée</td>
-                            <td class="bg_tab_style">unité</td>
+                            <td class="bg_tab_style">unité de mesure</td>
                             <td class="bg_tab_style">Prix d’achat</td>
                             <td class="bg_tab_style">nom</td>
-                            <td class="bg_tab_style">Quantité</td>
+                            <td class="bg_tab_style">Quantité + unite</td>
                             <td class="bg_tab_style">Prix</td>
                             <td class="bg_tab_style">nom</td>
-                            <td class="bg_tab_style">Quantité</td>
+                            <td class="bg_tab_style">Quantité + unite</td>
                             <td class="bg_tab_style">Prix</td>
                             <td class="bg_tab_style2">nombre</td>
                             <td class="bg_tab_style2">Prix/Valeur</td>
@@ -144,7 +148,9 @@
                             <td class="bg_tab_style2">Cout</td>
                             <td></td>
                             <td></td>
-                            <td colspan="2"></td>
+                            <td></td>
+                            <td></td>
+                          
                             
                         </tr>
                     
@@ -175,7 +181,12 @@
                             <td class="text-center bg_tab_style2"><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
-                            <td colspan="2" class="input_td"><div ><input class="form-control input-sm" value=""></div></td>   
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
                        
                       
                     </tr>
@@ -204,7 +215,12 @@
                             <td class="text-center bg_tab_style2"><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
-                            <td colspan="2" class="input_td"><div ><input class="form-control input-sm" value=""></div></td>   
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
                        
                       
                     </tr>
@@ -232,7 +248,12 @@
                             <td class="text-center bg_tab_style2"><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
                             <td><div class="input_td"><input class="form-control input-sm" value=""></div></td>
-                            <td colspan="2" class="input_td"><div ><input class="form-control input-sm" value=""></div></td>   
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
+                        <td>
+                            <div class="input_td"><input class="form-control input-sm" value=""></div>
+                        </td>
                        
                       
                     </tr>
@@ -242,7 +263,7 @@
             
           
             <button class="btn btn-dark btn_ajouter_colonne_tab" id="add"><span class="fa fa-plus-circle btn_ajter_colonne"></span></button>
-            <p>cliquer ici pour ajouter une nouvelle ligne</p>
+           <span class="desin_ju">(cliquer ici pour ajouter une nouvelle ligne)</span>
             
         
         </div>
@@ -262,7 +283,7 @@
                         <tr class="bg_tab_style">
                             <td>Date</td>
                             <td>Utilisation du rendement</td>
-                            <td>Quantité</td>
+                            <td>Quantité + unite</td>
                             <td>Unité</td>
                             <td>Prix / Valeur</td>
                             <td>Revenu</td>
