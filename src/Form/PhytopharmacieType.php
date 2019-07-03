@@ -28,6 +28,12 @@ class PhytopharmacieType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Phytopharmarcie::class,
+            'method' => 'get',
+            'csrf_protection' =>false
         ]);
+    }
+
+    public function getBlockPrefix(){
+        return '';
     }
 }

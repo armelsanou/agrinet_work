@@ -11,14 +11,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\SecurityController;
+use App\Repository\ActualiteRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class NewslettersController extends AbstractController
 {
     /**
      * @Route("/newsletters", name="newsletters")
      */
-    public function index(ObjectManager $manager, NewslettersRepository $BibliothequeRepository, Request $request)
-    {
+    public function index(NewslettersRepository $BibliothequeRepository, Request $request,
+                          ActualiteRepository $listActualiteRepository,
+                          UserPasswordEncoderInterface $encoder, 
+                          ObjectManager $manager, 
+                          SecurityController $injector){
+            //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
+            //registration qui se trouve dans SecurityController
+            //afin de pouvoir créer un compte dans cette page
+            $injector->registration($request,$listActualiteRepository,$manager,$encoder);
          $user = new User();
            $form = $this->createForm(RegistrationType::class, $user);
            $form->handleRequest($request);
