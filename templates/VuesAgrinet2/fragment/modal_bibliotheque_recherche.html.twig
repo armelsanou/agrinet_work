@@ -1,0 +1,27 @@
+<div class="modal fade" id="exampleModal25" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel25"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modalPerso">
+        <div class="modal-header">
+            <h5 class="modal-title text-white" id="exampleModalLabel1">creer parametres de recherche</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {{ form_start(formrecherche)}}
+
+                       <div class="form-group">
+                       {{form_row(formrecherche.categorie, { 'label': 'categorie', 'attr': {'placeholder':'categorie','class':'form-control'}}) }}
+                       {{form_row(formrecherche.cultureElevage, { 'label': 'culture/élevage', 'attr': {'placeholder':'culture/elevage','class':'form-control'}}) }}
+                       {{form_row(formrecherche.localiteRegion, { 'label': 'localité/région', 'attr': {'placeholder':'localité/région','class':'form-control'}}) }}
+                      
+                       </div>
+
+                       <button type="submit" class="btn btn-success">Ajouter</button>
+
+                       {{form_end(formrecherche)}}
+        </div>
+    </div>
+</div>
+</div>

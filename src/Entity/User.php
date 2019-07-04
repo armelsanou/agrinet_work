@@ -103,12 +103,12 @@ class User implements UserInterface
      */
     private $relation;
 
-
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
         $this->commands = new ArrayCollection();
         $this->relation = new ArrayCollection();
+        $this->commandBibliothequeAgricoles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -346,6 +346,37 @@ class User implements UserInterface
                 // set the owning side to null (unless already changed)
                 if ($relation->getUser() === $this) {
                     $relation->setUser(null);
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|CommandBibliothequeAgricole[]
+         */
+        public function getCommandBibliothequeAgricoles(): Collection
+        {
+            return $this->commandBibliothequeAgricoles;
+        }
+
+        public function addCommandBibliothequeAgricole(CommandBibliothequeAgricole $commandBibliothequeAgricole): self
+        {
+            if (!$this->commandBibliothequeAgricoles->contains($commandBibliothequeAgricole)) {
+                $this->commandBibliothequeAgricoles[] = $commandBibliothequeAgricole;
+                $commandBibliothequeAgricole->setRelation($this);
+            }
+
+            return $this;
+        }
+
+        public function removeCommandBibliothequeAgricole(CommandBibliothequeAgricole $commandBibliothequeAgricole): self
+        {
+            if ($this->commandBibliothequeAgricoles->contains($commandBibliothequeAgricole)) {
+                $this->commandBibliothequeAgricoles->removeElement($commandBibliothequeAgricole);
+                // set the owning side to null (unless already changed)
+                if ($commandBibliothequeAgricole->getRelation() === $this) {
+                    $commandBibliothequeAgricole->setRelation(null);
                 }
             }
 

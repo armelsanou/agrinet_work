@@ -51,6 +51,11 @@ class Command
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $varieteRace;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,6 +129,18 @@ class Command
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getVarieteRace(): ?string
+    {
+        return $this->varieteRace;
+    }
+
+    public function setVarieteRace(string $varieteRace): self
+    {
+        $this->varieteRace = $varieteRace;
 
         return $this;
     }

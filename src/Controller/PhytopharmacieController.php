@@ -26,9 +26,13 @@ class PhytopharmacieController extends AbstractController
         public function phytopharmacie(ObjectManager $manager, PhytopharmarcieRepository $phytopharmarcieRepository, Request $request): Response{
            
             $command = new Command();
+
             $formCommand = $this->createForm(CommandType::class, $command);
+            
             $user = new User();
+
             $phytopharmacie = new Phytopharmarcie();
+
             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
             
              $form = $this->createForm(RegistrationType::class, $user);

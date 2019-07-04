@@ -2,28 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Command;
+use App\Entity\BibliothequeRecherche;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CommandType extends AbstractType
+class BibliothequeRechercheType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomCommercial')
-            ->add('varieteRace')
-            ->add('quantite')
-            ->add('pointDeLivraison')
-            ->add('telephone')
+            ->add('categorie')
+            ->add('cultureElevage')
+            ->add('localiteRegion')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Command::class,
+            'data_class' => BibliothequeRecherche::class,
+            'method' => 'get',
+            'csrf_protection' => false
         ]);
+    }
+    public function getBlockPrefix(){
+        return '';
     }
 }

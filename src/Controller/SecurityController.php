@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
         /**
          * @Route("/login", name ="security_login" , methods={"GET", "POST"})
          */
-        public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
+        public function login(AuthenticationUtils $authenticationUtils, Request $request)
         {
             $session = $request->getSession();
             if (!$session->has('fisrt_connexion')) $session->set('fisrt_connexion', array());

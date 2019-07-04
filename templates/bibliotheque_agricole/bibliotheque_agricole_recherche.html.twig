@@ -1,0 +1,131 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::bibliotheque agricole {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+<section class="about" id="about">
+        <h3 class="heading mb-sm-5 mb-4 text-center"> Variétés & Races</h3>
+			   <center> <p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span >
+					 Trouvez ici toutes les meilleures variétés de culture et races d'élevages pratiquées dans chaque zone du cameroun
+                </p>
+                </center>
+		</div>
+</section>
+        <!-- modalpour creer les paramatres de recherche  -->
+        {% if is_granted('ROLE_ADMIN') %}
+        <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+        aria-pressed="false" data-target="#exampleModal25" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+        </button></span>
+        {% endif %}
+
+        <!-- modal pour creer les varietes et races -->
+        {% if is_granted('ROLE_ADMIN') %}
+        <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+        aria-pressed="false" data-target="#exampleModal26" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+        </button></span>
+        {% endif %}
+
+    <div class="container">    
+        <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 card rechercher">
+                <form action="" method="get">
+                    <div class="form-group perso_design_commande"> 
+                        <label for="categorie">Categorie</label>
+                         <select class="form-control culture" name="culture" onchange="submit()">
+                        {% for categorie in listeBiblioRecherche %}
+                        <option id="1">
+                            {{categorie.categorie}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group perso_design_commande">         
+                        <label for="culture">Culture/Elevage</label>
+                        <select class="form-control form-control-sm enemie" name="enemie">
+                        {% for elevage in listeBiblioRecherche %}
+                        <option name="enemie">
+                            {{elevage.cultureElevage}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group perso_design_commande">
+                        <label for="culture">Localite/Region</label>
+                        <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
+                        {% for localite in listeBiblioRecherche %}
+                        <option name="matiereActive">
+                            {{localite.localiteRegion}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>        
+                    <center><button class="btn btn-warning btn_desin_perso">Rechercher</button></center>
+                </form>
+            </div>
+            <div class="col-1">
+
+                </div>
+            <div class="col-md-3 card commander">      
+                <form action="{{path('commander')}}" method="POST">   
+                            <div class="form-group perso_design_commande">
+                    
+                            {{form_row(formCommand.varieteRace, {'attr': {'placeholder':'variete et race','class':'form-control'}})}}
+                             </div>
+                             <div class="form-group perso_design_commande">
+                    
+                            {{form_row(formCommand.quantite, {'attr': {'placeholder':'quantite','class':'form-control'}})}}
+
+                            </div>
+                             <div class="form-group perso_design_commande">
+                                        
+                            {{form_row(formCommand.pointDeLivraison, {'attr': {'placeholder':'point de Livraison','class':'form-control'}})}}
+                                        
+                            </div>
+                            <div class="form-group perso_design_commande">
+                                    
+                            {{form_row(formCommand.telephone, {'attr': {'placeholder':'695390226','class':'form-control'}})}}
+                                    
+                            </div>
+                            <center><button type="submit" class="btn btn-sm btn-secondary">Passer Votre Commande</button></center> 
+                    </div>
+                </form>
+            <div class="col-md-4 image">
+                <img src="{{asset('StyleAgrinet2/images/etoile.jpg')}}">
+            </div>
+        </div>
+        </div> 
+
+        <table class="col-md-12 table table-borded table-striped table_phytopharmacie mt-4" id="table-list3" style="overflow-x: auto !important;">
+                <thead class="table-dark">
+                    <tr class=""> 
+                        <td>Variétés/Races</td>
+                        <td>Caractéristiques</td>
+                    </tr>
+                </thead>
+                <tbody class="tab_new_style">
+                    <tr class="">
+                        <td>perte perte</td>      
+                    </tr>
+
+                        <td>perte perte</td>      
+                </tbody>
+              
+                
+            </table> 
+    </div>
+
+    {% include "VuesAgrinet2/fragment/modal_bibliotheque_recherche.html.twig" %}
+    {% include "VuesAgrinet2/fragment/modal_variete_races_caracteristique.html.twig" %}
+{% endblock %}
