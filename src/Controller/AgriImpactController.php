@@ -10,13 +10,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Controller\SecurityController;
 
 class AgriImpactController extends AbstractController
 {
     /**
          * @Route("/agri_impact", name ="agri_impact")
          */
-        public function agri_impact(ObjectManager $manager, ActualiteRepository $listActualiteRepository, Request $request){
+        public function agri_impact(ObjectManager $manager, 
+                                    ActualiteRepository $listActualiteRepository, 
+                                    Request $request,
+                                    UserPasswordEncoderInterface $encoder,
+                                    SecurityController $injector){
+  try
+    {
+            //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
+            //registration qui se trouve dans SecurityController
+            //afin de pouvoir créer un compte dans cette page
+            $injector->registration($request,$listActualiteRepository,$manager,$encoder);
+
             $user = new User();
             $actualite = new Actualite();
   
@@ -26,5 +39,9 @@ class AgriImpactController extends AbstractController
             'form' => $form->createView(),
             'listeActu'=>$listActualiteRepository->findAll()
         ]);
+        
+    }catch(Exception $exception){
+                $this->addFlash('errorConnexion', 'Please Check your connexion!');
+        }
     }
 }

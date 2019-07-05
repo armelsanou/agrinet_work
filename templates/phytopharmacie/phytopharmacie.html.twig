@@ -55,7 +55,7 @@
                         
                                         <form action="{{path('phytopharmacie')}}" method="get">
                                             <label for="culture">culture</label>
-                                            <select class="form-control culture" name="culture" onchange="submit()">
+                                            <select class="form-control culture" name="culture">
                                                 {% for culture in listePhyto %}
                                                 <option id="1">
                                                     {{culture.culture}}
@@ -81,11 +81,10 @@
                                                 {% endfor %}
                                             </select>
                                 
-                                            <button class="btn btn-warning pull-left btn_desin_perso">Rechercher</button>
-                                            <button class="btn btn-warning pull-right btn_desin_perso" type="submit">Rafraichir</button>
-                                
+                                            <button class="btn btn-warning pull-left btn_desin_perso" type="submit">Rechercher</button>
+                                           
                                         </form>
-                                
+                                <button class="btn btn-warning pull-right btn_desin_perso" type="reset">Rafraichir</button>
                                     
                         </div>
                         <div class="col-md-3 mt-4">
@@ -153,6 +152,7 @@
               </thead>
               <tbody class="tab_new_style">
 
+<<<<<<< HEAD
                  {% for listeAll in resultCulture %}
                   <tr class="">
                       <td>{{listeAll.culture}}</td>
@@ -163,6 +163,16 @@
                       <td>{{listeAll.classe}}</td>
                       <td>{{listeAll.localite}}</td>
                       <td>{{listeAll.niveauToxicite}}</td>
+=======
+                 {% for resultat in result %}
+                  <tr class="">
+                      <td>{{resultat.culture}}</td>
+                      <td>{{resultat.enemie}}</td>
+                      <td>{{resultat.nomCommercial}}</td>
+                      <td>{{resultat.societe}}</td>
+                      <td>{{resultat.matiereActive}}</td>
+                      <td>{{resultat.classe}}</td>
+>>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
                      
                   </tr>
                   {% endfor %}

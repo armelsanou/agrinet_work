@@ -6,19 +6,35 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\DevenirExpert;
 use App\Form\RegistrationType;
+use App\Repository\ActualiteRepository;
 use App\Form\DevenirExpertType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\File\File;
+=======
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Controller\SecurityController;
+>>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
 
 class DevenirExpertController extends AbstractController
 {
-    /**
+        /**
          * @Route("/devenir_expert", name ="devenir_expert", methods={"GET", "POST"})
          */
-        public function devenir_expert(Request $request, ObjectManager $manager){
+        public function devenir_expert(Request $request, 
+                                       ActualiteRepository $listActualiteRepository,
+                                       UserPasswordEncoderInterface $encoder, 
+                                       ObjectManager $manager, 
+                                       SecurityController $injector){
+           
+            //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
+            //registration qui se trouve dans SecurityController
+            //afin de pouvoir créer un compte dans cette page
+            $injector->registration($request,$listActualiteRepository,$manager,$encoder);
+          
             $user = new User();
             $devenirExpert = new DevenirExpert();
             $FormDevenirExpert = $this->createForm(DevenirExpertType::class, $devenirExpert);
