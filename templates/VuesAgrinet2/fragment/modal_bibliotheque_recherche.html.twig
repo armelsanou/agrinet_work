@@ -9,18 +9,18 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
-            {{ form_start(formrecherche)}}
+            {{ form_start(formulaie)}}
 
                        <div class="form-group">
-                       {{form_row(formrecherche.categorie, { 'label': 'categorie', 'attr': {'placeholder':'categorie','class':'form-control'}}) }}
-                       {{form_row(formrecherche.cultureElevage, { 'label': 'culture/élevage', 'attr': {'placeholder':'culture/elevage','class':'form-control'}}) }}
-                       {{form_row(formrecherche.localiteRegion, { 'label': 'localité/région', 'attr': {'placeholder':'localité/région','class':'form-control'}}) }}
+                       {{form_row(formulaie.categorie, { 'label': 'categorie', 'attr': {'placeholder':'categorie','class':'form-control'}}) }}
+                       {{form_row(formulaie.cultureElevage, { 'label': 'culture/élevage', 'attr': {'placeholder':'culture/elevage','class':'form-control'}}) }}
+                       {{form_row(formulaie.localiteRegion, { 'label': 'localité/région', 'attr': {'placeholder':'localité/région','class':'form-control'}}) }}
                       
                        </div>
 
                        <button type="submit" class="btn btn-success">Ajouter</button>
 
-                       {{form_end(formrecherche)}}
+                       {{form_end(formulaie)}}
         </div>
     </div>
 </div>

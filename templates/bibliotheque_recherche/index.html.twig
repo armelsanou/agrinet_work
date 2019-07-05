@@ -1,0 +1,156 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::bibliotheque agricole {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+        <div class="container">
+        </div>
+    </div>
+    <!-- //banner -->
+    <section class="about" id="about">
+            <h3 class="heading mb-sm-5 mb-4 text-center"> Variétés & Races</h3>
+                   <center> <p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span >
+                         Trouvez ici toutes les meilleures variétés de culture et races d'élevages pratiquées dans chaque zone du cameroun
+                    </p>
+                    </center>
+            </div>
+    </section>
+<!-- modalpour creer les paramatres de recherche  -->
+{% if is_granted('ROLE_ADMIN') %}
+ 
+<a href="{{ path('bibliotheque_recherche_new') }}"><button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+    aria-pressed="false" data-target="#exampleModal25" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+    </button></span></a>
+{% endif %}
+
+<!-- modal pour creer les varietes et races -->
+{% if is_granted('ROLE_ADMIN') %}
+<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+aria-pressed="false" data-target="#exampleModal26" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+</button></span>
+{% endif %}    
+
+<div class="container">    
+        <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 card rechercher">
+                <form action="" method="get">
+                    <div class="form-group perso_design_commande"> 
+                        <label for="categorie">Categorie</label>
+                         <select class="form-control culture" name="categorie" onchange="submit()">
+                        {% for categorie in bibliotheque_recherches %}
+                        <option id="1">
+                            {{categorie.categorie}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group perso_design_commande">         
+                        <label for="culture">Culture/Elevage</label>
+                        <select class="form-control form-control-sm enemie" name="cultureElevage">
+                                {% for elevage in bibliotheque_recherches %}
+                        <option name="enemie">
+                            {{elevage.cultureElevage}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group perso_design_commande">
+                        <label for="culture">Localite/Region</label>
+                        <select class="form-control form-control-sm Matiere_Active" name="localiteRegion">
+                                {% for localite in bibliotheque_recherches %}
+                        <option name="matiereActive">
+                            {{localite.localiteRegion}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                    </div>        
+                    <center><button class="btn btn-warning btn_desin_perso">Rechercher</button></center>
+                </form>
+            </div>
+            <div class="col-1">
+
+                </div>
+           
+               
+            <div class="col-md-4 image">
+                <img src="{{asset('StyleAgrinet2/images/etoile.jpg')}}">
+            </div>
+        </div>
+        </div> 
+
+        <table class="col-md-12 table table-borded table-striped table_phytopharmacie mt-4" id="table-list3" style="overflow-x: auto !important;">
+                <thead class="table-dark">
+                    <tr class=""> 
+                        <td>Variétés/Races</td>
+                        <td>Caractéristiques</td>
+                    </tr>
+                </thead>
+                <tbody class="tab_new_style">
+
+                </tbody>
+              
+                
+            </table> 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categorie</th>
+                <th>CultureElevage</th>
+                <th>LocaliteRegion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bibliotheque_recherche in bibliotheque_recherches %}
+            <tr>
+                <td>{{ bibliotheque_recherche.id }}</td>
+                <td>{{ bibliotheque_recherche.categorie }}</td>
+                <td>{{ bibliotheque_recherche.cultureElevage }}</td>
+                <td>{{ bibliotheque_recherche.localiteRegion }}</td>
+                <td>
+                    <a href="{{ path('bibliotheque_recherche_show', {'id': bibliotheque_recherche.id}) }}">show</a>
+                    <a href="{{ path('bibliotheque_recherche_edit', {'id': bibliotheque_recherche.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bibliotheque_recherche_new') }}">Create new</a>
+
+
+    
+{% endblock %}

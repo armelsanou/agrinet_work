@@ -22,19 +22,20 @@ class BibliothequeRechercheRepository extends ServiceEntityRepository
     // /**
     //  * @return BibliothequeRecherche[] Returns an array of BibliothequeRecherche objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+     //méthode pour rechercher uniquement en fonction de la catégorie
+    public function findByCategorie($value): array
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.categorie = :val')
             ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
+            //->orderBy('b.id', 'ASC')
+            //->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?BibliothequeRecherche
@@ -48,32 +49,32 @@ class BibliothequeRechercheRepository extends ServiceEntityRepository
     }
     */
 
-    /**
-     * Undocumented function
-     *
-     * @param BibliothequeRecherche $search
-     * @return Query
-     */
-    public function findAllVisibleQuery(BibliothequeRecherche $search) :Query
-    {
-        $query =$this->findVisibleQuery();
+    // /**
+    //  * Undocumented function
+    //  *
+    //  * @param BibliothequeRecherche $search
+    //  * @return Query
+    //  */
+    // public function findAllVisibleQuery(BibliothequeRecherche $search) :Query
+    // {
+    //     $query =$this->findVisibleQuery();
         
-        if ($search->getCategorie()) {
-            $query = $query 
-                    ->andwhere('c.categorie = :categorie')
-                    -setParameter('categorie', $search->getCategorie());
-        }
-        if ($search->getCultureElevage()) {
-            $query = $query 
-                    ->andwhere('c.cultureElevage = :cultureelevage')
-                    -setParameter('cultureElevage', $search->getCultureElevage());
-        }
-        if ($search->getLocaliteRegion()) {
-            $query = $query 
-                    ->andwhere('c.LocaliteRegion = :localiteregion')
-                    -setParameter('localiteregion', $search->getLocaliteRegion());
-        }
+    //     if ($search->getCategorie()) {
+    //         $query = $query 
+    //                 ->andwhere('c.categorie = :categorie')
+    //                 -setParameter('categorie', $search->getCategorie());
+    //     }
+    //     if ($search->getCultureElevage()) {
+    //         $query = $query 
+    //                 ->andwhere('c.cultureElevage = :cultureelevage')
+    //                 -setParameter('cultureElevage', $search->getCultureElevage());
+    //     }
+    //     if ($search->getLocaliteRegion()) {
+    //         $query = $query 
+    //                 ->andwhere('c.LocaliteRegion = :localiteregion')
+    //                 -setParameter('localiteregion', $search->getLocaliteRegion());
+    //     }
         
-        return $query->getQuery();
-    }
+    //     return $query->getQuery();
+    // }
 }
