@@ -12,12 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-<<<<<<< HEAD
-use Symfony\Component\HttpFoundation\File\File;
-=======
+
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Controller\SecurityController;
->>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
 
 class DevenirExpertController extends AbstractController
 {

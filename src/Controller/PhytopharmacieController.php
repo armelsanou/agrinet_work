@@ -24,57 +24,7 @@ class PhytopharmacieController extends AbstractController
     /**
          * @Route("/phytopharmacie", name ="phytopharmacie")
          */
-<<<<<<< HEAD
-        public function phytopharmacie(ObjectManager $manager, PhytopharmarcieRepository $phytopharmarcieRepository, Request $request): Response{
-           
-            $command = new Command();
-            $formCommand = $this->createForm(CommandType::class, $command);
-            $user = new User();
-            $phytopharmacie = new Phytopharmarcie();
-            $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
-            
-             $form = $this->createForm(RegistrationType::class, $user);
-            $culture=$request->get("culture");
-            $enemie=$request->get("enemie");
-            $resultCulture = $phytopharmarcieRepository->findByCulture($culture);
-            $resultEnemie = $phytopharmarcieRepository-> findByEnemie( $enemie);
-           
-             $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
-             $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
-             $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
-             $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
-             $resultLocalite = $phytopharmarcieRepository->findByLocalite($phytopharmacie->getLocalite());
-             $resultNiveauToxicite = $phytopharmarcieRepository->findByNiveauToxicite($phytopharmacie->getNiveauToxicite());
-             $formulaire->handleRequest($request);
-             dump($resultNomCommercial);
-             if($formulaire->isSubmitted() && $formulaire->isValid()){
-           
-                  $manager->persist($phytopharmacie);
-                  $manager->flush();
-                  $this->addFlash('success', 'bien enregistré.');
-                return $this->RedirectToRoute('phytopharmacie'); 
-          }
-        
-            return
-            $this->render('phytopharmacie/phytopharmacie.html.twig'
-            , [
-                'controller_name' => 'PhytopharmacieController',
-                'form' => $form->createView(),
-                'formulaire' => $formulaire->createView(),
-                'curent'=>$phytopharmacie,
-                'listePhyto' =>  $phytopharmarcieRepository->findAll(),
-                'resultNomCommercial' => $resultNomCommercial,
-                'resultSociete' => $resultSociete,
-                'resultMatiereActive' => $resultMatiereActive,
-                'resultClasse' => $resultClasse,
-                'resultLocalite' => $resultLocalite,
-                'resultNiveauToxicite' => $resultNiveauToxicite,
-               'resultCulture' => $resultCulture,
-               'resultEnemie' => $resultEnemie,
-                 'formCommand' => $formCommand->createView()
 
-            ]);
-=======
         public function initialisePhytoSelect(ActualiteRepository $listActualiteRepository,
                                       UserPasswordEncoderInterface $encoder,
                                       ObjectManager $manager, 
@@ -195,7 +145,6 @@ class PhytopharmacieController extends AbstractController
         ]);
 
         
->>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
     }
 
 }

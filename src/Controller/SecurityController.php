@@ -33,7 +33,6 @@ class SecurityController extends AbstractController
             $form = $this->createForm(RegistrationType::class, $user);
             $form->handleRequest($request);
 
-<<<<<<< HEAD
         if($form->isSubmitted() && $form->isValid()){
               $hash = $encoder->encodePassword($user, $user->getPassword());
               $user->setPassword($hash);
@@ -54,7 +53,6 @@ class SecurityController extends AbstractController
           
             'listeActu'=>$listActualiteRepository->findAll()
         ]);
-=======
             if($form->isSubmitted() && $form->isValid()){
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
@@ -75,7 +73,6 @@ class SecurityController extends AbstractController
                 $this->addFlash('accountFail', 'identifiant ou mot de passe incorrect!');
             }
            
->>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
      }
         /**
          * @Route("/login", name ="security_login" , methods={"GET", "POST"})

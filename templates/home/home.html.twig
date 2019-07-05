@@ -233,11 +233,8 @@ span.title.titre3:nth-child(1) {
 
 						{% for actu in  listeActu  | slice(2)%}
 							<li class="list-group-item">
-<<<<<<< HEAD
                                 <a href="{{path('show_actualite',{'id':actu.id}) }}">
-=======
                                 <a href="{{path('details_article', {id: actu.id})}}">
->>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
                                     <div class="container">
                                             <div class="row row-margin-bottom">
                                                 <div class="col-md-12 no-padding lib-item" data-category="view">
