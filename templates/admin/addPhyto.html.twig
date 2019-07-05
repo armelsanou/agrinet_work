@@ -1,0 +1,102 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+<style>
+    .add_design {
+    padding: 16px;
+}
+.pn {
+    height: 250px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2)!important;
+}
+</style>
+<section id="main-content">
+        <section class="wrapper">
+                <div class="row mt">
+                        <div class="col-lg-12">
+                                <div class="add_design">
+                                        <button type="button" class="btn btn-theme" data-toggle="modal" data-target="#exampleModal23"><i class="fa fa-plus"></i> Ajouter des donnees</button>
+                                       
+                                    </div>        
+                                    {% for message in app.flashes('success') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                    <div class="row mt">
+                                            <div class="col-md-12">
+                                            <div class="content-panel">
+                                                <table class="table table-striped table-advance table-hover">
+                                                        <div class="alert alert-success"><b>Phytopharmacie!</b> save success</div>
+                                                <hr>
+                                                <thead>
+                                                   
+                                                    <tr>
+                                                    <th> culture</th>
+                                                    <th >enemie</th>
+                                                    <th> nomCommercial </th>
+                                                    <th> societe</th>
+                                                    <th> matiereActive</th>
+                                                    <th> niveauToxicite</th>
+                                                    <th> localite</th>
+                                                    <th> classe</th>
+                                                    <th><i class=" fa fa-edit"></i>Modifier</th>
+                                                    <th><i class=" fa fa-trash"></i>delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for phyto in listePhyto %}
+                                                       
+                                                    <tr>
+                                                   
+                                                            <td> {{phyto.culture}}</td>
+                                                            <td> {{phyto.enemie}}</td>
+                                                            <td> {{phyto.nomCommercial}}</td>
+                                                            <td> {{phyto.societe}}</td>
+                                                            <td> {{phyto.matiereActive}}</td>
+                                                            <td> {{phyto.niveauToxicite}}</td>
+                                                            <td> {{phyto.localite}}</td>
+                                                            <td> {{phyto.classe}}</td>
+                                                            <td>
+                                                                    
+                                                                
+                                                                    <a href="{{ path('phytopharmarcie_edit', {'id': phyto.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                                                    
+                                                                   
+                                                                  
+                                                                        
+                                                                </td>
+                                                                <td>
+                                                                        
+                                                                    
+                                                                        
+                                                                        
+                                                                       
+                                                                       <span>{{ include('phytopharmarcie/_delete_form.html.twig') }}</span> 
+                                                                            
+                                                                    </td>
+                                                    
+                                                    
+                                                    </tr>
+                                                    {% endfor %}
+                                                   
+                                                </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /content-panel -->
+                                            </div>
+                                            <!-- /col-md-12 -->
+                                        </div>
+                        </div>
+                </div>
+    </section>
+   
+  </section>
+
+
+ 
+  {% include "VuesAgrinet2/fragment/modal_phyto.html.twig" %}
+
+ 
+  {% endblock %}

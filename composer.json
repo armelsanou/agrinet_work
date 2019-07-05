@@ -5,6 +5,7 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "rackspace/php-opencloud": "dev-master",
         "sensio/framework-extra-bundle": "^5.3",
         "silex/silex": "~1.0",
         "symfony/asset": "4.2.*",
@@ -19,13 +20,12 @@
         "symfony/process": "4.2.*",
         "symfony/security-bundle": "4.2.*",
         "symfony/serializer-pack": "*",
-        "symfony/swiftmailer-bundle": "^3.1",
+        "symfony/swiftmailer-bundle": "2.3",
         "symfony/translation": "4.2.*",
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
-        "symfony/yaml": "4.2.*",
-        "rackspace/php-opencloud": "dev-master"
+        "symfony/yaml": "4.2.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",

@@ -1,0 +1,51 @@
+<aside>
+        <div id="sidebar" class="nav-collapse ">
+          <!-- sidebar menu start-->
+          <ul class="sidebar-menu" id="nav-accordion">
+            <p class="centered"><a href="profile.html"><img src="{{asset('adminStyle/img/avatar.png')}}" class="img-circle" width="80"></a></p>
+            <h5 class="centered">{{app.user.noms}}</h5>
+            <li class="mt">
+              <a class="active" href="{{path('admin')}}">
+                <i class="fa fa-dashboard"></i>
+                <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+              <a href="javascript:;">
+                <i class="fa fa-desktop"></i>
+                <span>Page Accueil</span>
+                </a>
+              <ul class="sub">
+               
+                <li><a href="{{path('add_actualiter')}}">Actualite</a></li>
+               
+              </ul>
+            </li>
+           
+            <li class="sub-menu">
+                  <a href="javascript:;">
+                    <i class="fa fa-desktop"></i>
+                    <span>page phytopharmacie</span>
+                    </a>
+                  <ul class="sub">
+                    <li><a href="{{path('add_phyto')}}">form_phyto</a></li>
+                    
+                  </ul>
+                </li>
+            <li>
+             <li class="sub-menu">
+                  <a href="javascript:;">
+                    <i class="fa fa-desktop"></i>
+                    <span>page Agrifinance</span>
+                    </a>
+                  <ul class="sub">
+                    <li><a href="{{path('add_agri')}}">form_agri</a></li>
+                   
+                  </ul>
+                </li>
+            
+            
+          </ul>
+          <!-- sidebar menu end-->
+        </div>
+      </aside>

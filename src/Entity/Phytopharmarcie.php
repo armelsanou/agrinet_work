@@ -46,6 +46,16 @@ class Phytopharmarcie
      */
     private $classe;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $niveauToxicite;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $localite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +129,30 @@ class Phytopharmarcie
     public function setClasse(string $classe): self
     {
         $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getNiveauToxicite(): ?string
+    {
+        return $this->niveauToxicite;
+    }
+
+    public function setNiveauToxicite(string $niveauToxicite): self
+    {
+        $this->niveauToxicite = $niveauToxicite;
+
+        return $this;
+    }
+
+    public function getLocalite(): ?string
+    {
+        return $this->localite;
+    }
+
+    public function setLocalite(string $localite): self
+    {
+        $this->localite = $localite;
 
         return $this;
     }

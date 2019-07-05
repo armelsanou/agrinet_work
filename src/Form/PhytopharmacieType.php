@@ -17,10 +17,12 @@ class PhytopharmacieType extends AbstractType
         $builder
             ->add('culture')
             ->add('enemie')
-            //->add('nomCommercial')
-            //->add('societe')
+            ->add('nomCommercial')
+            ->add('societe')
             ->add('matiereActive')
-            //->add('classe')
+            ->add('niveauToxicite')
+            ->add('localite')
+            ->add('classe')
         ;
     }
 
@@ -28,6 +30,12 @@ class PhytopharmacieType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Phytopharmarcie::class,
+            'method' => 'get',
+            'csrf_protection' =>false
         ]);
+    }
+
+    public function getBlockPrefix(){
+        return '';
     }
 }

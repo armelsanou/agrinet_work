@@ -104,15 +104,24 @@ span.title.titre3:nth-child(1) {
                 {{ message }}
             </div>
         {% endfor %}
+
+        {% for message in app.flashes('badConnexion') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
      
         <div class="row">
 			<div class="col-lg-12 pl-xl-5 mt-lg-0 pb-5 mt-4 about-right">
 				<p style="color: #098a05;"> <span class="fa fa-quote-left text-danger text-color mr-2"></span>Produire, Recenser, analyser, vulgariser auprès des producteurs les technologies, les ressources génétiques,
 					 les méthodes et procédés les plus innovants.<span class="fa fa-quote-right text-danger text-color mr-2"></span></p>
             </div>
-            <div class="row col-md-9" style="    margin-left: 0;" >
+            <div class=" col-md-9" style="    margin-left: 0;" >
 
-                <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-right: 6px;">
+              
+                <!-- ./Team member -->
+               
+                <div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0;    padding-right: 6px; ">
                     <a href="{{path('mieux_produire')}}">
                         <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                             <div class="mainflip">
@@ -137,41 +146,12 @@ span.title.titre3:nth-child(1) {
                         </div>
                     </a>    
                 </div>
-                <!-- ./Team member -->
-               
                 
-                
-                    <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-left: 6px;">
-                            <a href="{{path('contactez_nous')}}">
-                                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card" style="background: rgb(112, 173, 71); height: 108px;">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">J’ai besoin des
-                                                            conseils</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="backside" style="width: 100%;">
-                                            <div class="card  vert" style="background: rgb(112, 173, 71); height: 108px;">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">J’ai besoin des
-                                                            conseils
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- ./Team member -->
-             
+                 
                 
                 <div class=" col-md-12 blocContent">
                     <div class="row">
-                        <div class="col-md-6 espaceGauche" style=" background: #6c757dc7; ">
+                        <div class="col-md-6 espaceGauche" style=" background: #6c757dc7;">
                             <div class="text-center" style="padding: 32px;">
                             <h4 class="text-white">VOUS ETES</h4>
                             </div> 
@@ -207,10 +187,6 @@ span.title.titre3:nth-child(1) {
 	
             <!-- Team member --> 
             <div class="col-xs-12 col-sm-6 col-md-3">
-
-   
-
-
 
                 <div class="card">
 
@@ -266,12 +242,20 @@ span.title.titre3:nth-child(1) {
 					</div>
 					<ul class="list-group list-group-flush tailleImgTextActu">
 
+
                         {% for actu in all_actualite %}
                       
 							<li class="list-group-item">
                                     
                                 <a href="{{path('details_actualite',{'id':actu.id})}}">
-                                    
+                        {% endfor %}
+						{% for actu in  listeActu  | slice(2)%}
+							<li class="list-group-item">
+
+                                <a href="{{path('show_actualite',{'id':actu.id}) }}">
+
+                                <a href="{{path('details_article', {id: actu.id})}}">
+
                                     <div class="container">
                                             <div class="row row-margin-bottom">
                                                 <div class="col-md-12 no-padding lib-item" data-category="view">

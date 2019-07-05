@@ -14,10 +14,14 @@ aria-hidden="true">
 {{ form_start(formulaire)}}
 
 <div class="form-group">
-{{form_row(formulaire.culture, { 'label': 'culture', 'attr': {'placeholder':'titre','class':'form-control'}}) }}
-{{form_row(formulaire.enemie, { 'label': 'enemie', 'attr': {'placeholder':'contenu','class':'form-control'}}) }}
-{{form_row(formulaire.matiereActive, { 'label': 'matiereActive', 'attr': {'class':'form-control'}}) }}
-
+{{form_row(formulaire.culture, { 'label': 'culture', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.enemie, { 'label': 'enemie', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.nomCommercial, { 'label': 'nomCommercial', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.societe, { 'label': 'societe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.matiereActive, { 'label': 'matiereActive', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.niveauToxicite, { 'label': 'niveauToxicite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.localite, { 'label': 'localite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(formulaire.classe, { 'label': 'classe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
 </div>
 
 <button type="submit" class="btn btn-success">Créer Actualité</button>

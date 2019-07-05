@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Phytopharmarcie{% endblock %}
+
+{% block body %}
+    <h1>Phytopharmarcie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ phytopharmarcie.id }}</td>
+            </tr>
+            <tr>
+                <th>Culture</th>
+                <td>{{ phytopharmarcie.culture }}</td>
+            </tr>
+            <tr>
+                <th>Enemie</th>
+                <td>{{ phytopharmarcie.enemie }}</td>
+            </tr>
+            <tr>
+                <th>NomCommercial</th>
+                <td>{{ phytopharmarcie.nomCommercial }}</td>
+            </tr>
+            <tr>
+                <th>Societe</th>
+                <td>{{ phytopharmarcie.societe }}</td>
+            </tr>
+            <tr>
+                <th>MatiereActive</th>
+                <td>{{ phytopharmarcie.matiereActive }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ phytopharmarcie.classe }}</td>
+            </tr>
+            <tr>
+                <th>NiveauToxicite</th>
+                <td>{{ phytopharmarcie.niveauToxicite }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ phytopharmarcie.localite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('phytopharmarcie_index') }}">back to list</a>
+
+    <a href="{{ path('phytopharmarcie_edit', {'id': phytopharmarcie.id}) }}">edit</a>
+
+    {{ include('phytopharmarcie/_delete_form.html.twig') }}
+{% endblock %}

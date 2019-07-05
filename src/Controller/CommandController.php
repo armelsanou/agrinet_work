@@ -21,6 +21,9 @@ class CommandController extends AbstractController
     public function commander(ObjectManager $manager, Request $request):Response
     {
       $command = new Command();
+       $formCommand = $this->createForm(CommandType::class, $command);
+      
+        $formCommand->handleRequest($request);
 
       if($this->getUser() !== null){
 
@@ -28,11 +31,6 @@ class CommandController extends AbstractController
           $id = $this->getUser()->getId();
           dump($userConnected);
           //dump($this->getUser()->getUsername());
-
-
-        $formCommand = $this->createForm(CommandType::class, $command);
-      
-        $formCommand->handleRequest($request);
 
         if($formCommand->isSubmitted() && $formCommand->isValid()){
                 $manager->persist($command);

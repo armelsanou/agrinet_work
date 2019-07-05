@@ -2,8 +2,16 @@
 
 {% block Home_title %}::acueil {% endblock %}
 
+
 {% block stylesheets %}
   <style>
+     label.required.champ_pas_obligatoire::after {
+        content: "";
+    }
+      label.required::after {
+    color: red;
+    content: " * ";
+}
 .devenir_expert_paragraphe p{
     font-family: 'Lato',Arial sans-serif;
     font-size: 16px;
@@ -44,7 +52,7 @@
             <div class="title"><h1 style="padding:25px;"> Devenir Expert AGRINET</h1></div>
             <div class="row">
                 <div class="col-md-2">
-                    <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/devenir-expert.png" class="image_entete" alt="">
+                       <!--      <img src="http://www.apexagri.com/wp-content/themes/vortex-enfant/images/devenir-expert.png" class="image_entete" alt=""> -->
                 </div>
                 <div class="col-md-10 devenir_expert_paragraphe">
                     <p>Vous êtes spécialiste en production végétale, nutrition animale, marketing, structuration de filières agricoles... ?
@@ -71,23 +79,25 @@
                 <div>
          {{ form_start(FormDevenirExpert)}}
                     <p>Ma situation professionnelle actuelle:</p>
-                    <input type="radio" value="1"/>Je propose mes compétences pour une intervention ponctuelle sur une mission de conseil <br>
-                    <input type="radio" value="1"> Je cherche un emploi en CDD/CDI
+                     
+                        {{form_row(FormDevenirExpert.situationPro1, {'attr': {'class':'form-control'}}) }}
+                        {{form_row(FormDevenirExpert.situationPro2, {'attr': {'class':'form-control'}}) }}
+                    
                 </div>  
                 <div class="row" style="margin-top:30px;">
                     <div class="col-md-4">
                            
                                 <div class="form-group">
-                                                {{form_row(FormDevenirExpert.prenom, {'attr': {'placeholder':'contenu','class':'form-control'}}) }}
+                                                {{form_row(FormDevenirExpert.prenom, {'attr': {'placeholder':'entrer votre prenom','class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                                 {{form_row(FormDevenirExpert.nom, { 'attr': {'placeholder':'titre','class':'form-control'}}) }}
+                                                 {{form_row(FormDevenirExpert.nom, { 'attr': {'placeholder':'entrer votre nom','class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                                {{form_row(FormDevenirExpert.email, { 'attr': {'class':'form-control'}}) }}
+                                                {{form_row(FormDevenirExpert.email, { 'attr': {'placeholder':'entrer votre email','class':'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                                {{form_row(FormDevenirExpert.telephone, {'attr': {'class':'form-control'}}) }}
+                                                {{form_row(FormDevenirExpert.telephone, {'label': "Telephone(precisez l'index telephonique de votre pays)",'attr': {'placeholder':'entrer votre numero de telephone','class':'form-control'}}) }}
                                 </div>
                                 <div class="input-group mb-3">
                                                 {{form_row(FormDevenirExpert.statutProfessionel, { 'attr': {'class':'form-control'}}) }}
@@ -100,49 +110,34 @@
                                        
                             </div>
                             <div class="form-group">
-                                        {{form_row(FormDevenirExpert.ville, {'attr': {'class':'form-control'}}) }}
-                            </div>
-                            <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">Mobilité</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                      <option selected>Choisir...</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                    </select>
+                                        {{form_row(FormDevenirExpert.ville, {'attr': {'class':'form-control','placeholder':'Entrer Votre Ville'}}) }}
                             </div>
                             <div class="form-group">
-                                        {{form_row(FormDevenirExpert.fonctionActuelle, {  'attr': {'class':'form-control'}}) }}
+                                {{form_row(FormDevenirExpert.mobilite, {'attr': {'class':'form-control','placeholder':'Entrer Votre Ville'}}) }}
+                    </div>
+                            <div class="form-group">
+                                        {{form_row(FormDevenirExpert.fonctionActuelle, {  'attr': {'placeholder':'entrer votre fonction actuelle','class':'form-control'}}) }}
                                        
                             </div>
                     </div>
                     <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group ">
                                         {{form_row(FormDevenirExpert.langue1, {  'attr': {'class':'form-control'}}) }}
-                                        {{form_row(FormDevenirExpert.langue2, { 'attr': {'class':'form-control'}}) }}
-                                      
+                                        {{form_row(FormDevenirExpert.langue2, { 'attr': {'class':'form-control jj'}}) }}
+                                        {{form_row(FormDevenirExpert.langueVernaculaire, {'attr': {'class':'form-control','placeholder':'Entrer Votre langue vernaculaire'}}) }}
                             </div> 
-                            <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">Niveau d'experience</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                      <option selected>Choisir...</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                    </select>
-                            </div>
+                            <div class="form-group">
+                            {{form_row(FormDevenirExpert.niveauExperience, {  'attr': {'class':'form-control'}}) }}
+                           
+                </div>
                     </div>
                 </div> 
                 <div class="row">
                     <div class="col-md-6">
                             <div class="form-group">
                                         {{form_row(FormDevenirExpert.secteurActivite1, {'attr': {'class':'form-control'}}) }}
-                                        {{form_row(FormDevenirExpert.secteurActivite2, {'attr': {'class':'form-control'}}) }}
-                                        {{form_row(FormDevenirExpert.secteurActivite3, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.secteurActivite2, {'attr': {'class':'form-control jj'}}) }}
+                                        {{form_row(FormDevenirExpert.secteurActivite3, {'attr': {'class':'form-control jj'}}) }}
                                        
                             </div>
                             
@@ -152,14 +147,12 @@
                     <div class="col-md-6">
                             <div class="form-group">
                                         {{form_row(FormDevenirExpert.competence1, {'attr': {'class':'form-control'}}) }}
-                                        {{form_row(FormDevenirExpert.competence2, {'attr': {'class':'form-control'}}) }}
-                                        {{form_row(FormDevenirExpert.competence3, {'attr': {'class':'form-control'}}) }}
+                                        {{form_row(FormDevenirExpert.competence2, {'attr': {'class':'form-control jj'}}) }}
+                                        {{form_row(FormDevenirExpert.competence3, {'attr': {'class':'form-control jj'}}) }}
                                       
                             </div>
                            
-                            <div class="form-group">
-                                    <input type="text" class="form-control" id="autres" aria-describedby="emailHelp" placeholder="autres">
-                            </div>
+                           
    
                     </div>
                 </div> 
@@ -170,7 +163,7 @@
                         {{form_row(FormDevenirExpert.cv, {'attr': {'class':'form-control'}}) }}
                     
                         <p></p>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                                 {{form_row(FormDevenirExpert.souhaitMail, {'attr': {'class':'form-control'}}) }}
                         </div>
                       
@@ -192,12 +185,18 @@
 
 
 
+    <script src="{{ asset('StyleAgrinet2/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('StyleAgrinet2/js/jquery-2.2.3.min.js') }}"></script>
 
 
 
-
-
+        <script>
+         var t= $(".form-control.jj").parent().children().addClass('champ_pas_obligatoire');
+         $('#devenir_expert_situationPro1').addClass('col-sm-1');
+         $('#devenir_expert_situationPro2').addClass('col-sm-1');
+         $('#devenir_expert_souhaitMail').addClass('col-sm-1');
         
+        </script>
 
         
 
