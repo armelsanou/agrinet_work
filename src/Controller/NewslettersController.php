@@ -21,7 +21,8 @@ class NewslettersController extends AbstractController
     /**
      * @Route("/newsletters", name="newsletters")
      */
-    public function index(NewslettersRepository $BibliothequeRepository, Request $request,
+    public function index(NewslettersRepository $BibliothequeRepository, 
+                          Request $request,
                           ActualiteRepository $listActualiteRepository,
                           UserPasswordEncoderInterface $encoder, 
                           ObjectManager $manager, 
@@ -30,6 +31,7 @@ class NewslettersController extends AbstractController
             //registration qui se trouve dans SecurityController
             //afin de pouvoir créer un compte dans cette page
             $injector->registration($request,$listActualiteRepository,$manager,$encoder);
+            
          $user = new User();
            $form = $this->createForm(RegistrationType::class, $user);
            $form->handleRequest($request);

@@ -106,7 +106,7 @@ class PhytopharmarcieRepository extends ServiceEntityRepository
         $query = $this->findVisibleQuery();
 
         if ($search->getCulture()) {
-           $query = $query
+           $query = Doctrine_Query::create()
                     ->andWhere('p.culture = :culture')
                     ->setParameter('culture', $search->getCulture());
         }
