@@ -82,6 +82,24 @@ class PhytopharmarcieRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findByLocalite($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.localite = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    public function findByNiveauToxicite($value):array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.niveauToxicite = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
    
   /*   
     public function findOneBySomeField($value): ?Phytopharmarcie

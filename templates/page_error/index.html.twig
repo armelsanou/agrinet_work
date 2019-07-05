@@ -1,0 +1,67 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  <style>
+      .container.page-404-blog {
+    margin-top: -57px;
+}
+  body {
+   
+    background: rgb(234, 234, 234)!important;
+    
+}</style>
+  <link rel="stylesheet" href="{{asset('StyleAgrinet2/css/style_page404.css')}}">
+{% endblock %}
+
+{% block body %}
+
+
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<div class="container page-404-blog">
+        <div class="row">
+                <div class="col-md-2"></div>
+          <div class="col-lg-8  p404 centered">
+            <img src="{{asset('/StyleAgrinet2/images/404.png')}}" alt="">
+            <h1>DON'T PANIC!!</h1>
+            <h3>The page you are looking for doesn't exist.</h3>
+            <br>
+            <div class="row">
+                    <div class="col-md-2"></div>
+              <div class="col-md-8 ">
+                <input type="text" class="form-control" id="form1Name" name="form1Name">
+                <button class="btn btn-theme mt">Search</button>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+
+                       
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+  
+
+    
+    {% block js %}
+    <script>
+           
+        
+        </script>
+    
+    {% endblock %}
+{% endblock %}

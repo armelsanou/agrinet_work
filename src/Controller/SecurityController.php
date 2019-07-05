@@ -37,14 +37,17 @@ class SecurityController extends AbstractController
                 $manager->persist($user);
                 $manager->flush();
                 
+                
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
                 return $this->RedirectToRoute('security_welcome'); 
         }
+       
         
 
         return $this->render('home/home.html.twig', [
             
             'form' => $form->createView(),
+          
             'listeActu'=>$listActualiteRepository->findAll()
         ]);
      }

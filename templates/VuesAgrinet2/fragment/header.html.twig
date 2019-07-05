@@ -5,6 +5,10 @@
 .drp_acue li{
 	width: 340px;
 }
+ul.dropdown-menu.profil {
+    left: 1;
+    left: -69px;
+}
 </style>
 
 
@@ -47,14 +51,32 @@
 				<li class="mr-lg-4 mr-2"><a href="{{path('devenir_expert')}}">devenir expert</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('bibliotheque_agricole')}}">Bibliothèque Agricole</a></li>
 				<li class="mr-lg-4 mr-2"><a href="{{path('phytopharmacie')}}">phytopharmacie</a></li>
-				<li class="mr-lg-4 mr-2"><a href="{{path('contactez_nous')}}">Contact</a></li>
+				<li class="mr-lg-4 mr-2"><a href="{{path('agri_finance')}}">Agrifinance</a></li>
 				{% if not app.user %}
 				<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
-					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor"> <span class="fa fa-user text-yellow"></span>
+					aria-pressed="false" data-target="#exampleModal" data-blast="bgColor" data-backdrop="static"> <span class="fa fa-user text-yellow"></span>
 				</button>
 				{% else %}
-				<li class="btn btn-danger"><a href="{{path('security_logout')}}"><span class="fa fa-logout">Déconnexion</span></a></li>
+				
+					{% if is_granted('ROLE_ADMIN') %}
+						<li class="mr-lg-4 mr-2 dropdown"><a href="{{path('admin')}}" class="dropdown-toggle" data-toggle="dropdown">Profil</a>
+							<ul class="dropdown-menu profil">
+								
+								<li><a href="{{path('admin')}}">Dashboard</a></li>
+								<li ><a href="{{path('security_logout')}}">Déconnexion</a></li>
+								
+							
+							</ul>
+						</li>
+						{% else %}
+						<a href="{{path('security_logout')}}"><button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" > <span class="fa fa-power-off" style="    color: #e65d06;"></span>
+						</button></a>
+						
+					{% endif %}
 				{% endif %}
+				
+				
+				
 			</ul>
 		
 		</nav>

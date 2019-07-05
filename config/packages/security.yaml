@@ -27,6 +27,9 @@ security:
             logout:
                 path: security_logout
                 target: /
+
+    
+    
                 
         #api:
          #   pattern: ^/

@@ -1,0 +1,50 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+<section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                    <div class="col-md-12">
+                    <div class="content-panel">
+                        <table class="table table-striped table-advance table-hover">
+                                <div class="alert alert-success"><b>Tous les Users!</b> qui veulent recevoir les newsletters</div>
+                        <hr>
+                        <thead>
+                           
+                            <tr>
+                            <th> Noms</th>
+                            <th >Fonction</th>
+                            <th> Entreprise </th>
+                            <th> Email</th>
+                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {% for userNewsletter in all_user_newsletter%}
+                               
+                            <tr>
+                            <td>
+                                <a href="basic_table.html#">{{userNewsletter.nom}}</a>
+                            </td>
+                            <td class="hidden-phone">{{userNewsletter.fonction}}</td>
+                            <td>{{userNewsletter.entreprise}} </td>
+                           
+                            <td><span class="label label-info label-mini">{{userNewsletter.email}}</span></td>
+                           
+                           
+                            </tr>
+                            {% endfor %}
+                           
+                        </tbody>
+                        </table>
+                    </div>
+                    <!-- /content-panel -->
+                    </div>
+                    <!-- /col-md-12 -->
+                </div>
+
+    </section>
+    <!-- /wrapper -->
+  </section>
+  {% endblock %}

@@ -64,7 +64,7 @@
                                 
                                             </select>
                                             <label for="culture">Ennemi</label>
-                                            <select class="form-control form-control-sm enemie" name="enemie">
+                                            <select class="form-control form-control-sm enemie" name="enemie" onchange="submit()">
                                                 {% for culture in listePhyto %}
                                                 <option name="enemie">
                                                     {{culture.enemie}}
@@ -147,12 +147,13 @@
                       <td>Matière active (teneur)</td>
                         <td>Dosage</td>
                       <td>Localité</td>
+                      <td>Niveau de toxicité</td>
                 
                   </tr>
               </thead>
               <tbody class="tab_new_style">
 
-                 {% for listeAll in listePhyto %}
+                 {% for listeAll in resultCulture %}
                   <tr class="">
                       <td>{{listeAll.culture}}</td>
                       <td>{{listeAll.enemie}}</td>
@@ -160,9 +161,12 @@
                       <td>{{listeAll.societe}}</td>
                       <td>{{listeAll.matiereActive}}</td>
                       <td>{{listeAll.classe}}</td>
+                      <td>{{listeAll.localite}}</td>
+                      <td>{{listeAll.niveauToxicite}}</td>
                      
                   </tr>
                   {% endfor %}
+
             
                  
               </tbody>

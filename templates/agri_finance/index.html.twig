@@ -1,0 +1,364 @@
+{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  <style>
+      p.design_para {
+    font-style: italic;
+    color: black;
+    font-weight: inherit;
+    letter-spacing: initial;
+    margin-top: 18px;
+}
+
+p.design-link{
+    color: #186f2c;
+    font-weight: inherit;
+    letter-spacing: initial;
+    padding-left: 50px;
+    width: 100%;
+}
+  </style>
+{% endblock %}
+
+{% block body %}
+
+
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+<style>
+span.desin_ju {
+    color: #ff0000c4;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1rem;
+  color: #555f77;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ced2db;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #ced2db;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #ced2db;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #ced2db;
+}
+
+p {
+  line-height: 1.3125rem;
+}
+
+.comments {
+  margin: 2.5rem auto 0;
+  max-width: 60.75rem;
+  padding: 0 1.25rem;
+}
+
+.comment-wrap {
+  margin-bottom: 1.25rem;
+  display: table;
+  width: 100%;
+  min-height: 5.3125rem;
+}
+
+.photo {
+  padding-top: 0.625rem;
+  display: table-cell;
+  width: 3.5rem;
+}
+.photo .avatar {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  background-size: contain;
+}
+
+.comment-block {
+  padding: 1rem;
+  background-color: #fff;
+  display: table-cell;
+  vertical-align: top;
+  border-radius: 0.1875rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+.comment-block textarea {
+  width: 100%;
+  resize: none;
+}
+
+.comment-text {
+    font-family: inherit;
+    margin-bottom: 1.25rem;
+    font-style: oblique;
+    font-weight: 400;
+    color: #8a8a8a;
+}
+
+.bottom-comment {
+  color: #acb4c2;
+  font-size: 0.875rem;
+}
+
+.comment-date {
+  float: left;
+}
+
+.comment-actions {
+  float: right;
+}
+.comment-actions li {
+  display: inline;
+  margin: -2px;
+  cursor: pointer;
+}
+.comment-actions li.complain {
+  padding-right: 0.75rem;
+  border-right: 1px solid #e1e5eb;
+}
+.comment-actions li.reply {
+  padding-left: 0.75rem;
+  padding-right: 0.125rem;
+}
+.comment-actions li:hover {
+  color: #0095ff;
+}
+</style>
+
+<script src="{{asset('StyleAgrinet2/js/jquery.min.js')}}"></script>
+
+<!-- about -->
+<section class="about py-5" id="about">
+	<div class="container py-lg-5 py-sm-3">
+		<h3 class="heading mb-sm-5 mb-4 text-center"> AGRIFINANCE</h3>
+		<div class="row">
+						<div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
+				<p> </p>
+				<p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span>
+                    Ils vous accompagnent dans le financement de vos activités agropastorales.Ils sont la pour vous,faites vous-meme votre choix.
+                    Nous vous présentons ici les leaders en matiere de financement agricole au Cameroun.
+				</p>
+            </div>
+          
+            <div class="col-md-6">
+                <br>
+                {% if is_granted('ROLE_ADMIN') %}
+                <span>
+                      <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
+                      aria-pressed="false" data-target="#exampleModal28" data-blast="bgColor"> <span class="fa fa-plus text-yellow"></span>
+                      </button></span>
+               {% endif %}
+                <div class="phyto_design">
+                                    <form action="{{path('agri_finance')}}" method="get">
+                                        <label for="culture">categorie</label>
+                                        <select class="form-control culture" name="categorie" onchange="submit()">
+                                            <option class="opt " >
+                                               {{getCat}}
+                                             </option>
+                                            {% for categorie in liste %}
+                                            <option class="opt " >
+                                             {{categorie.categorie}}
+                                            </option>
+                                            {% endfor %}
+                            
+                                        </select>
+                                        <label for="culture">structure</label>
+                                        <select class="form-control form-control-sm enemie" name="structure">
+                                           
+                                            {% for structure in resultCategorie %}
+                                            <option >
+                                                
+                                                {{structure.structure}}
+                                            </option>
+                                            {% endfor %}
+                                           
+                            
+                                        </select>
+                                       
+                            
+                                      
+                                       
+                            
+                                    </form>
+                                    <button class="btn btn-warning pull-right btn_desin_perso link-display">Rechercher</button>
+                           
+                    </div>
+            </div>
+            <div class="col-md-6">
+                  <br>
+                  <div class="card">
+                    
+                                        <div class="card-header bg-dark text-white focus_design">
+                                           INVESTIR EN AGRICULTURE
+                                        </div>
+                                        <div id="carouselExampleIndicators" class="carousel slide focus_design" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/979d97f171757ebd987045491ca5d150.jpg')}}" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block slider_text_perso" >
+                                                        
+                                                        <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CAMEROUN</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item ">
+                                                    <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/for3.jpg')}}" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block slider_text_perso">
+                                                        <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CA%EROUN</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 slider_img_perso" src="{{asset('StyleAgrinet2/images/pic4.jpg')}}" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block slider_text_perso">
+                                                        <p>AGRINET:APPEL A LA CONTRIBUTION POUR LE DEVELOPPEMENT DE L'AGRICULTURE AU CA%EROUN</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                                            <a class="carousel-control-next" href="{{asset('StyleAgrinet2/images/agridata record 2.png')}}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                                        </div>
+                    
+                    
+                                    </div>
+            </div>
+            <div class="bloc_fade">
+                <p class="design_para border-top">
+                        La production nationale de cacao était en baisse dans notre pays depuis quelques décennies. Les exportations à l’extérieur du
+                        pays avaient doublement chuté de même que le coût de notre cacao sur le marché international. Les producteurs de cacao pour la
+                        plupart avaient abandonnés leur plantation et s’étaient lancé à d’autres activités. Bref notre cacao avait perdu de la valeur. Ses
+                        saveurs et sa qualité n’avaient plus de charme pour les principaux acheteurs. C’est dans ce contexte que <b> le projet d’appui
+                        technique et financier des producteurs de cacao des zones forestières </b>a vu le jour. Ce projet vise essentiellement à :
+
+                        <p class="design-link">- Recenser les anciennes exploitations de production des fèves de cacao et les organiser en groupe ;</p>
+                        <p class="design-link">- Installer les jeunes producteurs de cacao ;</p>
+                        <p class="design-link">- Les viabiliser les anciennes exploitations ;</p>
+                        <p class="design-link">- Appuyer les producteurs sur les techniques modernes de culture et de séchage du cacao ;</p>
+                        <p class="design-link">- Construire les hangars de stockage et des séchoirs au profit des groupements de producteurs.</p>
+                <p class="design_para"><b>Conditions à remplir :</b></p> 
+                        <p class="design-link">- Tous citoyens hommes ou femmes désirant faire la Cacaoculture ;</p>
+                        <p class="design-link">- Etre âgée entre 18 et 35 ans ;</p>
+                <p class="design_para"><b>Pièces à fournir:</b></p>   
+                        <p class="design-link">- une photocopie certifiée de votre carte nationale d’identité ;</p>
+                        <p class="design-link">- Faire une demande adressée au coordonnateur du projet ;</p>
+                        <p class="design-link">- Remplir le formulaire d’inscription ;</p>
+                        <p class="design-link">- Faire une attestation de disponibilité des terres auprès du chef de village ou vos terres se situent (pour les jeunes qui
+                                désirent s’installer);</p>
+                        <p class="design-link">- Obtenir auprès du chef de poste agricole de votre localité un certificat d’ancien exploitation de cacaoculture ;</p>
+                        <p class="design-link">- Une photo 4X4</p>
+                <p class="design_para"><b>Lieu de dépôt :</b><span style="color:red"> Les dossiers complets sont à déposer à la commune de votre localité contre récépissé de dépôt</span></p> 
+                </p>
+            </div>
+		</div>
+    </div>
+   
+</section>
+
+<div class="comments">
+        <div class="comment-wrap">
+                <div class="photo">
+                        <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
+                </div>
+                <div class="comment-block">
+                        <form action="">
+                                <textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+                                <button class="btn btn-primary pull-right">Envoyer</button>
+                        </form>
+                </div>
+        </div>
+
+        <div class="comment-wrap">
+                <div class="photo">
+                        <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
+                </div>
+                <div class="comment-block">
+                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
+                                sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p>
+                        <div class="bottom-comment">
+                                <div class="comment-date">Aug 24, 2014 @ 2:35 PM</div>
+                                <ul class="comment-actions">
+                                        <li class="complain">Complain</li>
+                                        <li class="reply">Reply</li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+
+        <div class="comment-wrap">
+                <div class="photo">
+                        <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
+                </div>
+                <div class="comment-block">
+                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
+                        <div class="bottom-comment">
+                                <div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
+                                <ul class="comment-actions">
+                                        <li class="complain">Complain</li>
+                                        <li class="reply">Reply</li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+</div>
+                       
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+    {% include "VuesAgrinet2/fragment/modal_agrifinance.html.twig" %}
+
+    
+    {% block js %}
+    <script>
+            $(document).ready(function(){
+                $('select').on('change',function(){
+                    var value=$(this).val();
+         
+                   // alert(value);
+                    
+                       
+                });
+               
+                
+             
+                $(".link-display").click(function(){
+                    $(".bloc_fade").show();
+                });
+                
+        });
+            
+        
+        </script>
+    
+    {% endblock %}
+{% endblock %}

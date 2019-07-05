@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 
 class DevenirExpertController extends AbstractController
 {
@@ -24,9 +25,15 @@ class DevenirExpertController extends AbstractController
 
             $FormDevenirExpert->handleRequest($request);
             if($FormDevenirExpert->isSubmitted() && $FormDevenirExpert->isValid()){
-          
+                $file=$devenirExpert->getCv();
+                $fileName= md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('upload_directoy'), $fileName);
+
+                $devenirExpert->setCv($fileName);
+              
                  $manager->persist($devenirExpert);
                  $manager->flush();
+
                  $this->addFlash('success', 'bien enregistré.');
                return $this->RedirectToRoute('devenir_expert'); 
          }

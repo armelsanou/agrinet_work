@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+{{form_row(form.culture, { 'label': 'culture', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.enemie, { 'label': 'enemie', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.nomCommercial, { 'label': 'nomCommercial', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.societe, { 'label': 'societe', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.matiereActive, { 'label': 'matiereActive', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.niveauToxicite, { 'label': 'niveauToxicite', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.localite, { 'label': 'localite', 'attr': {'class':'form-control'}}) }}
+{{form_row(form.classe, { 'label': 'classe', 'attr': {'class':'form-control'}}) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

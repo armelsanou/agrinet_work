@@ -32,14 +32,19 @@ class PhytopharmacieController extends AbstractController
             $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
             
              $form = $this->createForm(RegistrationType::class, $user);
-             $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
-             $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
+            $culture=$request->get("culture");
+            $enemie=$request->get("enemie");
+            $resultCulture = $phytopharmarcieRepository->findByCulture($culture);
+            $resultEnemie = $phytopharmarcieRepository-> findByEnemie( $enemie);
+           
              $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
              $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
              $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
              $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
-
+             $resultLocalite = $phytopharmarcieRepository->findByLocalite($phytopharmacie->getLocalite());
+             $resultNiveauToxicite = $phytopharmarcieRepository->findByNiveauToxicite($phytopharmacie->getNiveauToxicite());
              $formulaire->handleRequest($request);
+             dump($resultNomCommercial);
              if($formulaire->isSubmitted() && $formulaire->isValid()){
            
                   $manager->persist($phytopharmacie);
@@ -56,12 +61,14 @@ class PhytopharmacieController extends AbstractController
                 'formulaire' => $formulaire->createView(),
                 'curent'=>$phytopharmacie,
                 'listePhyto' =>  $phytopharmarcieRepository->findAll(),
-                'resultCulture' => $resultCulture,
-                'resultEnemie' => $resultEnemie,
                 'resultNomCommercial' => $resultNomCommercial,
                 'resultSociete' => $resultSociete,
                 'resultMatiereActive' => $resultMatiereActive,
                 'resultClasse' => $resultClasse,
+                'resultLocalite' => $resultLocalite,
+                'resultNiveauToxicite' => $resultNiveauToxicite,
+               'resultCulture' => $resultCulture,
+               'resultEnemie' => $resultEnemie,
                  'formCommand' => $formCommand->createView()
 
             ]);

@@ -32,7 +32,7 @@ class DevenirExpert
     private $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $telephone;
 
@@ -51,11 +51,14 @@ class DevenirExpert
      */
     private $ville;
 
+    
+
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $fonctionActuelle;
 
+  
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -65,6 +68,8 @@ class DevenirExpert
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $langue2;
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -111,6 +116,33 @@ class DevenirExpert
      */
     private $souhaitMail;
 
+    
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mobilite;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $niveauExperience;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $langueVernaculaire;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $situationPro1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $situationPro2;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,12 +184,12 @@ class DevenirExpert
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
@@ -212,6 +244,7 @@ class DevenirExpert
         return $this;
     }
 
+   
     public function getLangue1(): ?string
     {
         return $this->langue1;
@@ -235,6 +268,8 @@ class DevenirExpert
 
         return $this;
     }
+
+ 
 
     public function getSecteurActivite1(): ?string
     {
@@ -320,12 +355,12 @@ class DevenirExpert
         return $this;
     }
 
-    public function getCv(): ?string
+    public function getCv()
     {
         return $this->cv;
     }
 
-    public function setCv(string $cv): self
+    public function setCv($cv)
     {
         $this->cv = $cv;
 
@@ -340,6 +375,67 @@ class DevenirExpert
     public function setSouhaitMail(string $souhaitMail): self
     {
         $this->souhaitMail = $souhaitMail;
+
+        return $this;
+    }
+
+    
+    public function getMobilite(): ?string
+    {
+        return $this->mobilite;
+    }
+
+    public function setMobilite(string $mobilite): self
+    {
+        $this->mobilite = $mobilite;
+
+        return $this;
+    }
+
+    public function getNiveauExperience(): ?string
+    {
+        return $this->niveauExperience;
+    }
+
+    public function setNiveauExperience(string $niveauExperience): self
+    {
+        $this->niveauExperience = $niveauExperience;
+
+        return $this;
+    }
+
+    public function getLangueVernaculaire(): ?string
+    {
+        return $this->langueVernaculaire;
+    }
+
+    public function setLangueVernaculaire(string $langueVernaculaire): self
+    {
+        $this->langueVernaculaire = $langueVernaculaire;
+
+        return $this;
+    }
+
+    public function getSituationPro1(): ?string
+    {
+        return $this->situationPro1;
+    }
+
+    public function setSituationPro1(?string $situationPro1): self
+    {
+        $this->situationPro1 = $situationPro1;
+
+        return $this;
+    }
+
+    public function getSituationPro2(): ?string
+    {
+        return $this->situationPro2;
+    }
+
+    public function setSituationPro2(?string $situationPro2): self
+    {
+        $this->situationPro2 = $situationPro2;
 
         return $this;
     }

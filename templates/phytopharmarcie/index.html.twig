@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Phytopharmarcie index{% endblock %}
+
+{% block body %}
+    <h1>Phytopharmarcie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Culture</th>
+                <th>Enemie</th>
+                <th>NomCommercial</th>
+                <th>Societe</th>
+                <th>MatiereActive</th>
+                <th>Classe</th>
+                <th>NiveauToxicite</th>
+                <th>Localite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for phytopharmarcie in phytopharmarcies %}
+            <tr>
+                <td>{{ phytopharmarcie.id }}</td>
+                <td>{{ phytopharmarcie.culture }}</td>
+                <td>{{ phytopharmarcie.enemie }}</td>
+                <td>{{ phytopharmarcie.nomCommercial }}</td>
+                <td>{{ phytopharmarcie.societe }}</td>
+                <td>{{ phytopharmarcie.matiereActive }}</td>
+                <td>{{ phytopharmarcie.classe }}</td>
+                <td>{{ phytopharmarcie.niveauToxicite }}</td>
+                <td>{{ phytopharmarcie.localite }}</td>
+                <td>
+                    <a href="{{ path('phytopharmarcie_show', {'id': phytopharmarcie.id}) }}">show</a>
+                    <a href="{{ path('phytopharmarcie_edit', {'id': phytopharmarcie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('phytopharmarcie_new') }}">Create new</a>
+{% endblock %}
