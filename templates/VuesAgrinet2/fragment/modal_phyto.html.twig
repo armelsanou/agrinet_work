@@ -11,22 +11,22 @@ aria-hidden="true">
         <div class="modal-body">
           
 
-{{ form_start(formulaire)}}
+{{ form_start(form)}}
 
 <div class="form-group">
-{{form_row(formulaire.culture, { 'label': 'culture', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.enemie, { 'label': 'enemie', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.nomCommercial, { 'label': 'nomCommercial', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.societe, { 'label': 'societe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.matiereActive, { 'label': 'matiereActive', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.niveauToxicite, { 'label': 'niveauToxicite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.localite, { 'label': 'localite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
-{{form_row(formulaire.classe, { 'label': 'classe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.culture, { 'label': 'culture', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.enemie, { 'label': 'enemie', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.nomCommercial, { 'label': 'nomCommercial', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.societe, { 'label': 'societe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.matiereActive, { 'label': 'matiereActive', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.niveauToxicite, { 'label': 'niveauToxicite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.localite, { 'label': 'localite', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.classe, { 'label': 'classe', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
 </div>
 
 <button type="submit" class="btn btn-success">Créer Actualité</button>
 
-{{form_end(formulaire)}}
+{{form_end(form)}}
 
         </div>
     </div>

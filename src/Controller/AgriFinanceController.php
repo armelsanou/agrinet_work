@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\AgriFinanceCategorieRepository;
+use App\Repository\AgriFinanceStructureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
@@ -19,17 +21,23 @@ class AgriFinanceController extends AbstractController
     /**
      * @Route("/agri/finance", name="agri_finance")
      */
-    public function index(ObjectManager $manager, Request $request,AgriFinanceRepository $agriFinanceRepository)
+    public function index(ObjectManager $manager, Request $request,AgriFinanceStructureRepository $agriFinanceStructureRepository,AgriFinanceRepository $agriFinanceRepository,AgriFinanceCategorieRepository $agriFinanceCategorieRepository)
     {
         $user = new User();
         $agriFinance=new AgriFinance();
-      
+
          $form = $this->createForm(RegistrationType::class, $user);
          $formAgri = $this->createForm(AgriFinanceType::class, $agriFinance);
          $formAgri->handleRequest($request);
-         $test= $request->get("categorie");
-        
-         $resultCategorie = $agriFinanceRepository->findByCategorie($test);
+         $value= $request->get("categorie");
+        $value2= $request->get("structure");
+        dump($value);
+        $rechercheByCategorie=$agriFinanceStructureRepository->findByCategorie($value);
+        dump($rechercheByCategorie);
+
+        $rechercheByStructure=$agriFinanceCategorieRepository->findByStructure($value2);
+        dump($rechercheByStructure);
+         $resultCategorie = $agriFinanceRepository->findByCategorie( $value);
         
          if($formAgri->isSubmitted() && $formAgri->isValid()){
             
@@ -45,7 +53,12 @@ class AgriFinanceController extends AbstractController
             'formAgri'=> $formAgri->createView(),
             'liste' =>  $agriFinanceRepository->findAll(),
             'resultCategorie'  =>$resultCategorie,
-            'getCat'=>$test,
+            'getCat'=>$value,
+            'getStru'=>$value2,
+            'agri_finance_categories' => $agriFinanceCategorieRepository->findAll(),
+            'agri_finance_structures' => $agriFinanceStructureRepository->findAll(),
+            'rechercheByCategorie' => $rechercheByCategorie,
+            'rechercheByStructure' => $rechercheByStructure,
         ]);
     }
 }

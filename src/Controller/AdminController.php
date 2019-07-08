@@ -2,7 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\AgriFinanceCategorie;
+use App\Entity\AgriFinanceStructure;
+use App\Entity\BibliothequeRecherche;
+use App\Form\AgriFinanceCategorieType;
+use App\Form\AgriFinanceStructureType;
+use App\Form\BibliothequeRechercheType;
+use App\Form\PhytopharmarcieType;
+use App\Repository\AgriFinanceCategorieRepository;
+use App\Repository\AgriFinanceStructureRepository;
+use App\Repository\BibliothequeRechercheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Actualite;
@@ -19,6 +30,9 @@ use App\Repository\NewslettersRepository;
 use App\Repository\ActualiteRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\VarieteRacesCaracteristique;
+use App\Form\VarieteRacesCaracteristiqueType;
+use App\Repository\VarieteRacesCaracteristiqueRepository;
 class AdminController extends AbstractController
 {
     /**
@@ -94,21 +108,21 @@ class AdminController extends AbstractController
      */
      public function addPhyto(ObjectManager $manager, Request $request,PhytopharmarcieRepository $phytopharmarcieRepository,NewslettersRepository $newslettersRepository,ActualiteRepository $actualiteRepository)
      {
-        $phytopharmacie = new Phytopharmarcie();
-        $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
-        $formulaire->handleRequest($request);
+         $phytopharmarcie = new Phytopharmarcie();
+         $form = $this->createForm(PhytopharmarcieType::class, $phytopharmarcie);
+         $form->handleRequest($request);
 
-        if($formulaire->isSubmitted() && $formulaire->isValid()){
-            
-                   $manager->persist($phytopharmacie);
-                   $manager->flush();
-                   $this->addFlash('success', 'bien enregistré.');
-                 return $this->RedirectToRoute('add_phyto'); 
-           }
+         if ($form->isSubmitted() && $form->isValid()) {
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($phytopharmarcie);
+             $entityManager->flush();
+
+             return $this->redirectToRoute('add_phyto');
+         }
+
          return $this->render('admin/addPhyto.html.twig', [
              'controller_name' => 'AdminController',
-             'all_actualite'=>$actualiteRepository->findAll(),          
-             'formulaire' => $formulaire->createView(),
+             'form' => $form->createView(),
              'listePhyto' =>  $phytopharmarcieRepository->findAll(),
             
          ]);
@@ -139,24 +153,99 @@ class AdminController extends AbstractController
      /**
      * @Route("/add/agri", name="add_agri")
      */
-     public function addAgri(ObjectManager $manager, Request $request,AgriFinanceRepository $agriFinanceRepository)
+     public function addAgri(ObjectManager $manager, Request $request,AgriFinanceRepository $agriFinanceRepository,AgriFinanceCategorieRepository $agriFinanceCategorieRepository)
      {
-        $agriFinance=new AgriFinance();
-        $formAgri = $this->createForm(AgriFinanceType::class, $agriFinance);
-        $formAgri->handleRequest($request);
+         $agriFinanceCategorie = new AgriFinanceCategorie();
+         $form = $this->createForm(AgriFinanceCategorieType::class, $agriFinanceCategorie);
+         $form->handleRequest($request);
 
-        if($formAgri->isSubmitted() && $formAgri->isValid()){
-            
-                   $manager->persist($agriFinance);
-                   $manager->flush();
-                   $this->addFlash('success', 'bien enregistré agri.');
-                 return $this->RedirectToRoute('add_agri'); 
-           }
+         if ($form->isSubmitted() && $form->isValid()) {
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($agriFinanceCategorie);
+             $entityManager->flush();
+
+             return $this->redirectToRoute('add_agri');
+         }
          return $this->render('admin/addAgri.html.twig', [
              'controller_name' => 'AdminController',
-             'formAgri'=> $formAgri->createView(),
-             'liste' =>  $agriFinanceRepository->findAll(),
+             'form' => $form->createView(),
+             'agri_finance_categories' => $agriFinanceCategorieRepository->findAll(),
             
          ]);
      }
+
+    /**
+     * @Route("/add/agri/struc", name="add_agri_struc")
+     */
+    public function addAgriStruc(ObjectManager $manager, Request $request,AgriFinanceStructureRepository $agriFinanceStructureRepository,AgriFinanceRepository $agriFinanceRepository,AgriFinanceCategorieRepository $agriFinanceCategorieRepository)
+    {
+        $agriFinanceStructure = new AgriFinanceStructure();
+        $form = $this->createForm(AgriFinanceStructureType::class, $agriFinanceStructure);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($agriFinanceStructure);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_agri_struc');
+        }
+
+        return $this->render('admin/addAgriStruc.html.twig', [
+            'controller_name' => 'AdminController',
+            'form' => $form->createView(),
+            'agri_finance_structures' => $agriFinanceStructureRepository->findAll(),
+
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/add/variete", name="add_variete")
+     */
+    public function addVriete(Request $request,VarieteRacesCaracteristiqueRepository $varieteRacesCaracteristiqueRepository)
+
+    {
+        $varieteRacesCaracteristique= new VarieteRacesCaracteristique();
+        $test=$varieteRacesCaracteristiqueRepository->findVarietyByCategory('test','test','test');
+        dump($test);
+        $form = $this->createForm(VarieteRacesCaracteristiqueType::class, $varieteRacesCaracteristique);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($varieteRacesCaracteristique);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_variete');
+        }
+        return $this->render('admin/formRchercheVariete1.html.twig', [
+            'variete_races_caracteristiques' => $varieteRacesCaracteristiqueRepository->findAll(),
+            'test'=> $test,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/add/bibliotheque/recherche", name="add_bibliotheque_recherche")
+     */
+    public function addBiblioRecherche(Request $request,BibliothequeRechercheRepository $bibliothequeRechercheRepository): Response
+    {
+        $bibliothequeRecherche = new BibliothequeRecherche();
+        $form = $this->createForm(BibliothequeRechercheType::class, $bibliothequeRecherche);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($bibliothequeRecherche);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_bibliotheque_recherche');
+        }
+
+        return $this->render('admin/formRcherchebibliotheque.html.twig', [
+            'bibliotheque_recherches' => $bibliothequeRechercheRepository->findAll(),
+            'form' => $form->createView(),
+        ]);
+    }
 }

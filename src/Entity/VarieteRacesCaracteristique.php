@@ -26,6 +26,12 @@ class VarieteRacesCaracteristique
      */
     private $caracteristiques;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\BibliothequeRecherche", inversedBy="varieteRacesCaracteristiques")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $IdBibliothequeRecherche;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +57,18 @@ class VarieteRacesCaracteristique
     public function setCaracteristiques(string $caracteristiques): self
     {
         $this->caracteristiques = $caracteristiques;
+
+        return $this;
+    }
+
+    public function getIdBibliothequeRecherche(): ?BibliothequeRecherche
+    {
+        return $this->IdBibliothequeRecherche;
+    }
+
+    public function setIdBibliothequeRecherche(?BibliothequeRecherche $IdBibliothequeRecherche): self
+    {
+        $this->IdBibliothequeRecherche = $IdBibliothequeRecherche;
 
         return $this;
     }

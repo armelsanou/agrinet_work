@@ -43,7 +43,7 @@
                 <form action="" method="get">
                     <div class="form-group perso_design_commande"> 
                         <label for="categorie">Categorie</label>
-                         <select class="form-control culture" name="categorie" onchange="submit()">
+                         <select class="form-control culture" name="categorie" >
                         {% for categorie in listeBiblioRecherche %}
                         <option id="1">
                             {{categorie.categorie}}
@@ -115,7 +115,12 @@
                     </tr>
                 </thead>
                 <tbody class="tab_new_style">
-
+                    {% for varieteAndCaracteristique in varieteAndCaracteristique %}
+                    <tr class="">
+                        <td> {{ varieteAndCaracteristique.variete }}</td>
+                        <td>{{ varieteAndCaracteristique.caracteristiques }}</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
               
                 

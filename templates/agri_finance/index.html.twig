@@ -169,10 +169,13 @@ p {
                                     <form action="{{path('agri_finance')}}" method="get">
                                         <label for="culture">categorie</label>
                                         <select class="form-control culture" name="categorie" onchange="submit()">
+                                            {% if getCat!=null %}
                                             <option class="opt " >
                                                {{getCat}}
                                              </option>
-                                            {% for categorie in liste %}
+                                            {% endif %}
+
+                                            {% for categorie in agri_finance_categories %}
                                             <option class="opt " >
                                              {{categorie.categorie}}
                                             </option>
@@ -180,14 +183,28 @@ p {
                             
                                         </select>
                                         <label for="culture">structure</label>
-                                        <select class="form-control form-control-sm enemie" name="structure">
-                                           
-                                            {% for structure in resultCategorie %}
-                                            <option >
-                                                
-                                                {{structure.structure}}
-                                            </option>
+                                        <select class="form-control form-control-sm enemie" name="structure" onchange="submit()">
+                                            {% if getStru!=null %}
+                                                <option class="opt " >
+                                                    {{getStru}}
+                                                </option>
+                                            {% endif %}
+                                                {% if getStru==null%}
+
+                                                        <option >
+                                                           Oupps vide!!!          choisissez d'abord une categorie
+                                                        </option>
+
+                                                {% endif %}
+                                            {% for structure in rechercheByCategorie %}
+                                                <option >
+
+                                                    {{structure.structure}}
+                                                </option>
                                             {% endfor %}
+
+
+
                                            
                             
                                         </select>

@@ -27,13 +27,18 @@ class BiliothequeAgricoleController extends AbstractController
     /**
      * @Route("/bibliotheque_agricole", name="bibliotheque_agricole")
      */
-    public function index(ObjectManager $manager, BibliothequeRechercheRepository $bibliothequeRechercheRepository, Request $request)
+    public function index(ObjectManager $manager, VarieteRacesCaracteristiqueRepository $varieteRacesCaracteristiqueRepository,BibliothequeRechercheRepository $bibliothequeRechercheRepository, Request $request,BibliothequeRepository $bibliothequeRepository)
     {
         $user = new User();
         $command = new Command();
         $formCommand = $this->createForm(CommandType::class, $command);
         $form = $this->createForm(RegistrationType::class, $user);
         $formCommand->handleRequest($request);
+        $varieteRacesCaracteristique= new VarieteRacesCaracteristique();
+        $val1=$request->get('categorie');
+        $val2=$request->get('cultureElevage');
+        $val3=$request->get('localiteRegion');
+        $test=$varieteRacesCaracteristiqueRepository->findVarietyByCategory($val1,$val2,$val3);
 
         if ($formCommand->isSubmitted() && $formCommand->isValid()) {
             $command->setUser($this->getUser());
@@ -47,16 +52,17 @@ class BiliothequeAgricoleController extends AbstractController
             'listeBiblioRecherche' => $bibliothequeRechercheRepository->findAll(),
             'formCommand' =>$formCommand->createView(),
             'form' => $form->createView(),
+            'varieteAndCaracteristique' => $test,
         ]);
     }
 
         /**
-     * @Route("/new", name="bibliotheque_recherche_new", methods={"GET","POST"})
+     * @Route("/new_t", name="bibliotheque_recherche_new_t", methods={"GET","POST"})
      */
     public function new(ObjectManager $manager,Request $request): Response
     {
         $bibliothequeRecherche = new BibliothequeRecherche();
-        $formvrc = $this->createForm(BibliothequeRecherche1Type::class, $bibliothequeRecherche);
+        $formvrc = $this->createForm(BibliothequeRechercheType::class, $bibliothequeRecherche);
         $formvrc->handleRequest($request);
 
         if ($formvrc->isSubmitted() && $formvrc->isValid()) {

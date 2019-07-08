@@ -1,0 +1,59 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+<style>
+    .add_design {
+    padding: 16px;
+}
+.pn {
+    height: 250px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2)!important;
+}
+</style>
+<section id="main-content">
+        <section class="wrapper">
+                <div class="row mt">
+                        <div class="col-lg-12">
+                                <div class="add_design">
+                                       
+                                       <h2>ajouter des varietés</h2>
+                                    </div>        
+                                    {% for message in app.flashes('success') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                    <div class="row mt">
+                                            <div class="col-md-12">
+                                            
+{{ form_start(form)}}
+
+<div class="form-group">
+
+{{form_row(form.variete, { 'label': 'variete', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+{{form_row(form.caracteristiques, { 'label': 'caracteristiques', 'attr': {'placeholder':'editer','class':'form-control'}}) }}
+
+</div>
+
+<button type="submit" class="btn btn-success">Ajouter</button>
+
+{{form_end(form)}}
+
+                                            <!-- /content-panel -->
+                                            </div>
+                                            <!-- /col-md-12 -->
+                                        </div>
+                        </div>
+                </div>
+    </section>
+   
+  </section>
+
+
+
+ 
+ 
+
+ 
+  {% endblock %}

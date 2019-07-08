@@ -45,23 +45,20 @@ class PhytopharmacieController extends AbstractController
                 $phytopharmacie = new Phytopharmarcie();
                 $formulaire = $this->createForm(PhytopharmacieType::class, $phytopharmacie);
                 $form = $this->createForm(RegistrationType::class, $user);
-                $resultCulture = $phytopharmarcieRepository->findByCulture($phytopharmacie->getCulture());
-                $resultEnemie = $phytopharmarcieRepository->findByEnemie($phytopharmacie->getEnemie());
-                $resultNomCommercial = $phytopharmarcieRepository->findByNomCommercial($phytopharmacie->getNomCommercial());
-                $resultSociete = $phytopharmarcieRepository->findBySociete($phytopharmacie->getSociete());
-                $resultMatiereActive = $phytopharmarcieRepository->findByMatiereActive($phytopharmacie->getMatiereActive());
-                $resultClasse = $phytopharmarcieRepository->findByClasse($phytopharmacie->getClasse());
 
 
                 //formulaire de reherche qui contient tous les selects présentns sur la vue
                 $search = new Phytopharmarcie();
                 $formResearch = $this->createForm(PhytopharmacieType::class, $search);
                 $formResearch->handleRequest($request);
-                $result = $phytopharmarcieRepository->findAllVisibleQuery($search);
-                //end
-                dump($result);
+
 
                  $formulaire->handleRequest($request);
+                $getCul=$request->get('culture');
+                $getEn=$request->get('enemie');
+                $getMa=$request->get('matiere_active');
+                 $recherchePhyto=$phytopharmarcieRepository->findByCultEnMa($getCul,$getEn,$getMa);
+
                  if($formulaire->isSubmitted() && $formulaire->isValid()){
                        $manager->persist($phytopharmacie);
                        $manager->flush();
@@ -76,16 +73,12 @@ class PhytopharmacieController extends AbstractController
                     'formulaire' => $formulaire->createView(),
                     'curent'=>$phytopharmacie,
                     'listePhyto' =>  $phytopharmarcieRepository->findAll(),
-                    'resultCulture' => $resultCulture,
-                    'resultEnemie' => $resultEnemie,
-                    'resultNomCommercial' => $resultNomCommercial,
-                    'resultSociete' => $resultSociete,
-                    'resultMatiereActive' => $resultMatiereActive,
-                    'resultClasse' => $resultClasse,
                     'formCommand' => $formCommand->createView(),
-
-                    'result' => $result,
+                    'recherchePhyto'=>$recherchePhyto,
                     'formResearch' => $formResearch->createView(),
+                        'getCul' =>$getCul,
+                        'getEn' =>$getEn,
+                        'getMa' =>$getMa,
 
                 ]);
             }catch(Exception $exception){

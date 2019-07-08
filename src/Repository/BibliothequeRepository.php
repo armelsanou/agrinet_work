@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Bibliotheque;
+use App\Entity\VarieteRacesCaracteristique;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,9 +20,23 @@ class BibliothequeRepository extends ServiceEntityRepository
         parent::__construct($registry, Bibliotheque::class);
     }
 
-    // /**
-    //  * @return Bibliotheque[] Returns an array of Bibliotheque objects
-    //  */
+     /**
+      * @return Bibliotheque[] Returns an array of Bibliotheque objects
+      */
+
+    public function findVarietyByCategory($idCategory)
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->select('v')
+            ->leftJoin(Category::class,'c',
+                'WITH',
+                'c= v.category')
+            ->where('v.enabled = 1')
+            ->andWhere('v.deleted = 0')
+            ->setParameter("category", $idCategory);
+        return $qb->getQuery()->getResult();
+    }
+
     /*
     public function findByExampleField($value)
     {

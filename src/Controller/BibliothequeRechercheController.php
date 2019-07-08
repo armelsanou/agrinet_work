@@ -2,15 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\RegistrationType;
 use App\Entity\BibliothequeRecherche;
-use App\Form\BibliothequeRecherche1Type;
+use App\Form\BibliothequeRechercheType;
+use App\Repository\BibliothequeRechercheRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\BibliothequeRechercheRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/bibliotheque/recherche")
@@ -22,11 +20,8 @@ class BibliothequeRechercheController extends AbstractController
      */
     public function index(BibliothequeRechercheRepository $bibliothequeRechercheRepository): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationType::class, $user);$form = $this->createForm(RegistrationType::class, $user);
         return $this->render('bibliotheque_recherche/index.html.twig', [
             'bibliotheque_recherches' => $bibliothequeRechercheRepository->findAll(),
-            'form' => $form->createView(),
         ]);
     }
 
@@ -36,15 +31,15 @@ class BibliothequeRechercheController extends AbstractController
     public function new(Request $request): Response
     {
         $bibliothequeRecherche = new BibliothequeRecherche();
-        $form = $this->createForm(BibliothequeRecherche1Type::class, $bibliothequeRecherche);
+        $form = $this->createForm(BibliothequeRechercheType::class, $bibliothequeRecherche);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form>isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bibliothequeRecherche);
             $entityManager->flush();
 
-            return $this->redirectToRoute('bibliotheque_recherche_index');
+            return $this->redirectToRoute('add_bibliotheque_recherche');
         }
 
         return $this->render('bibliotheque_recherche/new.html.twig', [
@@ -68,13 +63,13 @@ class BibliothequeRechercheController extends AbstractController
      */
     public function edit(Request $request, BibliothequeRecherche $bibliothequeRecherche): Response
     {
-        $form = $this->createForm(BibliothequeRecherche1Type::class, $bibliothequeRecherche);
+        $form = $this->createForm(BibliothequeRechercheType::class, $bibliothequeRecherche);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('bibliotheque_recherche_index', [
+            return $this->redirectToRoute('add_bibliotheque_recherche', [
                 'id' => $bibliothequeRecherche->getId(),
             ]);
         }
@@ -96,6 +91,6 @@ class BibliothequeRechercheController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('bibliotheque_recherche_index');
+        return $this->redirectToRoute('add_bibliotheque_recherche');
     }
 }

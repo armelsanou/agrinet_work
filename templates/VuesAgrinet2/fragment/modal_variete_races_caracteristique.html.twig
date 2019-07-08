@@ -9,14 +9,15 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
-                     {{ form_start(formvrc)}}
+                     {{ form_start(form)}}
 
                        <div class="form-group">
-                       {{form_row(formvrc.variete, { 'label': 'Variétés/Races', 'attr': {'placeholder':'Variétés/Races','class':'form-control'}}) }}
-                       {{form_row(formvrc.caracteristiques, { 'label': 'caracteristiques', 'attr': {'placeholder':'caracteristiques','class':'form-control'}}) }}                      
+                       {{form_row(form.variete, { 'label': 'Variétés/Races', 'attr': {'placeholder':'Variétés/Races','class':'form-control'}}) }}
+                       {{form_row(form.caracteristiques, { 'label': 'caracteristiques', 'attr': {'placeholder':'caracteristiques','class':'form-control'}}) }}
+                           {{form_row(form.IdBibliothequeRecherche, { 'label': 'categorie', 'attr': {'placeholder':'categorie','class':'form-control'}}) }}
                        </div>
                        <button type="submit" class="btn btn-success">Ajouter</button>
-                       {{form_end(formvrc)}}
+                       {{form_end(form)}}
         </div>
     </div>
 </div>

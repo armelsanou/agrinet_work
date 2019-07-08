@@ -1,0 +1,53 @@
+
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+    {% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+    <style>
+        .add_design {
+            padding: 16px;
+        }
+        .pn {
+            height: 250px;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2)!important;
+        }
+    </style>
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="add_design">
+                        <button type="button" class="btn btn-theme" data-toggle="modal" data-target="#exampleModal26"><i class="fa fa-plus"></i> Ajouter des donnees</button>
+
+                    </div>
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="row mt">
+                        <div class="col-md-12">
+                            <div class="content-panel">
+                                {{ form_start(form)}}
+
+                                <div class="form-group">
+                                    {{form_row(form.categorie, { 'label': 'Variétés/Races', 'attr': {'placeholder':'Variétés/Races','class':'form-control'}}) }}
+
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                                {{form_end(form)}}
+                            </div>
+                            <!-- /content-panel -->
+                        </div>
+                        <!-- /col-md-12 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+
+
+
+{% endblock %}

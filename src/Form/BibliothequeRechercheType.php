@@ -22,11 +22,6 @@ class BibliothequeRechercheType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => BibliothequeRecherche::class,
-            'method' => 'get',
-            'csrf_protection' => false
         ]);
-    }
-    public function getBlockPrefix(){
-        return '';
     }
 }

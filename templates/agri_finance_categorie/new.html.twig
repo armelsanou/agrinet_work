@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AgriFinanceCategorie{% endblock %}
+
+{% block body %}
+    <h1>Create new AgriFinanceCategorie</h1>
+
+    {{ include('agri_finance_categorie/_form.html.twig') }}
+
+    <a href="{{ path('agri_finance_categorie_index') }}">back to list</a>
+{% endblock %}

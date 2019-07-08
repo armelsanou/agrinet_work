@@ -25,6 +25,7 @@ class AgriFinanceRepository extends ServiceEntityRepository
     
     public function findByCategorie($value):array
     {
+
         return $this->createQueryBuilder('a')
             ->andWhere('a.categorie = :val')
             ->setParameter('val', $value)

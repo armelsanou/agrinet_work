@@ -34,26 +34,41 @@
                                                    
                                                     <tr>
                                                     <th> categorie</th>
-                                                    <th >structure</th>
+
                                                     
                                                     <th><i class=" fa fa-edit"></i>Modifier</th>
+                                                        <th><i class=" fa fa-trash"></i>delete</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                        {% for agri in liste %}
+                                                        {% for agri_finance_categories in agri_finance_categories %}
                                                        
                                                     <tr>
                                                    
-                                                            <td> {{agri.categorie}}</td>
-                                                            <td> {{agri.structure}}</td>
-                                                           
-                                                            <td>
-                                                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                                                </td>
-                                                    
-                                                    
+                                                            <td> {{agri_finance_categories.categorie}}</td>
+
+
+                                                        <td>
+
+
+                                                            <a href="{{ path('agri_finance_categorie_edit', {'id': agri_finance_categories.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+
+
+
+
+                                                        </td>
+                                                        <td>
+
+
+
+                                                            <span>{{ include('agri_finance_categorie/_delete_form.html.twig') }}</span>
+
+
+                                                        </td>
+
+
+
+
                                                     </tr>
                                                     {% endfor %}
                                                    
@@ -73,6 +88,6 @@
 
  
  
-  {% include "VuesAgrinet2/fragment/modal_agrifinance.html.twig" %}
+  {% include "VuesAgrinet2/fragment/modal_agrifinanceCategorie.html.twig" %}
  
   {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgriFinanceStructure{% endblock %}
+
+{% block body %}
+    <h1>AgriFinanceStructure</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agri_finance_structure.id }}</td>
+            </tr>
+            <tr>
+                <th>Structure</th>
+                <td>{{ agri_finance_structure.structure }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('agri_finance_structure_index') }}">back to list</a>
+
+    <a href="{{ path('agri_finance_structure_edit', {'id': agri_finance_structure.id}) }}">edit</a>
+
+    {{ include('agri_finance_structure/_delete_form.html.twig') }}
+{% endblock %}

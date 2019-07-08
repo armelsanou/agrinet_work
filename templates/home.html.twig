@@ -1,0 +1,294 @@
+﻿{% extends 'VuesAgrinet2/layout.html.twig' %}
+
+{% block Home_title %}::acueil {% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+<!-- banner -->
+<div class="inner-banner" id="home">
+	<div class="container">
+	</div>
+</div>
+<!-- //banner -->
+
+<style>
+
+ .title {
+	 display: block;
+	 position: relative;
+}
+span.title {
+    transform: skew(-1deg);
+    display: block;
+    text-shadow: #533D49 1px 1px, #533d4a 1px 1px;
+    min-width: 10px;
+    min-height: 10px;
+    position: relative;
+}
+span.title.titre1:nth-child(1) {
+    color: #2b9f5e;
+}
+span.title.titre2:nth-child(1) {
+    color: #2b9f5e;
+}
+span.title.titre3:nth-child(1) {
+    color: #2b9f5e;
+}
+
+</style>
+
+
+
+<!-- Team -->
+<section id="team">
+    <div class="container">
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row">
+			<div class="col-lg-12 pl-xl-5 mt-lg-0 pb-5 mt-4 about-right">
+				<p style="color: #098a05;"> <span class="fa fa-quote-left text-danger text-color mr-2"></span>Produire, Recenser, analyser, vulgariser auprès des producteurs les technologies, les ressources génétiques,
+					 les méthodes et procédés les plus
+					innovants.<span class="fa fa-quote-right text-danger text-color mr-2"></span></p>
+            </div>
+            <div class="row col-md-9" style="    margin-left: 0;" >
+
+                {% if not app.user %}
+                    <!-- Team member -->
+                <div class=" col-sm-6 col-md-6" style="padding: 0; padding-right: 6px;">
+                    <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card rouge" style="background:#948c5c; height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title white-text" style="color:white;">Améliorer sa
+                                                    production agricole</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card" style="background: #948c5c ;height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title titre">Améliorer sa
+                                                    production agricole
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-right: 6px;">
+                    <a href="{{path('recap_elevage')}}">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card rouge" style="background: #948c5c; height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title white-text" style="color:white;">Améliorer sa
+                                                    production agricole</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card" style="background: #948c5c; height: 108px;">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title titre">Améliorer sa
+                                                    production agricole
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                <!-- ./Team member -->
+                {% endif %}
+                
+                {% if not app.user %}
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-left: 6px;">
+                        <a href="#" data-toggle="modal"
+                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card" style="background: rgba(112, 173, 71, 0.88); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside" style="width: 100%;">
+                                        <div class="card  vert" style="background: rgba(112, 173, 71, 0.88); height: 108px;">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">J’ai besoin des
+                                                        conseils
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./Team member -->
+                {% else %}
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0;    padding-left: 6px;">
+                            <a href="{{path('recap_culture')}}">
+                                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                    <div class="mainflip">
+                                        <div class="frontside">
+                                            <div class="card" style="background: rgb(112, 173, 71); height: 108px;">
+                                                <div class="card-body text-center">
+                                                    <h4 class="card-title">J’ai besoin des
+                                                            conseils</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="backside" style="width: 100%;">
+                                            <div class="card  vert" style="background: rgb(112, 173, 71); height: 108px;">
+                                                <div class="card-body text-center">
+                                                    <h4 class="card-title">J’ai besoin des
+                                                            conseils
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- ./Team member -->
+                {% endif %}
+                
+                <div class=" col-md-12 blocContent">
+                    <div class="row">
+                        <div class="col-md-6 espaceGauche" style=" background: #6c757dc7; ">
+                            <div class="text-center" style="padding: 32px;">
+                            <h4 class="text-white">VOUS ETES</h4>
+                            </div> 
+                            <div class="rond text-center">
+                                    <img src="{{asset('StyleAgrinet2/images/agridata record 2.png')}}" class="img-responsive " alt="">
+                            </div>
+                            <div class="text-center" style="padding: 26px;">
+                            <h4 class="text-white">ACTEUR DU MONDE RURAL</h4>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6 espaceDroit" style="border:2px solid #6c757dc7;    background: #ffffffad;">
+                              
+                            <div class="text-center" style="padding-top: 78px;">
+                                <hr class="trait">
+                                <h5><span class="title titre1">CREEZ</span></h5>
+                                <h3><span class="title titre2">VOTRE ESPACE</span></h3>
+                                <h4><span class="title titre3">PROFESSIONNEL</span></h4>
+                                <hr class="trait">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+	
+            <!-- Team member --> 
+            <div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="card" >
+					<div class="card-header bg-dark text-white">
+						Actualités
+					</div>
+					<ul class="list-group list-group-flush tailleImgTextActu">
+
+						{% for actu in  listeActu | slice(2) %}
+							<li class="list-group-item">
+                                <a href="{{path('actualite')}}">
+                                    <div class="container">
+                                            <div class="row row-margin-bottom">
+                                                <div class="col-md-12 no-padding lib-item" data-category="view">
+                                                    <div class="lib-panel">
+                                                        <div class="row box-shadow">
+                                                            <div class="col-md-4 positionActuImg" >
+                                                                <img class="lib-img-show imageActu" src="{{ asset('uploads/') }}{{ actu.image }}">
+                                                            </div>
+                                                            <div class="col-md-8 positionTexteActu">
+                                                                <!-- <div class="lib-row lib-header">
+                                                                    Example library
+                                                                    <div class="lib-header-seperator"></div>
+                                                                </div> -->
+                                                                <div class="lib-row lib-desc actu_gauche">
+                                                                   <h5 class="title_actu"> {{actu.title}}</h5>
+                                                                   <h5 class="content_actu"> {{actu.content}}</h5> 
+                                                                   <span class="tilte_date">{{actu.createdAt | date('d/m/y') }}</span>      
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </a>
+                            </li>
+                        {% endfor %}  
+					
+						
+					</ul>
+				</div>
+            </div>
+            <!-- ./Team member -->
+        </div>
+       
+    </div>
+</section>
+<!-- Team -->
+
+
+
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+	
+
+
+
+<script src="">
+    $(document).ready(function() {
+  $(".title").lettering();
+  $(".button").lettering();
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+{% endblock %}

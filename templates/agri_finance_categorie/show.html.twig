@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgriFinanceCategorie{% endblock %}
+
+{% block body %}
+    <h1>AgriFinanceCategorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agri_finance_categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ agri_finance_categorie.categorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('agri_finance_categorie_index') }}">back to list</a>
+
+    <a href="{{ path('agri_finance_categorie_edit', {'id': agri_finance_categorie.id}) }}">edit</a>
+
+    {{ include('agri_finance_categorie/_delete_form.html.twig') }}
+{% endblock %}

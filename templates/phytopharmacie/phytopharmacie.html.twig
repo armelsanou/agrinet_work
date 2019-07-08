@@ -53,9 +53,14 @@
                     </div>
                         <div class="col-md-4  phyto_design">
                         
-                                        <form action="{{path('phytopharmacie')}}" method="get">
+                                        <form action="{{path('phytopharmacie')}}" method="get" id="formulaire">
                                             <label for="culture">culture</label>
                                             <select class="form-control culture" name="culture">
+                                                {% if getCul!=null %}
+                                                    <option id="1">
+                                                        {{getCul}}
+                                                    </option>
+                                                {% endif %}
                                                 {% for culture in listePhyto %}
                                                 <option id="1">
                                                     {{culture.culture}}
@@ -64,7 +69,12 @@
                                 
                                             </select>
                                             <label for="culture">Ennemi</label>
-                                            <select class="form-control form-control-sm enemie" name="enemie" onchange="submit()">
+                                            <select class="form-control form-control-sm enemie" name="enemie" >
+                                                {% if getEn!=null %}
+                                                    <option id="1">
+                                                        {{getEn}}
+                                                    </option>
+                                                {% endif %}
                                                 {% for culture in listePhyto %}
                                                 <option name="enemie">
                                                     {{culture.enemie}}
@@ -74,6 +84,11 @@
                                             </select>
                                             <label for="culture">Matière Active</label>
                                             <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
+                                                {% if getMa!=null %}
+                                                    <option id="1">
+                                                        {{getMa}}
+                                                    </option>
+                                                {% endif %}
                                                 {% for culture in listePhyto %}
                                                 <option name="matiereActive">
                                                     {{culture.matiereActive}}
@@ -82,9 +97,9 @@
                                             </select>
                                 
                                             <button class="btn btn-warning pull-left btn_desin_perso" type="submit">Rechercher</button>
-                                           
+                                            <button class="btn btn-warning pull-right btn_desin_perso" type="button" id="boutonReset">Rafraichir</button>
                                         </form>
-                                <button class="btn btn-warning pull-right btn_desin_perso" type="reset">Rafraichir</button>
+
                                     
                         </div>
                         <div class="col-md-3 mt-4">
@@ -151,9 +166,22 @@
                   </tr>
               </thead>
               <tbody class="tab_new_style">
+                    {% if  getCul==null and getEn==null and getMa==null%}
+                    {% for listeAll in listePhyto %}
+                    <tr class="">
+                        <td>{{listeAll.culture}}</td>
+                        <td>{{listeAll.enemie}}</td>
+                        <td>{{listeAll.nomCommercial}}</td>
+                        <td>{{listeAll.societe}}</td>
+                        <td>{{listeAll.matiereActive}}</td>
+                        <td>{{listeAll.classe}}</td>
+                        <td>{{listeAll.localite}}</td>
+                        <td>{{listeAll.niveauToxicite}}</td>
 
-<<<<<<< HEAD
-                 {% for listeAll in resultCulture %}
+                        {% endfor %}
+                    {% endif %}
+
+                 {% for listeAll in recherchePhyto %}
                   <tr class="">
                       <td>{{listeAll.culture}}</td>
                       <td>{{listeAll.enemie}}</td>
@@ -163,18 +191,7 @@
                       <td>{{listeAll.classe}}</td>
                       <td>{{listeAll.localite}}</td>
                       <td>{{listeAll.niveauToxicite}}</td>
-=======
-                 {% for resultat in result %}
-                  <tr class="">
-                      <td>{{resultat.culture}}</td>
-                      <td>{{resultat.enemie}}</td>
-                      <td>{{resultat.nomCommercial}}</td>
-                      <td>{{resultat.societe}}</td>
-                      <td>{{resultat.matiereActive}}</td>
-                      <td>{{resultat.classe}}</td>
->>>>>>> 39e297d024fff722f4799323eb0bafc250111bce
-                     
-                  </tr>
+                
                   {% endfor %}
 
             
@@ -190,7 +207,6 @@
 
 
 
-{% include "VuesAgrinet2/fragment/modal_phyto.html.twig" %}
 
 
 	<!-- //footer -->
@@ -200,6 +216,10 @@
 	<!-- //move top icon -->
 <script>
     $(document).ready(function(){
+
+
+
+
         /* $(".btn_desin_perso").click(function(){
             var culture=$(".culture").val();
             var enemie=$(".enemie").val();
@@ -214,7 +234,7 @@
 
 $('select').on('change',function(){
     var value=$(this).val();
-    alert(value);
+   // alert(value);
 })
 
 $('select').click(function () {

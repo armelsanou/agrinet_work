@@ -14,6 +14,7 @@ class VarieteRacesCaracteristiqueType extends AbstractType
         $builder
             ->add('variete')
             ->add('caracteristiques')
+            ->add('IdBibliothequeRecherche')
         ;
     }
 

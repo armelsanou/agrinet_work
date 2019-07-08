@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VarieteRacesCaracteristique{% endblock %}
+
+{% block body %}
+    <h1>VarieteRacesCaracteristique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ variete_races_caracteristique.id }}</td>
+            </tr>
+            <tr>
+                <th>Variete</th>
+                <td>{{ variete_races_caracteristique.variete }}</td>
+            </tr>
+            <tr>
+                <th>Caracteristiques</th>
+                <td>{{ variete_races_caracteristique.caracteristiques }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('variete_races_caracteristique_index') }}">back to list</a>
+
+    <a href="{{ path('variete_races_caracteristique_edit', {'id': variete_races_caracteristique.id}) }}">edit</a>
+
+    {{ include('variete_races_caracteristique/_delete_form.html.twig') }}
+{% endblock %}

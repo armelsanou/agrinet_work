@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New VarieteRacesCaracteristique{% endblock %}
+
+{% block body %}
+    <h1>Create new VarieteRacesCaracteristique</h1>
+
+    {{ include('variete_races_caracteristique/_form.html.twig') }}
+
+    <a href="{{ path('variete_races_caracteristique_index') }}">back to list</a>
+{% endblock %}

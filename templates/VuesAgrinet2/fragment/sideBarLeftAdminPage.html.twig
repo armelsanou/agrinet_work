@@ -3,7 +3,7 @@
           <!-- sidebar menu start-->
           <ul class="sidebar-menu" id="nav-accordion">
             <p class="centered"><a href="profile.html"><img src="{{asset('adminStyle/img/avatar.png')}}" class="img-circle" width="80"></a></p>
-            <h5 class="centered">{{app.user.noms}}</h5>
+            <h5 class="centered">nom</h5>
             <li class="mt">
               <a class="active" href="{{path('admin')}}">
                 <i class="fa fa-dashboard"></i>
@@ -33,14 +33,28 @@
                   </ul>
                 </li>
             <li>
+
+              <li class="sub-menu">
+                  <a href="javascript:;">
+                      <i class="fa fa-desktop"></i>
+                      <span>page Variétés & Races</span>
+                  </a>
+                  <ul class="sub">
+                      <li><a href="{{path('add_bibliotheque_recherche')}}">ajouter categorie localite et culture </a></li>
+                      <li><a href="{{path('add_variete')}}">ajouter variete et caracteristique </a></li>
+
+                  </ul>
+              </li>
+              <li>
+
              <li class="sub-menu">
                   <a href="javascript:;">
                     <i class="fa fa-desktop"></i>
                     <span>page Agrifinance</span>
                     </a>
                   <ul class="sub">
-                    <li><a href="{{path('add_agri')}}">form_agri</a></li>
-                   
+                    <li><a href="{{path('add_agri')}}">add categorie</a></li>
+                      <li><a href="{{path('add_agri_struc')}}">add structure</a></li>
                   </ul>
                 </li>
             

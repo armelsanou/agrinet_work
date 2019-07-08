@@ -1,4 +1,4 @@
-{% extends 'VuesAgrinet2/layout.html.twig' %}
+﻿{% extends 'VuesAgrinet2/layout.html.twig' %}
 
 {% block Home_title %}::Accueil {% endblock %}
 
@@ -243,13 +243,7 @@ span.title.titre3:nth-child(1) {
 					<ul class="list-group list-group-flush tailleImgTextActu">
 
 
-                        {% for actu in all_actualite %}
-                      
-							<li class="list-group-item">
-                                    
-                                <a href="{{path('details_actualite',{'id':actu.id})}}">
-                        {% endfor %}
-						{% for actu in  listeActu  | slice(2)%}
+						{% for actu in  listeActu  %}
 							<li class="list-group-item">
 
                                 <a href="{{path('show_actualite',{'id':actu.id}) }}">

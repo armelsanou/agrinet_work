@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VarieteRacesCaracteristique index{% endblock %}
+
+{% block body %}
+    <h1>VarieteRacesCaracteristique index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Variete</th>
+                <th>Caracteristiques</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for variete_races_caracteristique in variete_races_caracteristiques %}
+            <tr>
+                <td>{{ variete_races_caracteristique.id }}</td>
+                <td>{{ variete_races_caracteristique.variete }}</td>
+                <td>{{ variete_races_caracteristique.caracteristiques }}</td>
+                <td>
+                    <a href="{{ path('variete_races_caracteristique_show', {'id': variete_races_caracteristique.id}) }}">show</a>
+                    <a href="{{ path('variete_races_caracteristique_edit', {'id': variete_races_caracteristique.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('variete_races_caracteristique_new') }}">Create new</a>
+{% endblock %}
