@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GestionDuSol{% endblock %}
+
+{% block body %}
+    <h1>Edit GestionDuSol</h1>
+
+    {{ include('gestion_du_sol/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gestion_du_sol_index') }}">back to list</a>
+
+    {{ include('gestion_du_sol/_delete_form.html.twig') }}
+{% endblock %}

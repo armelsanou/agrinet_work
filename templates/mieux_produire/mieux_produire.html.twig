@@ -20,7 +20,7 @@
 <!-- about -->
 <section class="about py-5" id="about">
 	<div class="container py-lg-5 py-sm-3">
-		<h3 class="heading mb-sm-5 mb-4 text-center"> MIEUX PRODUIRE</h3>
+		<h3 class="heading mb-sm-5 mb-4 text-center"> SUIVI DE VOTRE EXPLOITATION AGROPASTORALE</h3>
 		<div class="row">
 						<div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
 				<p> Agrinet vous accompagne lors de vos choix agronomique en vous apportant un conseil personnalisé !</p>
@@ -29,14 +29,14 @@
 
 
 			<div class ="col-lg-4" >
-				<div class="feedback-info pt-5 pb-4 px-4 bloc1-elevage">
+				<div class="feedback-info pt-5 pb-4 px-4 bloc11-elevage">
 					{% if not app.user %}
 					<h3 class="mb-3"><a href="#" data-toggle="modal" aria-pressed="false" data-target="#exampleModal"
-							data-blast="bgColor" style="color: black">Je souhaite améliorer mon élevage</a>
+							data-blast="bgColor" style="color: black">Suivi activités élevage</a>
 					</h3>
 					{% else %}
 				
-					<h3 class="mb-3"><a href="{{path('recap_elevage')}}" style="color: black">Je souhaite améliorer mon élevage</a>
+					<h3 class="mb-3"><a href="{{path('recap_elevage')}}" style="color: black">Suivi activités élevage</a>
 					</h3>
 				
 					{% endif %}
@@ -54,10 +54,10 @@
 				
 					{% if not app.user %}
 					<h3 class="mb-3"><a href="#" data-toggle="modal" aria-pressed="false" data-target="#exampleModal"
-							data-blast="bgColor" style="color: black">Je souhaite améliorer mes cultures</a>
+							data-blast="bgColor" style="color: black">Suivi activités cultures</a>
 					</h3>
 					{% else %}
-					<h3 class="mb-3"><a href="{{path('recap_culture')}}" style="color: black">Je souhaite améliorer mes cultures</a>
+					<h3 class="mb-3"><a href="{{path('recap_culture')}}" style="color: black">Suivi activités cultures</a>
 					</h3>
 					{% endif %}
 				

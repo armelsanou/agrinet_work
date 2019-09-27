@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MontageProjet{% endblock %}
+
+{% block body %}
+    <h1>MontageProjet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ montage_projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ montage_projet.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ montage_projet.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ montage_projet.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ montage_projet.ville }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ montage_projet.telephone }}</td>
+            </tr>
+            <tr>
+                <th>NiveauEtude</th>
+                <td>{{ montage_projet.niveauEtude }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ montage_projet.email }}</td>
+            </tr>
+            <tr>
+                <th>SituationFamiliale</th>
+                <td>{{ montage_projet.situationFamiliale }}</td>
+            </tr>
+            <tr>
+                <th>TitreProjet</th>
+                <td>{{ montage_projet.titreProjet }}</td>
+            </tr>
+            <tr>
+                <th>NomCulture_Animaux</th>
+                <td>{{ montage_projet.nomCultureAnimaux }}</td>
+            </tr>
+            <tr>
+                <th>Superficie_nombreAnimaux</th>
+                <td>{{ montage_projet.superficieNombreAnimaux }}</td>
+            </tr>
+            <tr>
+                <th>CapaciteTransformationOuDeSechage</th>
+                <td>{{ montage_projet.capaciteTransformationOuDeSechage }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutActivite</th>
+                <td>{{ montage_projet.dateDebutActivite }}</td>
+            </tr>
+            <tr>
+                <th>NomStructure</th>
+                <td>{{ montage_projet.nomStructure }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ montage_projet.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ montage_projet.region }}</td>
+            </tr>
+            <tr>
+                <th>Arrondissement</th>
+                <td>{{ montage_projet.arrondissement }}</td>
+            </tr>
+            <tr>
+                <th>DistanceParRapportAroute</th>
+                <td>{{ montage_projet.distanceParRapportAroute }}</td>
+            </tr>
+            <tr>
+                <th>ServiceSollicite</th>
+                <td>{{ montage_projet.serviceSollicite }}</td>
+            </tr>
+            <tr>
+                <th>AutreSpecification</th>
+                <td>{{ montage_projet.autreSpecification }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('montage_projet_index') }}">back to list</a>
+
+    <a href="{{ path('montage_projet_edit', {'id': montage_projet.id}) }}">edit</a>
+
+    {{ include('montage_projet/_delete_form.html.twig') }}
+{% endblock %}

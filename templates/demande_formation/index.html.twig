@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DemandeFormation index{% endblock %}
+
+{% block body %}
+    <h1>DemandeFormation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Ville</th>
+                <th>Telepone</th>
+                <th>NiveauEtude</th>
+                <th>Email</th>
+                <th>ExperienceAgricole</th>
+                <th>DetailleExperience</th>
+                <th>ProductionVegetale</th>
+                <th>ProductionAnimale</th>
+                <th>TransformationEtSechage</th>
+                <th>AutreSpecification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande_formation in demande_formations %}
+            <tr>
+                <td>{{ demande_formation.id }}</td>
+                <td>{{ demande_formation.nom }}</td>
+                <td>{{ demande_formation.prenom }}</td>
+                <td>{{ demande_formation.sexe }}</td>
+                <td>{{ demande_formation.ville }}</td>
+                <td>{{ demande_formation.telepone }}</td>
+                <td>{{ demande_formation.niveauEtude }}</td>
+                <td>{{ demande_formation.Email }}</td>
+                <td>{{ demande_formation.experienceAgricole }}</td>
+                <td>{{ demande_formation.detailleExperience }}</td>
+                <td>{{ demande_formation.productionVegetale }}</td>
+                <td>{{ demande_formation.productionAnimale }}</td>
+                <td>{{ demande_formation.transformationEtSechage }}</td>
+                <td>{{ demande_formation.autreSpecification }}</td>
+                <td>
+                    <a href="{{ path('demande_formation_show', {'id': demande_formation.id}) }}">show</a>
+                    <a href="{{ path('demande_formation_edit', {'id': demande_formation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('demande_formation_new') }}">Create new</a>
+{% endblock %}

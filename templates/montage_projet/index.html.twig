@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MontageProjet index{% endblock %}
+
+{% block body %}
+    <h1>MontageProjet index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Ville</th>
+                <th>Telephone</th>
+                <th>NiveauEtude</th>
+                <th>Email</th>
+                <th>SituationFamiliale</th>
+                <th>TitreProjet</th>
+                <th>NomCulture_Animaux</th>
+                <th>Superficie_nombreAnimaux</th>
+                <th>CapaciteTransformationOuDeSechage</th>
+                <th>DateDebutActivite</th>
+                <th>NomStructure</th>
+                <th>Localisation</th>
+                <th>Region</th>
+                <th>Arrondissement</th>
+                <th>DistanceParRapportAroute</th>
+                <th>ServiceSollicite</th>
+                <th>AutreSpecification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for montage_projet in montage_projets %}
+            <tr>
+                <td>{{ montage_projet.id }}</td>
+                <td>{{ montage_projet.nom }}</td>
+                <td>{{ montage_projet.prenom }}</td>
+                <td>{{ montage_projet.sexe }}</td>
+                <td>{{ montage_projet.ville }}</td>
+                <td>{{ montage_projet.telephone }}</td>
+                <td>{{ montage_projet.niveauEtude }}</td>
+                <td>{{ montage_projet.email }}</td>
+                <td>{{ montage_projet.situationFamiliale }}</td>
+                <td>{{ montage_projet.titreProjet }}</td>
+                <td>{{ montage_projet.nomCultureAnimaux }}</td>
+                <td>{{ montage_projet.superficieNombreAnimaux }}</td>
+                <td>{{ montage_projet.capaciteTransformationOuDeSechage }}</td>
+                <td>{{ montage_projet.dateDebutActivite }}</td>
+                <td>{{ montage_projet.nomStructure }}</td>
+                <td>{{ montage_projet.localisation }}</td>
+                <td>{{ montage_projet.region }}</td>
+                <td>{{ montage_projet.arrondissement }}</td>
+                <td>{{ montage_projet.distanceParRapportAroute }}</td>
+                <td>{{ montage_projet.serviceSollicite }}</td>
+                <td>{{ montage_projet.autreSpecification }}</td>
+                <td>
+                    <a href="{{ path('montage_projet_show', {'id': montage_projet.id}) }}">show</a>
+                    <a href="{{ path('montage_projet_edit', {'id': montage_projet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="22">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('montage_projet_new') }}">Create new</a>
+{% endblock %}

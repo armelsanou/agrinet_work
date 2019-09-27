@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EspacePub2{% endblock %}
+
+{% block body %}
+    <h1>Create new EspacePub2</h1>
+
+    {{ include('espace_pub2/_form.html.twig') }}
+
+    <a href="{{ path('espace_pub2_index') }}">back to list</a>
+{% endblock %}

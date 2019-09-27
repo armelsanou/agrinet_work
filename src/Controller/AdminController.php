@@ -33,6 +33,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\VarieteRacesCaracteristique;
 use App\Form\VarieteRacesCaracteristiqueType;
 use App\Repository\VarieteRacesCaracteristiqueRepository;
+use App\Entity\EspacePub1;
+use App\Form\EspacePub1Type;
+use App\Form\EspacePub2Type;
+use App\Entity\EspacePub2;
+use App\Repository\EspacePub1Repository;
+use App\Repository\EspacePub2Repository;
 class AdminController extends AbstractController
 {
     /**
@@ -246,6 +252,63 @@ class AdminController extends AbstractController
         return $this->render('admin/formRcherchebibliotheque.html.twig', [
             'bibliotheque_recherches' => $bibliothequeRechercheRepository->findAll(),
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="add_espace_pub1", methods={"GET","POST"})
+     */
+     public function addEspacePub1(Request $request,EspacePub1Repository $espacePub1Repository): Response
+     {
+         $espacePub1 = new EspacePub1();
+         $formPub1 = $this->createForm(EspacePub1Type::class, $espacePub1);
+         $formPub1->handleRequest($request);
+ 
+         if ($formPub1->isSubmitted() && $formPub1->isValid()) {
+            $file=$espacePub1->getPhoto1();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $espacePub1->setPhoto1($fileName);
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($espacePub1);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('add_espace_pub1');
+         }
+ 
+         return $this->render('admin/addEspacePub1.html.twig', [
+             'espace_pub1' => $espacePub1,
+             'espace_pub1s' => $espacePub1Repository->findAll(),
+             'formPub1' => $formPub1->createView(),
+         ]);
+     }
+
+
+        /**
+     * @Route("/new/pub2", name="add_espace_pub2", methods={"GET","POST"})
+     */
+    public function addEspacePub2(Request $request,EspacePub2Repository $espacePub2Repository): Response
+    {
+        $espacePub2 = new EspacePub2();
+        $formPub2 = $this->createForm(EspacePub2Type::class, $espacePub2);
+        $formPub2->handleRequest($request);
+
+        if ($formPub2->isSubmitted() && $formPub2->isValid()) {
+            $file=$espacePub2->getPhoto();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $espacePub2->setPhoto($fileName);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($espacePub2);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_espace_pub2');
+        }
+
+        return $this->render('admin/addEspacePub2.html.twig', [
+            'espace_pub2' => $espacePub2,
+            'formPub2' => $formPub2->createView(),
+            'espace_pub2s' => $espacePub2Repository->findAll(),
         ]);
     }
 }

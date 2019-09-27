@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GestionDuSol{% endblock %}
+
+{% block body %}
+    <h1>GestionDuSol</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gestion_du_sol.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ gestion_du_sol.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ gestion_du_sol.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ gestion_du_sol.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ gestion_du_sol.ville }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ gestion_du_sol.telephone }}</td>
+            </tr>
+            <tr>
+                <th>NiveauEtude</th>
+                <td>{{ gestion_du_sol.niveauEtude }}</td>
+            </tr>
+            <tr>
+                <th>SiuationFamiliale</th>
+                <td>{{ gestion_du_sol.siuationFamiliale }}</td>
+            </tr>
+            <tr>
+                <th>NomStructure</th>
+                <td>{{ gestion_du_sol.nomStructure }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ gestion_du_sol.localite }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ gestion_du_sol.region }}</td>
+            </tr>
+            <tr>
+                <th>Arrondissement</th>
+                <td>{{ gestion_du_sol.arrondissement }}</td>
+            </tr>
+            <tr>
+                <th>DistanceParRapportARoute</th>
+                <td>{{ gestion_du_sol.distanceParRapportARoute }}</td>
+            </tr>
+            <tr>
+                <th>AnneeExperience</th>
+                <td>{{ gestion_du_sol.anneeExperience }}</td>
+            </tr>
+            <tr>
+                <th>ServiceSollicite</th>
+                <td>{{ gestion_du_sol.serviceSollicite }}</td>
+            </tr>
+            <tr>
+                <th>AutreSpecification</th>
+                <td>{{ gestion_du_sol.autreSpecification }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gestion_du_sol_index') }}">back to list</a>
+
+    <a href="{{ path('gestion_du_sol_edit', {'id': gestion_du_sol.id}) }}">edit</a>
+
+    {{ include('gestion_du_sol/_delete_form.html.twig') }}
+{% endblock %}

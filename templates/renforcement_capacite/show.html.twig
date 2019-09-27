@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RenforcementCapacite{% endblock %}
+
+{% block body %}
+    <h1>RenforcementCapacite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ renforcement_capacite.id }}</td>
+            </tr>
+            <tr>
+                <th>NomStructure</th>
+                <td>{{ renforcement_capacite.NomStructure }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ renforcement_capacite.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ renforcement_capacite.region }}</td>
+            </tr>
+            <tr>
+                <th>Arrondissement</th>
+                <td>{{ renforcement_capacite.arrondissement }}</td>
+            </tr>
+            <tr>
+                <th>DistanceParRapoortARoute</th>
+                <td>{{ renforcement_capacite.distanceParRapoortARoute }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ renforcement_capacite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ renforcement_capacite.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ renforcement_capacite.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ renforcement_capacite.ville }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ renforcement_capacite.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ renforcement_capacite.email }}</td>
+            </tr>
+            <tr>
+                <th>BesoinEnRenforcement</th>
+                <td>{{ renforcement_capacite.besoinEnRenforcement }}</td>
+            </tr>
+            <tr>
+                <th>NombreDePlace</th>
+                <td>{{ renforcement_capacite.nombreDePlace }}</td>
+            </tr>
+            <tr>
+                <th>PlusDeDetails</th>
+                <td>{{ renforcement_capacite.PlusDeDetails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('renforcement_capacite_index') }}">back to list</a>
+
+    <a href="{{ path('renforcement_capacite_edit', {'id': renforcement_capacite.id}) }}">edit</a>
+
+    {{ include('renforcement_capacite/_delete_form.html.twig') }}
+{% endblock %}

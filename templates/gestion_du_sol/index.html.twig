@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GestionDuSol index{% endblock %}
+
+{% block body %}
+    <h1>GestionDuSol index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Ville</th>
+                <th>Telephone</th>
+                <th>NiveauEtude</th>
+                <th>SiuationFamiliale</th>
+                <th>NomStructure</th>
+                <th>Localite</th>
+                <th>Region</th>
+                <th>Arrondissement</th>
+                <th>DistanceParRapportARoute</th>
+                <th>AnneeExperience</th>
+                <th>ServiceSollicite</th>
+                <th>AutreSpecification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gestion_du_sol in gestion_du_sols %}
+            <tr>
+                <td>{{ gestion_du_sol.id }}</td>
+                <td>{{ gestion_du_sol.nom }}</td>
+                <td>{{ gestion_du_sol.prenom }}</td>
+                <td>{{ gestion_du_sol.sexe }}</td>
+                <td>{{ gestion_du_sol.ville }}</td>
+                <td>{{ gestion_du_sol.telephone }}</td>
+                <td>{{ gestion_du_sol.niveauEtude }}</td>
+                <td>{{ gestion_du_sol.siuationFamiliale }}</td>
+                <td>{{ gestion_du_sol.nomStructure }}</td>
+                <td>{{ gestion_du_sol.localite }}</td>
+                <td>{{ gestion_du_sol.region }}</td>
+                <td>{{ gestion_du_sol.arrondissement }}</td>
+                <td>{{ gestion_du_sol.distanceParRapportARoute }}</td>
+                <td>{{ gestion_du_sol.anneeExperience }}</td>
+                <td>{{ gestion_du_sol.serviceSollicite }}</td>
+                <td>{{ gestion_du_sol.autreSpecification }}</td>
+                <td>
+                    <a href="{{ path('gestion_du_sol_show', {'id': gestion_du_sol.id}) }}">show</a>
+                    <a href="{{ path('gestion_du_sol_edit', {'id': gestion_du_sol.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gestion_du_sol_new') }}">Create new</a>
+{% endblock %}

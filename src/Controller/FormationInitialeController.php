@@ -11,6 +11,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\SecurityController;
 use App\Repository\ActualiteRepository;
+use App\Entity\DemandeFormation;
+use App\Form\DemandeFormationType;
+use App\Repository\DemandeFormationRepository;
 
 class FormationInitialeController extends AbstractController
 {
@@ -27,11 +30,24 @@ class FormationInitialeController extends AbstractController
             //afin de pouvoir créer un compte dans cette page
             $injector->registration($request,$listActualiteRepository,$manager,$encoder);
             $user = new User();
-  
+            $demandeFormation = new DemandeFormation();
+            $formFormation = $this->createForm(DemandeFormationType::class, $demandeFormation);
+            $formFormation->handleRequest($request);
              $form = $this->createForm(RegistrationType::class, $user);
+             if ($formFormation->isSubmitted() && $formFormation->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($demandeFormation);
+                $entityManager->flush();
+    
+                return $this->redirectToRoute('formation_initiale');
+            }
         return $this->render('formation_initiale/formation_initiale.html.twig', [
             'controller_name' => 'FormationInitialeController',
+            'formFormation' => $formFormation->createView(),
             'form' => $form->createView()
         ]);
     }
+
+
+     
 }

@@ -1,0 +1,10 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+    <h1>Create new EspacePub1</h1>
+
+    {{ include('espace_pub1/_form.html.twig') }}
+
+    <a href="{{ path('espace_pub1_index') }}">back to list</a>
+{% endblock %}

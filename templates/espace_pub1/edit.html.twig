@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EspacePub1{% endblock %}
+
+{% block body %}
+    <h1>Edit EspacePub1</h1>
+
+    {{ include('espace_pub1/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('espace_pub1_index') }}">back to list</a>
+
+    {{ include('espace_pub1/_delete_form.html.twig') }}
+{% endblock %}

@@ -11,6 +11,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\SecurityController;
 use App\Repository\ActualiteRepository;
+use App\Entity\MontageProjet;
+use App\Form\MontageProjetType;
+use App\Repository\MontageProjetRepository;
 
 
 
@@ -31,9 +34,21 @@ class MontageDesProjetsController extends AbstractController
             $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
+             $montageProjet = new MontageProjet();
+             $formMontageProjet = $this->createForm(MontageProjetType::class, $montageProjet);
+             $formMontageProjet->handleRequest($request);
+     
+             if ($formMontageProjet->isSubmitted() && $formMontageProjet->isValid()) {
+                 $entityManager = $this->getDoctrine()->getManager();
+                 $entityManager->persist($montageProjet);
+                 $entityManager->flush();
+     
+                 return $this->redirectToRoute('montage_projets');
+             }
             return $this->render('montage_des_projets/montage_projets.html.twig', [
                 'controller_name' => 'MontageDesProjetsController',
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'formMontageProjet' => $formMontageProjet->createView(),
             ]);
     }
 }

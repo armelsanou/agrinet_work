@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MontageProjet{% endblock %}
+
+{% block body %}
+    <h1>Edit MontageProjet</h1>
+
+    {{ include('montage_projet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('montage_projet_index') }}">back to list</a>
+
+    {{ include('montage_projet/_delete_form.html.twig') }}
+{% endblock %}

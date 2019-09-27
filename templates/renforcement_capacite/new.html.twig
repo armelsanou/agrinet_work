@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RenforcementCapacite{% endblock %}
+
+{% block body %}
+    <h1>Create new RenforcementCapacite</h1>
+
+    {{ include('renforcement_capacite/_form.html.twig') }}
+
+    <a href="{{ path('renforcement_capacite_index') }}">back to list</a>
+{% endblock %}

@@ -3,7 +3,8 @@
 {% block Home_title %}::acueil {% endblock %}
 
 {% block stylesheets %}
-  
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -30,15 +31,23 @@
                                 <br>
                             <div class="row">
                                     <div class="col-lg-6 item">
+                                       
+
+
+
+                                        <a href="#" data-toggle="modal"
+                                        aria-pressed="false" data-target="#exampleModal889" data-blast="bgColor">
                                         <div class="feedback-info pt-5 pb-4 px-4 bloc1-elevage">
-                                            <h3 class="mb-3">RENFORCEMENT
-                                            </h3>
-                                            
-                                            <div class="feedback-grids mt-3">
+                                                <h3 class="mb-3">
+                                                        <button class="btn btnLinkPage">SOLLICITEZ UN RENFORCEMENT DE CAPACITE</button>
+                                                </h3>
                                                 
-                                                <div class="clearfix"> </div>
+                                                <div class="feedback-grids mt-3">
+                                                    
+                                                    <div class="clearfix"> </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                    
                                 
@@ -57,5 +66,6 @@
         </div>
     </section>
 
+    {% include "VuesAgrinet2/fragment/modal_renforcement_capacite.html.twig" %}
 
     {% endblock %}

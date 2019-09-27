@@ -2,8 +2,11 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
-    role_hierarchy:       
+    role_hierarchy:     
         ROLE_ADMIN: ROLE_USER
+       
+        
+       
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -23,6 +26,8 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+                default_target_path: mieux_produire
+               
 
             logout:
                 path: security_logout

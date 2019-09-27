@@ -1,0 +1,34 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+    <h1>EspacePub1 index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo1</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for espace_pub1 in espace_pub1s %}
+            <tr>
+                <td>{{ espace_pub1.id }}</td>
+                <td>{{ espace_pub1.photo1 }}</td>
+                <td>
+                    <a href="{{ path('espace_pub1_show', {'id': espace_pub1.id}) }}">show</a>
+                    <a href="{{ path('espace_pub1_edit', {'id': espace_pub1.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('espace_pub1_new') }}">Create new</a>
+{% endblock %}

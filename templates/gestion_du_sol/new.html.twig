@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GestionDuSol{% endblock %}
+
+{% block body %}
+    <h1>Create new GestionDuSol</h1>
+
+    {{ include('gestion_du_sol/_form.html.twig') }}
+
+    <a href="{{ path('gestion_du_sol_index') }}">back to list</a>
+{% endblock %}

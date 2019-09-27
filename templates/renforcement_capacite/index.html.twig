@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RenforcementCapacite index{% endblock %}
+
+{% block body %}
+    <h1>RenforcementCapacite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomStructure</th>
+                <th>Localisation</th>
+                <th>Region</th>
+                <th>Arrondissement</th>
+                <th>DistanceParRapoortARoute</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Ville</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>BesoinEnRenforcement</th>
+                <th>NombreDePlace</th>
+                <th>PlusDeDetails</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for renforcement_capacite in renforcement_capacites %}
+            <tr>
+                <td>{{ renforcement_capacite.id }}</td>
+                <td>{{ renforcement_capacite.NomStructure }}</td>
+                <td>{{ renforcement_capacite.localisation }}</td>
+                <td>{{ renforcement_capacite.region }}</td>
+                <td>{{ renforcement_capacite.arrondissement }}</td>
+                <td>{{ renforcement_capacite.distanceParRapoortARoute }}</td>
+                <td>{{ renforcement_capacite.nom }}</td>
+                <td>{{ renforcement_capacite.prenom }}</td>
+                <td>{{ renforcement_capacite.sexe }}</td>
+                <td>{{ renforcement_capacite.ville }}</td>
+                <td>{{ renforcement_capacite.telephone }}</td>
+                <td>{{ renforcement_capacite.email }}</td>
+                <td>{{ renforcement_capacite.besoinEnRenforcement }}</td>
+                <td>{{ renforcement_capacite.nombreDePlace }}</td>
+                <td>{{ renforcement_capacite.PlusDeDetails }}</td>
+                <td>
+                    <a href="{{ path('renforcement_capacite_show', {'id': renforcement_capacite.id}) }}">show</a>
+                    <a href="{{ path('renforcement_capacite_edit', {'id': renforcement_capacite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('renforcement_capacite_new') }}">Create new</a>
+{% endblock %}

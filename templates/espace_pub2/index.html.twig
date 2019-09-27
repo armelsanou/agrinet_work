@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EspacePub2 index{% endblock %}
+
+{% block body %}
+    <h1>EspacePub2 index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for espace_pub2 in espace_pub2s %}
+            <tr>
+                <td>{{ espace_pub2.id }}</td>
+                <td>{{ espace_pub2.photo }}</td>
+                <td>
+                    <a href="{{ path('espace_pub2_show', {'id': espace_pub2.id}) }}">show</a>
+                    <a href="{{ path('espace_pub2_edit', {'id': espace_pub2.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('espace_pub2_new') }}">Create new</a>
+{% endblock %}

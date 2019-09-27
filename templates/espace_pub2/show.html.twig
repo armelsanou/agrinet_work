@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EspacePub2{% endblock %}
+
+{% block body %}
+    <h1>EspacePub2</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ espace_pub2.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ espace_pub2.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('espace_pub2_index') }}">back to list</a>
+
+    <a href="{{ path('espace_pub2_edit', {'id': espace_pub2.id}) }}">edit</a>
+
+    {{ include('espace_pub2/_delete_form.html.twig') }}
+{% endblock %}

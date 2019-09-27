@@ -123,8 +123,11 @@ section .section-title {
 .frontside .card .card-title,
 .backside .card .card-title {
     color: white !important;
-    text-shadow: 3px 4px 8px #f2bc7c;
-    font-size: 22px;
+    /* text-shadow: 3px 4px 8px #f2bc7c; */
+    font-size: 29px;
+    text-align: center;
+    position: relative;
+    top: 9px;
 }
 
 .frontside .card .card-body img {

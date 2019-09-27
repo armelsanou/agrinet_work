@@ -11,7 +11,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Entity\GestionDuSol;
+use App\Form\GestionDuSolType;
+use App\Repository\GestionDuSolRepository;
 class GestionDuSolController extends AbstractController
 {
     /**
@@ -29,9 +31,22 @@ class GestionDuSolController extends AbstractController
             $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
+             $gestionDuSol = new GestionDuSol();
+             $formGestionSol = $this->createForm(GestionDuSolType::class, $gestionDuSol);
+             $formGestionSol->handleRequest($request);
+     
+             if ($formGestionSol->isSubmitted() && $formGestionSol->isValid()) {
+                 $entityManager = $this->getDoctrine()->getManager();
+                 $entityManager->persist($gestionDuSol);
+                 $entityManager->flush();
+     
+                 return $this->redirectToRoute('gestion_du_sol');
+             }
+     
         return $this->render('gestion_du_sol/gestion_du_sol.html.twig', [
             'controller_name' => 'GestionDuSolController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formGestionSol' => $formGestionSol->createView()
         ]);
     }
 }

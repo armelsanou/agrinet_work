@@ -11,6 +11,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\SecurityController;
 use App\Repository\ActualiteRepository;
+use App\Entity\RenforcementCapacite;
+use App\Form\RenforcementCapaciteType;
+use App\Repository\RenforcementCapaciteRepository;
 
 class FormationPratiqueController extends AbstractController
 {
@@ -29,9 +32,22 @@ class FormationPratiqueController extends AbstractController
             $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
+             $renforcementCapacite = new RenforcementCapacite();
+             $formRenforcement = $this->createForm(RenforcementCapaciteType::class, $renforcementCapacite);
+             $formRenforcement->handleRequest($request);
+     
+             if ($formRenforcement->isSubmitted() && $formRenforcement->isValid()) {
+                 $entityManager = $this->getDoctrine()->getManager();
+                 $entityManager->persist($renforcementCapacite);
+                 $entityManager->flush();
+     
+                 return $this->redirectToRoute('formation_pratique');
+             }
+     
         return $this->render('formation_pratique/formation_pratique.html.twig', [
             'controller_name' => 'FormationPratiqueController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formRenforcement' => $formRenforcement->createView()
         ]);
     }
 }

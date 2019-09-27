@@ -9,6 +9,43 @@ ul.dropdown-menu.profil {
     left: 1;
     left: -69px;
 }
+.search-agileinfo input[type="search"] {
+    margin-top: 5px;
+}
+
+.search-agileinfo input[type="search"] {
+    width: 87%;
+    padding: 7px;
+    font-size: 1em;
+    color: #010804;
+    outline: none;
+    border: 1px solid #cccccc00;
+    background: #ffffffb0;
+    -webkit-appearance: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+}
+.col-md-4.search-agileinfo.pull-right {
+    top: 61px;
+}
+button.search {
+    border: none;
+    position: absolute;
+    top: 4px;
+    right: 11px;
+    width: 47px;
+    height: 43px;
+    outline: none;
+    box-shadow: none;
+    background: #33b38a;
+    padding: 0;
+    border-radius: inherit;
+    -webkit-appearance: none;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    transition: .5s all;
+}
 </style>
 
 
@@ -33,25 +70,26 @@ ul.dropdown-menu.profil {
 								<li><a href="{{path('contactez_nous')}}">Contact </a></li>
 							</ul>
 					</li>
-				
+					<li class="mr-lg-4 mr-2 active"><a href="{{path('mieux_produire')}}">Suivi agronomique</a></li>
 				<li class="mr-lg-4 mr-2 dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Formation & expertise <b class="caret"></b></a>
 						<ul class="dropdown-menu drp_acue">
 						  <li><a href="{{path('formation_expertise')}}">Formation & expertise</a></li>
 						  <li><a href="{{path('formation_initiale')}}">formation initiale</a></li>
-						  <li><a href="{{path('formation_pratique')}}">formation pratique</a></li>
+						  <li><a href="{{path('formation_pratique')}}">renforcement de capacité						</a></li>
 						  <li><a href="{{path('montage_projets')}}">montage projets</a></li>
 						  <li><a href="{{path('gestion_du_sol')}}">gestion du sol</a></li>
 						  <li><a href="{{path('vulgarisation_agricole')}}">vulgarisation agricole</a></li>
 						  
 						</ul>
 					  </li>
-				<li class="mr-lg-4 mr-2 active"><a href="{{path('mieux_produire')}}">mieux produire</a></li>
-				<li class="mr-lg-4 mr-2"><a href="{{path('devenir_expert')}}">devenir expert</a></li>
+					  <li class="mr-lg-4 mr-2"><a href="{{path('agri_finance')}}">Agrifinance</a></li>
+					  <li class="mr-lg-4 mr-2"><a href="{{path('phytopharmacie')}}">phytopharmacie</a></li>
+				
 				<li class="mr-lg-4 mr-2"><a href="{{path('bibliotheque_agricole')}}">Variétés & Races</a></li>
-				<li class="mr-lg-4 mr-2"><a href="{{path('phytopharmacie')}}">phytopharmacie</a></li>
-
-				<li class="mr-lg-4 mr-2"><a href="{{path('agri_finance')}}">Agrifinance</a></li>
+				
+				<li class="mr-lg-4 mr-2"><a href="{{path('devenir_expert')}}">devenir expert</a></li>
+				
 
 				{% if not app.user %}
 				<button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3 bouton-userPer" data-toggle="modal"
@@ -76,13 +114,22 @@ ul.dropdown-menu.profil {
 					{% endif %}
 				{% endif %}
 				
-				
+			
 				
 			</ul>
 		
 		</nav>
 		<!-- //nav -->
 	</div>
+
+	<div class="col-md-4 search-agileinfo pull-right">
+			<form action="#" method="post">
+				<input type="search" name="Search" placeholder="Search for a Product..." required="">
+				<button type="submit" class="btn btn-default search" aria-label="Left Align">
+					<i class="fa fa-search" aria-hidden="true"> </i>
+				</button>
+			</form>
+		</div>
 </header>
 <!-- //header -->
 <script>

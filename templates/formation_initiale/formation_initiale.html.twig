@@ -3,7 +3,10 @@
 {% block Home_title %}::acueil {% endblock %}
 
 {% block stylesheets %}
-  
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ asset('StyleAgrinet2/js/jquery-3.2.1.slim.min.js') }}"></script>
+
+
 {% endblock %}
 
 {% block body %}
@@ -32,23 +35,12 @@
                                 <br>
                             <div class="row">
                                     <div class="col-lg-6 item">
-                                        {% if is_granted('ROLE_USER') %}
-                                            <a href="{{path('recap_culture')}}">
-                                                <div class="feedback-info pt-5 pb-4 px-4 bloc1-elevage">
-                                                    <h3 class="mb-3">améliorer sa production agricole
-                                                    </h3>
-                                                    
-                                                    <div class="feedback-grids mt-3">
-                                                        
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            {% else%}
+                                      
                                     <a href="#" data-toggle="modal"
-                                    aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                                    aria-pressed="false" data-target="#exampleModal888" data-blast="bgColor">
                                     <div class="feedback-info pt-5 pb-4 px-4 bloc1-elevage">
-                                            <h3 class="mb-3">améliorer sa production agricole
+                                            <h3 class="mb-3">
+                                                    <button class="btn btnLinkPage">souscrire à une formation</button>
                                             </h3>
                                             
                                             <div class="feedback-grids mt-3">
@@ -58,7 +50,7 @@
                                         </div>
                                     </a>
                                     </div>
-                                    {% endif %}
+                                  
                             </div>
                 </div>
        
@@ -72,6 +64,7 @@
     
         </div>
     </section>
+    {% include "VuesAgrinet2/fragment/modal_souscrire_a_une_formation.html.twig" %}
 
-
+ 
     {% endblock %}
