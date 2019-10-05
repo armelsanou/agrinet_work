@@ -1,0 +1,28 @@
+<div class="modal fade" id="exampleModal23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel23"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modalPerso">
+        <div class="modal-header">
+            <h5 class="modal-title text-white" id="exampleModalLabel1">creer actualite</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {{ form_start(formGestion)}}
+            
+
+                       <div class="form-group">
+                    
+                       {{form_row(formGestion.image1, { 'label': 'image ', 'attr': {'class':'form-control'}}) }}
+                       {{form_row(formGestion.image2, { 'label': 'image ', 'attr': {'class':'form-control'}}) }}
+                       </div>
+
+                       <button type="submit" class="btn btn-success">Créer image</button>
+
+                       {{form_end(formGestion)}}
+        </div>
+    </div>
+</div>
+</div>
+

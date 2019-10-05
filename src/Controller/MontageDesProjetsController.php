@@ -14,6 +14,7 @@ use App\Repository\ActualiteRepository;
 use App\Entity\MontageProjet;
 use App\Form\MontageProjetType;
 use App\Repository\MontageProjetRepository;
+use App\Repository\MontageProImgRepository;
 
 
 
@@ -25,7 +26,8 @@ class MontageDesProjetsController extends AbstractController
         public function montage_projets(Request $request, 
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
-                                            ObjectManager $manager, 
+                                            ObjectManager $manager,
+                                            MontageProImgRepository $montageProImgRepository, 
                                             SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -49,6 +51,7 @@ class MontageDesProjetsController extends AbstractController
                 'controller_name' => 'MontageDesProjetsController',
                 'form' => $form->createView(),
                 'formMontageProjet' => $formMontageProjet->createView(),
+                'montage_pro_imgs' => $montageProImgRepository->findAll(),
             ]);
     }
 }

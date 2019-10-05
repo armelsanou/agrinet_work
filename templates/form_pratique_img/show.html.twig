@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormPratiqueImg{% endblock %}
+
+{% block body %}
+    <h1>FormPratiqueImg</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ form_pratique_img.id }}</td>
+            </tr>
+            <tr>
+                <th>Image1</th>
+                <td>{{ form_pratique_img.image1 }}</td>
+            </tr>
+            <tr>
+                <th>Image2</th>
+                <td>{{ form_pratique_img.image2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('form_pratique_img_index') }}">back to list</a>
+
+    <a href="{{ path('form_pratique_img_edit', {'id': form_pratique_img.id}) }}">edit</a>
+
+    {{ include('form_pratique_img/_delete_form.html.twig') }}
+{% endblock %}

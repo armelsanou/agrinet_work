@@ -113,3 +113,65 @@ ul.flex-direction-nav {
 @media screen and (max-width: 320px) {
  
 }
+
+/*--top-brands--*/
+#flexiselDemo1{
+	display: none;
+}
+.nbs-flexisel-container {
+	position: relative;
+	max-width: 100%;
+}
+.nbs-flexisel-ul {
+	position: relative;
+	width: 9999px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	text-align: center;
+}
+.nbs-flexisel-inner {
+	overflow: hidden;
+	margin: 0px auto;
+}
+.nbs-flexisel-item {
+	float: left;
+	margin:0;
+	padding: 0 15px;
+	position: relative;
+	line-height: 0px;
+}
+.nbs-flexisel-item > img {
+	cursor: pointer;
+	position: relative;
+	width:54%;
+	margin:0 auto;
+}
+
+.nbs-flexisel-nav-left {
+    left: 0;
+    background: url(../images/img-sprite.png) no-repeat 5px center;
+    background-color: #00e58b;
+}
+.nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+    width: 25px;
+    height: 40px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    margin-top: 0em;
+}
+.nbs-flexisel-nav-right {
+    right: 0%;
+    background: url(../images/img-sprite.png) no-repeat -20px center;
+    background-color: #00e58b;
+}
+.nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+    width: 25px;
+    height: 40px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    margin-top: 0em;
+}
+/*--//top-brands--*/

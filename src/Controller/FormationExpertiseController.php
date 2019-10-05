@@ -11,7 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\SecurityController;
 use App\Repository\ActualiteRepository;
-
+use App\Repository\FormExperImgRepository;
 class FormationExpertiseController extends AbstractController
 {
     /**
@@ -20,7 +20,8 @@ class FormationExpertiseController extends AbstractController
         public function formation_expertise(Request $request, 
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
-                                            ObjectManager $manager, 
+                                            ObjectManager $manager,
+                                            FormExperImgRepository $formExperImgRepository, 
                                             SecurityController $injector){
 
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
@@ -32,7 +33,8 @@ class FormationExpertiseController extends AbstractController
              $form = $this->createForm(RegistrationType::class, $user);
         return $this->render('formation_expertise/formation_expertise.html.twig', [
             'controller_name' => 'FormationExpertiseController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'form_exper_imgs' => $formExperImgRepository->findAll(),
         ]);
     }
 }

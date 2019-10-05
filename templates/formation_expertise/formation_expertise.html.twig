@@ -28,10 +28,11 @@
                     très larges (scientifiques, statistiques, techniques...) couvrant l’ensemble du domaine Agropastoral et Rural.  </p>
 				<p class="pt-3 mt-3 border-top"><span class="fa fa-quote-left text-color mr-2"></span>	SUIVI DE VOTRE EXPLOITATION AGROPASTORALE</p>
             </div>
-            <div class ="col-lg-6" ><img src="{{ asset('StyleAgrinet2/images/for1.jpg')}}" class="img-responsive img-for1"></div>
+            {% for photo in form_exper_imgs  %}
+            <div class ="col-lg-6" ><img src="{{ asset('uploads/') }}{{ photo.image1 }}" class="img-responsive img-for1"></div>
 
-            <div class ="col-lg-6"><img src="{{ asset('StyleAgrinet2/images/for2.jpg')}}" class="img-responsive img-for1"></div>
-
+            <div class ="col-lg-6"><img src="{{ asset('uploads/') }}{{ photo.image2 }}" class="img-responsive img-for1"></div>
+            {% endfor %}
 
             <div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
                     <p> A travers notre plateforme, nous recueillons les informations relatives à 

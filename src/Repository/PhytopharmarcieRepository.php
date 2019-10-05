@@ -26,15 +26,13 @@ class PhytopharmarcieRepository extends ServiceEntityRepository
       */
 
 
-    public function findByCultEnMa($culture,$ennemie,$matiere_active):array
+    public function findByCultEnMa($culture,$ennemie):array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.culture = :val1')
             ->andWhere('p.enemie = :val2')
-            ->andWhere('p.matiereActive = :val3')
             ->setParameter('val1', $culture)
             ->setParameter('val2', $ennemie)
-            ->setParameter('val3', $matiere_active)
             ->getQuery()
             ->getResult()
             ;

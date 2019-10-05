@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Repository\ActualiteRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Repository\VulgarisationImgRepository;
 class VulgarisationController extends AbstractController
 {
     /**
@@ -20,7 +20,7 @@ class VulgarisationController extends AbstractController
         public function vulgarisation_agricole(Request $request, 
                           ActualiteRepository $listActualiteRepository,
                           UserPasswordEncoderInterface $encoder, 
-                          ObjectManager $manager, 
+                          ObjectManager $manager, VulgarisationImgRepository $vulgarisationImgRepository,
                           SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -32,7 +32,8 @@ class VulgarisationController extends AbstractController
              $form = $this->createForm(RegistrationType::class, $user);
         return $this->render('vulgarisation/vulgarisation_agricole.html.twig', [
             'controller_name' => 'VulgarisationController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'vulgarisation_imgs' => $vulgarisationImgRepository->findAll(),
         ]);
     }
 }

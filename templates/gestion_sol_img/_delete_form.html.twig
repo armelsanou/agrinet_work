@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('gestion_sol_img_delete', {'id': gestion_sol_img.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gestion_sol_img.id) }}">
+    <button class="btn">Delete</button>
+</form>

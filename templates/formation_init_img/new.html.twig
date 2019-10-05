@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FormationInitImg{% endblock %}
+
+{% block body %}
+    <h1>Create new FormationInitImg</h1>
+
+    {{ include('formation_init_img/_form.html.twig') }}
+
+    <a href="{{ path('formation_init_img_index') }}">back to list</a>
+{% endblock %}

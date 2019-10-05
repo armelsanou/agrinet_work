@@ -3,7 +3,8 @@ security:
         App\Entity\User:
             algorithm: bcrypt
     role_hierarchy:     
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
        
         
        
@@ -11,6 +12,8 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+        fos_userbundle:
+            id: fos_user.user_provider.username
         in_database:
             entity:
                 class: App\Entity\User
@@ -20,17 +23,21 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern: ^/
             anonymous: true
             provider: in_database
 
             form_login:
-                login_path: security_login
-                check_path: security_login
+                provider: fos_userbundle
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
                 default_target_path: mieux_produire
+                csrf_token_generator: security.csrf.token_manager
+
                
 
             logout:
-                path: security_logout
+                path: fos_user_security_logout
                 target: /
 
     
@@ -54,23 +61,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/recap_elevage, roles: ROLE_USER }
-         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/phytopharmacie, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/contact, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/a_propos, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/vulgarisation_agricole, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/formation_expertise, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/devenir_expert, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/formation_initiale, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/bibliotheque_agricole, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/mieux_produire, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/formation_pratique, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/gestion_du_sol, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/home, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/recap_culture, roles: ROLE_USER }
-         - { path: ^/montage_projets, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/agri_impact, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/welcome, role: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/actualite,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
          #- { path: ^/, roles: IS_AUTHENTICATED_FULLY }

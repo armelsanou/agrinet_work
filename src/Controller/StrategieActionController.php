@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Repository\ActualiteRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Repository\StrategieActionImgRepository;
 class StrategieActionController extends AbstractController
 {
     /**
@@ -20,6 +20,7 @@ class StrategieActionController extends AbstractController
     public function index(Request $request, 
                           ActualiteRepository $listActualiteRepository,
                           UserPasswordEncoderInterface $encoder, 
+                          StrategieActionImgRepository $strategieActionImgRepository,
                           ObjectManager $manager, 
                           SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
@@ -32,6 +33,7 @@ class StrategieActionController extends AbstractController
              $form = $this->createForm(RegistrationType::class, $user);
         return $this->render('strategie_action/index.html.twig', [
             'controller_name' => 'StrategieActionController',
+            'strategie_action_imgs' => $strategieActionImgRepository->findAll(),
                 'form' => $form->createView()
         ]);
     }

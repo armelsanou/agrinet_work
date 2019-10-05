@@ -1,0 +1,13 @@
+{% extends 'default_base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <a href="/">Back to index</a>
+    <p><i class="fa fa-check-circle" aria-hidden="true"></i> {{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+{% endblock body %}
+
+

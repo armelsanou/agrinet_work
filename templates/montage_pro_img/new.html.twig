@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MontageProImg{% endblock %}
+
+{% block body %}
+    <h1>Create new MontageProImg</h1>
+
+    {{ include('montage_pro_img/_form.html.twig') }}
+
+    <a href="{{ path('montage_pro_img_index') }}">back to list</a>
+{% endblock %}

@@ -11,7 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Repository\SuiviAgriImgRepository;
 
 class MieuxProduireController extends AbstractController
 {
@@ -21,7 +21,8 @@ class MieuxProduireController extends AbstractController
         public function mieux_produire(Request $request, 
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
-                                            ObjectManager $manager, 
+                                            ObjectManager $manager,
+                                            SuiviAgriImgRepository $suiviAgriImgRepository, 
                                             SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -32,7 +33,8 @@ class MieuxProduireController extends AbstractController
             $form = $this->createForm(RegistrationType::class, $user);
         return $this->render('mieux_produire/mieux_produire.html.twig', [
             'controller_name' => 'MieuxProduireController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'suivi_agri_imgs' => $suiviAgriImgRepository->findAll(),
         ]);
     }
 }

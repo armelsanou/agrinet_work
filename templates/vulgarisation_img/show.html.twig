@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VulgarisationImg{% endblock %}
+
+{% block body %}
+    <h1>VulgarisationImg</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vulgarisation_img.id }}</td>
+            </tr>
+            <tr>
+                <th>Image1</th>
+                <td>{{ vulgarisation_img.image1 }}</td>
+            </tr>
+            <tr>
+                <th>Image2</th>
+                <td>{{ vulgarisation_img.image2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('vulgarisation_img_index') }}">back to list</a>
+
+    <a href="{{ path('vulgarisation_img_edit', {'id': vulgarisation_img.id}) }}">edit</a>
+
+    {{ include('vulgarisation_img/_delete_form.html.twig') }}
+{% endblock %}

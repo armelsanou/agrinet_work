@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MontageProImg index{% endblock %}
+
+{% block body %}
+    <h1>MontageProImg index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for montage_pro_img in montage_pro_imgs %}
+            <tr>
+                <td>{{ montage_pro_img.id }}</td>
+                <td>{{ montage_pro_img.image }}</td>
+                <td>
+                    <a href="{{ path('montage_pro_img_show', {'id': montage_pro_img.id}) }}">show</a>
+                    <a href="{{ path('montage_pro_img_edit', {'id': montage_pro_img.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('montage_pro_img_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'default_base.html.twig' %}
+
+{% block body %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="row"> 
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+                <!-- plainPassword.first -->
+                <div class="row">
+                    <div class="col-md-3 field-label-responsive">
+                        {{ form_label(form.plainPassword.first) }}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- plainPassword.second -->
+                <div class="row">
+                    <div class="col-md-3 field-label-responsive">
+                        {{ form_label(form.plainPassword.second) }}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{ form_widget(form) }}
+                <div>
+                    <input class="btn btn-success  btn-block" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}

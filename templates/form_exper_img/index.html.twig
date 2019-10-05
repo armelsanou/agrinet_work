@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormExperImg index{% endblock %}
+
+{% block body %}
+    <h1>FormExperImg index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image1</th>
+                <th>Image2</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form_exper_img in form_exper_imgs %}
+            <tr>
+                <td>{{ form_exper_img.id }}</td>
+                <td>{{ form_exper_img.image1 }}</td>
+                <td>{{ form_exper_img.image2 }}</td>
+                <td>
+                    <a href="{{ path('form_exper_img_show', {'id': form_exper_img.id}) }}">show</a>
+                    <a href="{{ path('form_exper_img_edit', {'id': form_exper_img.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('form_exper_img_new') }}">Create new</a>
+{% endblock %}

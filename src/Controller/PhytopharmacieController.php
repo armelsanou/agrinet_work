@@ -56,8 +56,8 @@ class PhytopharmacieController extends AbstractController
                  $formulaire->handleRequest($request);
                 $getCul=$request->get('culture');
                 $getEn=$request->get('enemie');
-                $getMa=$request->get('matiere_active');
-                 $recherchePhyto=$phytopharmarcieRepository->findByCultEnMa($getCul,$getEn,$getMa);
+               
+                 $recherchePhyto=$phytopharmarcieRepository->findByCultEnMa($getCul,$getEn);
 
                  if($formulaire->isSubmitted() && $formulaire->isValid()){
                        $manager->persist($phytopharmacie);
@@ -78,7 +78,7 @@ class PhytopharmacieController extends AbstractController
                     'formResearch' => $formResearch->createView(),
                         'getCul' =>$getCul,
                         'getEn' =>$getEn,
-                        'getMa' =>$getMa,
+                       
 
                 ]);
             }catch(Exception $exception){

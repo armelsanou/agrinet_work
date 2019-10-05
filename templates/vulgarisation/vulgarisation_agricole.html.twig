@@ -34,6 +34,28 @@
                                 <br>
                                 <br>
                                 <div class="row">
+                                        {% for photo in vulgarisation_imgs %}
+                                        
+                                            <div class="col-lg-6 col-md-4 col-sm-6 mb">
+                                                    <div class="content-panel-design pn">
+                                                    <div id="blog-bg">
+                                                        <img src="{{ asset('uploads/') }}{{ photo.image1 }}" alt="" id="blog-bg-img" style="height: 279PX!important;">
+                                                       
+                                                    </div>
+                                                   
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb">
+                                                    <div class="content-panel-design pn">
+                                                    <div id="blog-bg">
+                                                        <img src="{{ asset('uploads/') }}{{ photo.image2 }}" alt="" id="blog-bg-img" style="height: 279PX!important;">
+                                                       
+                                                    </div>
+                                                   
+                                                    </div>
+                                            </div>
+                                        {% endfor %}
+
                                         <div class="col-lg-6 item">
 
                                                 <a href="{{path('contactez_nous')}}" >

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit FormationInitImg{% endblock %}
+
+{% block body %}
+    <h1>Edit FormationInitImg</h1>
+
+    {{ include('formation_init_img/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('formation_init_img_index') }}">back to list</a>
+
+    {{ include('formation_init_img/_delete_form.html.twig') }}
+{% endblock %}

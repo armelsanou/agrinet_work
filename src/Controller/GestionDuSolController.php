@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\GestionDuSol;
 use App\Form\GestionDuSolType;
 use App\Repository\GestionDuSolRepository;
+use App\Repository\GestionSolImgRepository;
 class GestionDuSolController extends AbstractController
 {
     /**
@@ -22,7 +23,7 @@ class GestionDuSolController extends AbstractController
         public function gestion_du_sol(Request $request, 
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
-                                            ObjectManager $manager, 
+                                            ObjectManager $manager,GestionSolImgRepository $gestionSolImgRepository, 
                                             SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -46,7 +47,8 @@ class GestionDuSolController extends AbstractController
         return $this->render('gestion_du_sol/gestion_du_sol.html.twig', [
             'controller_name' => 'GestionDuSolController',
             'form' => $form->createView(),
-            'formGestionSol' => $formGestionSol->createView()
+            'formGestionSol' => $formGestionSol->createView(),
+            'gestion_sol_imgs' => $gestionSolImgRepository->findAll(),
         ]);
     }
 }

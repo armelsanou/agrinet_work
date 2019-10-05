@@ -84,11 +84,7 @@
                                             </select>
                                             <label for="culture">Matière Active</label>
                                             <select class="form-control form-control-sm Matiere_Active" name="matiere_active">
-                                                {% if getMa!=null %}
-                                                    <option id="1">
-                                                        {{getMa}}
-                                                    </option>
-                                                {% endif %}
+                                                
                                                 {% for culture in listePhyto %}
                                                 <option name="matiereActive">
                                                     {{culture.matiereActive}}
@@ -166,7 +162,7 @@
                   </tr>
               </thead>
               <tbody class="tab_new_style">
-                    {% if  getCul==null and getEn==null and getMa==null%}
+                    {% if  getCul==null and getEn==null %}
                     {% for listeAll in listePhyto %}
                     <tr class="">
                         <td>{{listeAll.culture}}</td>

@@ -1,6 +1,9 @@
 framework:
     secret: '%env(APP_SECRET)%'
-    #default_locale: en
+    translator: ~
+    default_locale: 'en'
+    templating:
+        engines: ['twig','php']
     #csrf_protection: true
     #http_method_override: true
 
@@ -15,3 +18,14 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "postmaster@agrinetfarm.com"
+        sender_name: "postmaster@agrinetfarm.com%"
+    registration:
+        confirmation:
+            enabled: true

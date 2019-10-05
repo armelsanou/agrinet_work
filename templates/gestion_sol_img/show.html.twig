@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GestionSolImg{% endblock %}
+
+{% block body %}
+    <h1>GestionSolImg</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gestion_sol_img.id }}</td>
+            </tr>
+            <tr>
+                <th>Image1</th>
+                <td>{{ gestion_sol_img.image1 }}</td>
+            </tr>
+            <tr>
+                <th>Image2</th>
+                <td>{{ gestion_sol_img.image2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gestion_sol_img_index') }}">back to list</a>
+
+    <a href="{{ path('gestion_sol_img_edit', {'id': gestion_sol_img.id}) }}">edit</a>
+
+    {{ include('gestion_sol_img/_delete_form.html.twig') }}
+{% endblock %}

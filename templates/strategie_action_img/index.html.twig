@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StrategieActionImg index{% endblock %}
+
+{% block body %}
+    <h1>StrategieActionImg index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for strategie_action_img in strategie_action_imgs %}
+            <tr>
+                <td>{{ strategie_action_img.id }}</td>
+                <td>{{ strategie_action_img.image }}</td>
+                <td>
+                    <a href="{{ path('strategie_action_img_show', {'id': strategie_action_img.id}) }}">show</a>
+                    <a href="{{ path('strategie_action_img_edit', {'id': strategie_action_img.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('strategie_action_img_new') }}">Create new</a>
+{% endblock %}

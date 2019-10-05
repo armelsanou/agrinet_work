@@ -1,0 +1,89 @@
+{% if error is defined and error %}
+<div class="col-sm-12 alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+{{ form_start(form, {'method': 'post', 'attr': {'class': 'fos_user_registration_register form-horizontal'}}) }}
+
+    {% if not form.vars.valid %}
+    <div class="my-custom-class-for-errors alert alert-danger">
+        {% for children in form.children %}
+            {% if not children.vars.valid %}
+                    {% for error in children.vars.errors %}
+                        <b>{{ error.message }}</b><br>
+                    {% endfor %}
+            {% endif %}
+
+            {% for subchildren in children.children %}
+                {% if not subchildren.vars.valid %}
+                        {% for suberror in subchildren.vars.errors %}
+                            <b>{{ suberror.message }}</b><br>
+                        {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Email -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            {{ form_label(form.email) }}
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}                                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Username -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            {{ form_label(form.username) }}
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}                                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- plainPassword.first -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            {{ form_label(form.plainPassword.first) }}
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}                                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- plainPassword.second -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            {{ form_label(form.plainPassword.second) }}
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}                                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_widget(form) }}
+    <!-- Register -->
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-success  btn-block" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    </div>
+{{ form_end(form) }}

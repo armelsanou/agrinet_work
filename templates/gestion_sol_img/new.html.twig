@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GestionSolImg{% endblock %}
+
+{% block body %}
+    <h1>Create new GestionSolImg</h1>
+
+    {{ include('gestion_sol_img/_form.html.twig') }}
+
+    <a href="{{ path('gestion_sol_img_index') }}">back to list</a>
+{% endblock %}

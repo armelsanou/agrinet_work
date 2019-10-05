@@ -63,9 +63,10 @@
         </div>
 
         
-        
-        <div class="container col-lg-12"><img src="{{ asset('StyleAgrinet2/images/apropos.jpg')}}"
+        {% for photo in  strategie_action_imgs   %}
+        <div class="container col-lg-12"><img src="{{ asset('uploads/') }}{{ photo.image }}"
                 class="img-responsive img-for1"></div>
+        {% endfor  %}
 
     </div>
 

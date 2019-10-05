@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SuiviAgriImg index{% endblock %}
+
+{% block body %}
+    <h1>SuiviAgriImg index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suivi_agri_img in suivi_agri_imgs %}
+            <tr>
+                <td>{{ suivi_agri_img.id }}</td>
+                <td>{{ suivi_agri_img.image }}</td>
+                <td>
+                    <a href="{{ path('suivi_agri_img_show', {'id': suivi_agri_img.id}) }}">show</a>
+                    <a href="{{ path('suivi_agri_img_edit', {'id': suivi_agri_img.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('suivi_agri_img_new') }}">Create new</a>
+{% endblock %}

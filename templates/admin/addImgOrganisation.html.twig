@@ -1,0 +1,52 @@
+{% extends 'VuesAgrinet2/adminLayout.html.twig' %}
+
+{% block body %}
+{% include 'VuesAgrinet2/fragment/sideBarLeftAdminPage.html.twig' %}
+<style>
+    .add_design {
+    padding: 16px;
+}
+.pn {
+    height: 250px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2)!important;
+}
+</style>
+<section id="main-content">
+        <section class="wrapper">
+                <div class="row mt">
+                        <div class="col-lg-12">
+                                <div class="add_design">
+                                        <button type="button" class="btn btn-theme" data-toggle="modal" data-target="#exampleModal23"><i class="fa fa-plus"></i> Ajouter photo 2</button>
+                                       
+                                    </div>        
+                                    {% for message in app.flashes('success') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                <div class="row">
+                                    {% for photo in organisations %}
+                                    
+                                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+                                                <div class="content-panel-design pn">
+                                                <div id="blog-bg">
+                                                    <img src="{{ asset('uploads/') }}{{ photo.imageOrganisation }}" alt="" id="blog-bg-img" style="height: 279PX!important;">
+                                                   
+                                                </div>
+                                               
+                                                </div>
+                                        </div>
+                                    {% endfor %}
+                                  </div>
+                        </div>
+                </div>
+    </section>
+   
+  </section>
+
+
+ 
+
+
+  {% include "VuesAgrinet2/fragment/modal_addImgOrganisation.html.twig" %}
+  {% endblock %}

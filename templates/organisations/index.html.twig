@@ -32,10 +32,11 @@
                     de qualité,dans le strict respect des délais. </p>
                 <p class="pt-3 mt-3 border-top"></p>
                 <br>
-                <div class="container col-lg-12"><img src="{{ asset('StyleAgrinet2/images/organigramme.jpg')}}"
+                {% for photo in  organisations   %}
+                <div class="container col-lg-12"><img src="{{ asset('uploads/') }}{{ photo.imageOrganisation }}"
                         class="img-responsive img-for1"></div>
                 <br>
-
+                {% endfor  %}
 
             </div>
 

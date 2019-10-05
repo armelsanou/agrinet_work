@@ -39,6 +39,38 @@ use App\Form\EspacePub2Type;
 use App\Entity\EspacePub2;
 use App\Repository\EspacePub1Repository;
 use App\Repository\EspacePub2Repository;
+use App\Entity\Organisation;
+use App\Form\OrganisationType;
+use App\Repository\OrganisationRepository;
+use App\Entity\StrategieActionImg;
+use App\Form\StrategieActionImgType;
+use App\Repository\StrategieActionImgRepository;
+use App\Entity\SuiviAgriImg;
+use App\Form\SuiviAgriImgType;
+use App\Repository\SuiviAgriImgRepository;
+use App\Entity\FormExperImg;
+use App\Form\FormExperImgType;
+use App\Entity\FormationInitImg;
+use App\Form\FormationInitImgType;
+use App\Repository\FormExperImgRepository;
+use App\Repository\FormationInitImgRepository;
+use App\Entity\RenforcementCapacite;
+use App\Form\RenforcementCapaciteType;
+use App\Repository\RenforcementCapaciteRepository;
+
+
+use App\Entity\FormPratiqueImg;
+use App\Form\FormPratiqueImgType;
+use App\Repository\FormPratiqueImgRepository;
+use App\Entity\MontageProImg;
+use App\Form\MontageProImgType;
+use App\Repository\MontageProImgRepository;
+use App\Entity\GestionSolImg;
+use App\Form\GestionSolImgType;
+use App\Repository\GestionSolImgRepository;
+use App\Entity\VulgarisationImg;
+use App\Form\VulgarisationImgType;
+use App\Repository\VulgarisationImgRepository;
 class AdminController extends AbstractController
 {
     /**
@@ -311,4 +343,295 @@ class AdminController extends AbstractController
             'espace_pub2s' => $espacePub2Repository->findAll(),
         ]);
     }
+
+
+
+     /**
+     * @Route("/new/Organisation_new", name="addOrganisation_new", methods={"GET","POST"})
+     */
+     public function new(Request $request,OrganisationRepository $organisationRepository): Response
+     {
+         $organisation = new Organisation();
+         $formOrganisation = $this->createForm(OrganisationType::class, $organisation);
+         $formOrganisation->handleRequest($request);
+ 
+         if ($formOrganisation->isSubmitted() && $formOrganisation->isValid()) {
+            $file=$organisation->getImageOrganisation();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $organisation->setImageOrganisation($fileName);
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($organisation);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('addOrganisation_new');
+         }
+ 
+         return $this->render('admin/addImgOrganisation.html.twig', [
+             'organisation' => $organisation,
+             'formOrganisation' => $formOrganisation->createView(),
+             'organisations' => $organisationRepository->findAll(),
+         ]);
+     }
+
+
+     /**
+     * @Route("/new/add_strategie", name="add_strategie_action_img_new", methods={"GET","POST"})
+     */
+    public function addStrategieImg(Request $request,StrategieActionImgRepository $strategieActionImgRepository): Response
+    {
+        $strategieActionImg = new StrategieActionImg();
+        $formStrategie = $this->createForm(StrategieActionImgType::class, $strategieActionImg);
+        $formStrategie->handleRequest($request);
+
+        if ($formStrategie->isSubmitted() && $formStrategie->isValid()) {
+            $file=$strategieActionImg->getImage();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $strategieActionImg->setImage($fileName);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($strategieActionImg);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_strategie_action_img_new');
+        }
+
+        return $this->render('admin/addImgStrategieAction.html.twig', [
+            'strategie_action_img' => $strategieActionImg,
+            'formStrategie' => $formStrategie->createView(),
+            'strategie_action_imgs' => $strategieActionImgRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/new/addSuivi", name="add_suivi_agri_img_new", methods={"GET","POST"})
+     */
+     public function addSuivi(Request $request,SuiviAgriImgRepository $suiviAgriImgRepository): Response
+     {
+         $suiviAgriImg = new SuiviAgriImg();
+         $formSuivi = $this->createForm(SuiviAgriImgType::class, $suiviAgriImg);
+         $formSuivi->handleRequest($request);
+ 
+         if ($formSuivi->isSubmitted() && $formSuivi->isValid()) {
+            $file=$suiviAgriImg->getImage();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $suiviAgriImg->setImage($fileName);
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($suiviAgriImg);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('add_suivi_agri_img_new');
+         }
+ 
+         return $this->render('admin/addSuiviImg.html.twig', [
+             'suivi_agri_img' => $suiviAgriImg,
+             'formSuivi' => $formSuivi->createView(),
+             'suivi_agri_imgs' => $suiviAgriImgRepository->findAll(),
+         ]);
+     }
+
+     /**
+     * @Route("/new/addFormExpert", name="add_orm_exper_img_new", methods={"GET","POST"})
+     */
+    public function addFormExpert(Request $request,FormExperImgRepository $formExperImgRepository): Response
+    {
+        $formExperImg = new FormExperImg();
+        $formExp = $this->createForm(FormExperImgType::class, $formExperImg);
+        $formExp->handleRequest($request);
+
+        if ($formExp->isSubmitted() && $formExp->isValid()) {
+            $file=$formExperImg->getImage1();
+            $file2=$formExperImg->getImage2();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $fileName2= md5(uniqid()).'.'.$file2->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $file2->move($this->getParameter('upload_directoy'), $fileName2);
+
+            $formExperImg->setImage1($fileName);
+            $formExperImg->setImage2($fileName2);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($formExperImg);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_orm_exper_img_new');
+        }
+
+        return $this->render('admin/addFormExper.html.twig', [
+            'form_exper_img' => $formExperImg,
+            'formExp' => $formExp->createView(),
+            'form_exper_imgs' => $formExperImgRepository->findAll(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/new/addFormationInit", name="add_formation_init_img_new", methods={"GET","POST"})
+     */
+     public function addFormationInit(Request $request,FormationInitImgRepository $formationInitImgRepository): Response
+     {
+         $formationInitImg = new FormationInitImg();
+         $formInitImg = $this->createForm(FormationInitImgType::class, $formationInitImg);
+         $formInitImg->handleRequest($request);
+ 
+         if ($formInitImg->isSubmitted() && $formInitImg->isValid()) {
+            $file=$formationInitImg->getImage1();
+            $file2=$formationInitImg->getImage2();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $fileName2= md5(uniqid()).'.'.$file2->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $file2->move($this->getParameter('upload_directoy'), $fileName2);
+
+            $formationInitImg->setImage1($fileName);
+            $formationInitImg->setImage2($fileName2);
+
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($formationInitImg);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('add_formation_init_img_new');
+         }
+ 
+         return $this->render('admin/addFormInit.html.twig', [
+             'formation_init_img' => $formationInitImg,
+             'formInitImg' => $formInitImg->createView(),
+             'formation_init_imgs' => $formationInitImgRepository->findAll(),
+         ]);
+     }
+ 
+
+   
+     /**
+     * @Route("/new/addRenforcement", name="add_renforcement_capacite_new", methods={"GET","POST"})
+     */
+     public function addRenforcement(Request $request,FormPratiqueImgRepository $formPratiqueImgRepository): Response
+     {
+         $formPratiqueImg = new FormPratiqueImg();
+         $formRenforcement = $this->createForm(FormPratiqueImgType::class, $formPratiqueImg);
+         $formRenforcement->handleRequest($request);
+ 
+         if ($formRenforcement->isSubmitted() && $formRenforcement->isValid()) {
+            $file=$formPratiqueImg->getImage1();
+            $file2=$formPratiqueImg->getImage2();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $fileName2= md5(uniqid()).'.'.$file2->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $file2->move($this->getParameter('upload_directoy'), $fileName2);
+
+            $formPratiqueImg->setImage1($fileName);
+            $formPratiqueImg->setImage2($fileName2);
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($formPratiqueImg);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('add_renforcement_capacite_new');
+         }
+ 
+         return $this->render('admin/addRenforcement.html.twig', [
+             'form_pratique_img' => $formPratiqueImg,
+             'formRenforcement' => $formRenforcement->createView(),
+             'renforcement_capacites' => $formPratiqueImgRepository->findAll(),
+         ]);
+     }
+
+ 
+     /**
+     * @Route("/new/addMontage", name="add_montage_pro_img_new", methods={"GET","POST"})
+     */
+    public function addMontage(Request $request,MontageProImgRepository $montageProImgRepository): Response
+    {
+        $montageProImg = new MontageProImg();
+        $formMontage = $this->createForm(MontageProImgType::class, $montageProImg);
+        $formMontage->handleRequest($request);
+
+        if ($formMontage->isSubmitted() && $formMontage->isValid()) {
+            $file=$montageProImg->getImage();  
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $montageProImg->setImage($fileName);
+          
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($montageProImg);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_montage_pro_img_new');
+        }
+
+        return $this->render('admin/addMontage.html.twig', [
+            'montage_pro_img' => $montageProImg,
+            'formMontage' => $formMontage->createView(),
+            'montage_pro_imgs' => $montageProImgRepository->findAll(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/new/addGestionSol", name="add_gestion_sol_img_new", methods={"GET","POST"})
+     */
+     public function addGestionSol(Request $request,GestionSolImgRepository $gestionSolImgRepository): Response
+     {
+         $gestionSolImg = new GestionSolImg();
+         $formGestion = $this->createForm(GestionSolImgType::class, $gestionSolImg);
+         $formGestion->handleRequest($request);
+ 
+         if ($formGestion->isSubmitted() && $formGestion->isValid()) {
+            $file=$gestionSolImg->getImage1();
+            $file2=$gestionSolImg->getImage2();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $fileName2= md5(uniqid()).'.'.$file2->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $file2->move($this->getParameter('upload_directoy'), $fileName2);
+
+            $gestionSolImg->setImage1($fileName);
+            $gestionSolImg->setImage2($fileName2);
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($gestionSolImg);
+             $entityManager->flush();
+ 
+             return $this->redirectToRoute('add_gestion_sol_img_new');
+         }
+ 
+         return $this->render('admin/addGestion.html.twig', [
+             'gestion_sol_img' => $gestionSolImg,
+             'formGestion' => $formGestion->createView(),
+             'gestion_sol_imgs' => $gestionSolImgRepository->findAll(),
+         ]);
+     }
+
+
+     /**
+     * @Route("/new/addVulgarisation", name="add_vulgarisation_img_new", methods={"GET","POST"})
+     */
+    public function addVulgarisation(Request $request,VulgarisationImgRepository $vulgarisationImgRepository): Response
+    {
+        $vulgarisationImg = new VulgarisationImg();
+        $formVulgarisation = $this->createForm(VulgarisationImgType::class, $vulgarisationImg);
+        $formVulgarisation->handleRequest($request);
+
+        if ($formVulgarisation->isSubmitted() && $formVulgarisation->isValid()) {
+            $file=$vulgarisationImg->getImage1();
+            $file2=$vulgarisationImg->getImage2();
+            $fileName= md5(uniqid()).'.'.$file->guessExtension();
+            $fileName2= md5(uniqid()).'.'.$file2->guessExtension();
+            $file->move($this->getParameter('upload_directoy'), $fileName);
+            $file2->move($this->getParameter('upload_directoy'), $fileName2);
+
+            $vulgarisationImg->setImage1($fileName);
+            $vulgarisationImg->setImage2($fileName2);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($vulgarisationImg);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('add_vulgarisation_img_new');
+        }
+
+        return $this->render('admin/addVulgarisation.html.twig', [
+            'vulgarisation_img' => $vulgarisationImg,
+            'formVulgarisation' => $formVulgarisation->createView(),
+            'vulgarisation_imgs' => $vulgarisationImgRepository->findAll(),
+        ]);
+    }
+ 
+
 }

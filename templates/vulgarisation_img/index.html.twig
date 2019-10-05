@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VulgarisationImg index{% endblock %}
+
+{% block body %}
+    <h1>VulgarisationImg index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image1</th>
+                <th>Image2</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vulgarisation_img in vulgarisation_imgs %}
+            <tr>
+                <td>{{ vulgarisation_img.id }}</td>
+                <td>{{ vulgarisation_img.image1 }}</td>
+                <td>{{ vulgarisation_img.image2 }}</td>
+                <td>
+                    <a href="{{ path('vulgarisation_img_show', {'id': vulgarisation_img.id}) }}">show</a>
+                    <a href="{{ path('vulgarisation_img_edit', {'id': vulgarisation_img.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vulgarisation_img_new') }}">Create new</a>
+{% endblock %}

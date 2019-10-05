@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SuiviAgriImg{% endblock %}
+
+{% block body %}
+    <h1>Edit SuiviAgriImg</h1>
+
+    {{ include('suivi_agri_img/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('suivi_agri_img_index') }}">back to list</a>
+
+    {{ include('suivi_agri_img/_delete_form.html.twig') }}
+{% endblock %}

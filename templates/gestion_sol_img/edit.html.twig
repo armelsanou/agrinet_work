@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GestionSolImg{% endblock %}
+
+{% block body %}
+    <h1>Edit GestionSolImg</h1>
+
+    {{ include('gestion_sol_img/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gestion_sol_img_index') }}">back to list</a>
+
+    {{ include('gestion_sol_img/_delete_form.html.twig') }}
+{% endblock %}

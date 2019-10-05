@@ -14,7 +14,7 @@ use App\Repository\ActualiteRepository;
 use App\Entity\RenforcementCapacite;
 use App\Form\RenforcementCapaciteType;
 use App\Repository\RenforcementCapaciteRepository;
-
+use App\Repository\FormPratiqueImgRepository;
 class FormationPratiqueController extends AbstractController
 {
     /**
@@ -24,6 +24,7 @@ class FormationPratiqueController extends AbstractController
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
                                             ObjectManager $manager, 
+                                            FormPratiqueImgRepository $formPratiqueImgRepository,
                                             SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -47,7 +48,8 @@ class FormationPratiqueController extends AbstractController
         return $this->render('formation_pratique/formation_pratique.html.twig', [
             'controller_name' => 'FormationPratiqueController',
             'form' => $form->createView(),
-            'formRenforcement' => $formRenforcement->createView()
+            'formRenforcement' => $formRenforcement->createView(),
+            'renforcement_capacites' => $formPratiqueImgRepository->findAll(),
         ]);
     }
 }

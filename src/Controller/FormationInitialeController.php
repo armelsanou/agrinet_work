@@ -14,6 +14,7 @@ use App\Repository\ActualiteRepository;
 use App\Entity\DemandeFormation;
 use App\Form\DemandeFormationType;
 use App\Repository\DemandeFormationRepository;
+use App\Repository\FormationInitImgRepository;
 
 class FormationInitialeController extends AbstractController
 {
@@ -23,7 +24,8 @@ class FormationInitialeController extends AbstractController
         public function formation_initiale(Request $request, 
                                             ActualiteRepository $listActualiteRepository,
                                             UserPasswordEncoderInterface $encoder, 
-                                            ObjectManager $manager, 
+                                            ObjectManager $manager,
+                                            FormationInitImgRepository $formationInitImgRepository,
                                             SecurityController $injector){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
@@ -44,6 +46,7 @@ class FormationInitialeController extends AbstractController
         return $this->render('formation_initiale/formation_initiale.html.twig', [
             'controller_name' => 'FormationInitialeController',
             'formFormation' => $formFormation->createView(),
+            'formation_init_imgs' => $formationInitImgRepository->findAll(),
             'form' => $form->createView()
         ]);
     }

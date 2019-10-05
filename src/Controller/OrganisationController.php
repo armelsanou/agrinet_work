@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Repository\ActualiteRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Repository\OrganisationRepository;
 class OrganisationController extends AbstractController
 {
     /**
@@ -21,7 +21,8 @@ class OrganisationController extends AbstractController
                           ActualiteRepository $listActualiteRepository,
                           UserPasswordEncoderInterface $encoder, 
                           ObjectManager $manager, 
-                          SecurityController $injector){
+                          SecurityController $injector,
+                          OrganisationRepository $organisationRepository){
             //injector c'est un objet de type SecurityController qui nous permet d'acceder à la méthode
             //registration qui se trouve dans SecurityController
             //afin de pouvoir créer un compte dans cette page
@@ -30,8 +31,9 @@ class OrganisationController extends AbstractController
         $user = new User();
   
              $form = $this->createForm(RegistrationType::class, $user);
-        return $this->render('organisation/index.html.twig', [
+        return $this->render('organisations/index.html.twig', [
             'controller_name' => 'OrganisationController',
+            'organisations' => $organisationRepository->findAll(),
             'form' => $form->createView()
         ]);
     }

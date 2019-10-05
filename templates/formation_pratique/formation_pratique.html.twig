@@ -21,8 +21,30 @@
 <section class="about py-5" id="about">
         <div class="container py-lg-5 py-sm-3">
             <h3 class="heading mb-sm-5 mb-4 text-center"> FORMATION PRATIQUE (continue) ET  RENFORCEMENT DE CAPACITE</h3>
-            <div class ="col-lg-12" ><img src="{{ asset('StyleAgrinet2/images/for4.jpg')}}" class="img-responsive img-for1"></div>
+           
+            
             <div class="row">
+                    {% for photo in renforcement_capacites %}
+                    
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb">
+                                <div class="content-panel-design pn">
+                                <div id="blog-bg">
+                                    <img src="{{ asset('uploads/') }}{{ photo.image1 }}" alt="" id="blog-bg-img" style="height: 279PX!important;">
+                                   
+                                </div>
+                               
+                                </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb">
+                                <div class="content-panel-design pn">
+                                <div id="blog-bg">
+                                    <img src="{{ asset('uploads/') }}{{ photo.image2 }}" alt="" id="blog-bg-img" style="height: 279PX!important;">
+                                   
+                                </div>
+                               
+                                </div>
+                        </div>
+                    {% endfor %}
                 <div class="col-lg-12 pl-xl-5 mt-lg-0 mt-4 about-right">
                         <p> Vous êtes un promoteur d’entreprise agropastorale, une association de producteur ou coopérative, nous organisons des ateliers et séminaires de renforcement des 
                                 capacités de vos membres sur les techniques, les procédés de transformation et technologie innovantes en agriculture.
